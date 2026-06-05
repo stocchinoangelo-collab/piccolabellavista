@@ -1,0 +1,30 @@
+# Archivi e file temporanei
+piccolabellavista.zip
+*.zip
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ambienti virtuali
+venv/
+.venv/
+env/
+
+# Configurazioni locali e segreti
+.env
+.env.*
+
+# Dati locali reali
+/data/bookings.json
+
+# Backup locali
+backups/
+originali_backup/
+
+# Sistema operativo / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
