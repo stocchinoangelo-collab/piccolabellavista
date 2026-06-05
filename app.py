@@ -1,7 +1,9 @@
 from __future__ import annotations
 
+import base64
 import json
 import os
+import secrets
 import smtplib
 import tempfile
 import uuid
@@ -155,12 +157,56 @@ class PiccolaBellavistaHandler(SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=str(BASE_DIR), **kwargs)
 
+    def is_admin_configured(self) -> bool:
+        return bool(os.getenv("PB_ADMIN_USER") and os.getenv("PB_ADMIN_PASSWORD"))
+
+    def is_admin_authorized(self) -> bool:
+        expected_user = os.getenv("PB_ADMIN_USER")
+        expected_password = os.getenv("PB_ADMIN_PASSWORD")
+        if not expected_user or not expected_password:
+            return False
+
+        auth_header = self.headers.get("Authorization", "")
+        if not auth_header.startswith("Basic "):
+            return False
+
+        try:
+            decoded = base64.b64decode(auth_header.removeprefix("Basic ")).decode("utf-8")
+            username, password = decoded.split(":", 1)
+        except Exception:
+            return False
+
+        return secrets.compare_digest(username, expected_user) and secrets.compare_digest(password, expected_password)
+
+    def require_admin(self) -> bool:
+        if not self.is_admin_configured():
+            self.send_json(
+                {
+                    "ok": False,
+                    "message": "Area admin non configurata. Imposta PB_ADMIN_USER e PB_ADMIN_PASSWORD.",
+                },
+                HTTPStatus.SERVICE_UNAVAILABLE,
+            )
+            return False
+
+        if not self.is_admin_authorized():
+            self.send_response(HTTPStatus.UNAUTHORIZED)
+            self.send_header("WWW-Authenticate", 'Basic realm="Piccola Bellavista Admin"')
+            self.send_header("Content-Type", "application/json; charset=utf-8")
+            self.end_headers()
+            self.wfile.write(json.dumps({"ok": False, "message": "Accesso admin richiesto."}).encode("utf-8"))
+            return False
+
+        return True
+
     def do_GET(self) -> None:
         path = urlparse(self.path).path
         if path == "/api/bookings":
             self.send_json(public_bookings(load_bookings()))
             return
         if path == "/api/admin/bookings":
+            if not self.require_admin():
+                return
             self.send_json(load_bookings())
             return
         super().do_GET()
@@ -175,6 +221,8 @@ class PiccolaBellavistaHandler(SimpleHTTPRequestHandler):
     def do_PUT(self) -> None:
         path = urlparse(self.path).path
         if path.startswith("/api/admin/bookings/"):
+            if not self.require_admin():
+                return
             booking_id = path.rsplit("/", 1)[-1]
             self.update_booking(booking_id)
             return
