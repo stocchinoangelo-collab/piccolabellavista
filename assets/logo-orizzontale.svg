@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200" width="800" height="200">
+  <!-- Logo Piccola Bellavista - Versione Orizzontale per header/email -->
+  
+  <rect width="800" height="200" fill="#ffffff"/>
+  
+  <!-- Icona casa a sinistra -->
+  <g transform="translate(100, 100)">
+    <!-- Mare -->
+    <path d="M -50 35 Q -25 30 0 35 T 50 35 L 50 50 L -50 50 Z" 
+          fill="#90e0ef" opacity="0.5"/>
+    
+    <!-- Casa -->
+    <rect x="-25" y="-10" width="50" height="40" 
+          fill="#fefae0" 
+          stroke="#264653" 
+          stroke-width="2"/>
+    
+    <!-- Tetto -->
+    <polygon points="-30,-10 0,-35 30,-10" 
+             fill="#e76f51" 
+             stroke="#264653" 
+             stroke-width="2"/>
+    
+    <!-- Porta -->
+    <rect x="-6" y="10" width="12" height="20" 
+          fill="#1e6091"/>
+    
+    <!-- Finestre -->
+    <rect x="-19" y="-2" width="10" height="10" fill="#90e0ef" stroke="#264653" stroke-width="1"/>
+    <rect x="9" y="-2" width="10" height="10" fill="#90e0ef" stroke="#264653" stroke-width="1"/>
+    
+    <!-- Balcone -->
+    <rect x="-15" y="18" width="30" height="2" fill="#264653"/>
+    <line x1="-12" y1="20" x2="-12" y2="26" stroke="#264653" stroke-width="0.8"/>
+    <line x1="-6" y1="20" x2="-6" y2="26" stroke="#264653" stroke-width="0.8"/>
+    <line x1="0" y1="20" x2="0" y2="26" stroke="#264653" stroke-width="0.8"/>
+    <line x1="6" y1="20" x2="6" y2="26" stroke="#264653" stroke-width="0.8"/>
+    <line x1="12" y1="20" x2="12" y2="26" stroke="#264653" stroke-width="0.8"/>
+    
+    <!-- Stella -->
+    <text x="0" y="-15" text-anchor="middle" font-size="12" fill="#fef3c7" font-weight="bold">★</text>
+  </g>
+  
+  <!-- Testo a destra -->
+  <text x="200" y="85" 
+        font-family="Georgia, serif" 
+        font-size="28" 
+        font-style="italic"
+        fill="#e76f51">
+    Piccola
+  </text>
+  
+  <text x="200" y="130" 
+        font-family="Georgia, serif" 
+        font-size="44" 
+        font-weight="bold"
+        fill="#1e6091">
+    Bellavista
+  </text>
+  
+  <text x="200" y="160" 
+        font-family="Georgia, serif" 
+        font-size="13" 
+        font-style="italic"
+        fill="#264653">
+    Il tuo nido panoramico a Cagliari
+  </text>
+  
+  <!-- Linea decorativa -->
+  <line x1="200" y1="170" x2="500" y2="170" stroke="#e76f51" stroke-width="1" opacity="0.5"/>
+  
+</svg>

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin prenotazioni | Piccola Bellavista</title>
+  <link rel="icon" type="image/png" href="assets/logo-instagram.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Piccola Bellavista">
+      <img src="assets/logo-orizzontale.svg" alt="Piccola Bellavista">
+    </a>
+    <div class="header-tools">
+      <nav aria-label="Navigazione admin">
+        <a href="index.html">Sito</a>
+        <a href="admin.html">Admin</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section admin-section">
+      <p class="eyebrow">Admin</p>
+      <h1>Gestione prenotazioni</h1>
+      <p class="admin-note">Visualizza richieste, conferma date, cancella prenotazioni o correggi dati inseriti dagli ospiti.</p>
+      <div class="admin-toolbar">
+        <button class="button primary" type="button" id="refreshBookings">Aggiorna</button>
+        <span id="adminMessage" class="form-message" aria-live="polite"></span>
+      </div>
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Stato</th>
+              <th>Ospite</th>
+              <th>Contatti</th>
+              <th>Date</th>
+              <th>Ospiti</th>
+              <th>Note</th>
+              <th>Azione</th>
+            </tr>
+          </thead>
+          <tbody id="adminBookings"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="admin.js"></script>
+</body>
+</html>
