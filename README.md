@@ -2,15 +2,15 @@
 
 Sito leggero per la casa vacanza Piccola Bellavista, a Pirri, Cagliari.
 
-## Come avviare in locale
+## Avvio in locale
 
-Dalla cartella del progetto:
+Dalla cartella del progetto avvia il server con:
 
-```powershell
+```bash
 python app.py
 ```
 
-Poi apri:
+Poi apri il sito all'indirizzo:
 
 ```text
 http://127.0.0.1:8080
@@ -25,25 +25,49 @@ http://127.0.0.1:8080/admin.html
 ## Area admin
 
 Le API admin sono protette con autenticazione Basic tramite variabili ambiente.
+Prima di avviare il server configura `PB_ADMIN_USER` e `PB_ADMIN_PASSWORD` nel tuo terminale.
 
-Prima di avviare il server, su PowerShell puoi impostare:
+Esempio PowerShell:
 
 ```powershell
 $env:PB_ADMIN_USER="admin"
-$env:PB_ADMIN_PASSWORD="scegli-una-password-locale"
+$env:PB_ADMIN_PASSWORD="valore-locale-da-scegliere"
 python app.py
 ```
 
-Non inserire password reali nel codice e non caricare file `.env` su GitHub.
+Non inserire credenziali reali nel codice e non caricare file `.env` su GitHub.
+Se le variabili admin non sono configurate, la pagina admin mostra un messaggio di configurazione mancante.
+
+## Prenotazioni e dati locali
+
+Il modulo salva le richieste in `data/bookings.json`.
+Gli stati disponibili sono `richiesta`, `confermata` e `cancellata`.
+Le prenotazioni in stato `richiesta` o `confermata` bloccano le date nel calendario.
+
+`data/bookings.json` contiene dati locali reali, viene generato automaticamente dal server ed e escluso da Git tramite `.gitignore`.
+Per mantenere un esempio vuoto nel repository si usa `data/bookings.example.json`.
+
+La notifica email viene inviata solo se sono configurate le variabili SMTP previste in `app.py`.
+
+## Test
+
+La suite automatizzata copre la validazione delle prenotazioni e le API principali di `app.py`.
+Per eseguirla:
+
+```bash
+python -m unittest discover -s tests
+```
 
 ## Struttura
 
 - `index.html` - pagina principale del sito.
 - `styles.css` - grafica e layout.
-- `script.js` - selettore lingua Italiano/Inglese.
+- `script.js` - traduzioni, calendario disponibilita e validazione frontend del modulo.
 - `app.py` - server locale, API prenotazioni e salvataggio dati.
 - `admin.html` - gestione prenotazioni.
 - `admin.js` - logica pagina admin.
+- `tests/` - test automatizzati per il server e la validazione.
+- `.github/workflows/ci.yml` - workflow CI minimo per eseguire i test.
 - `data/bookings.example.json` - esempio vuoto dei dati prenotazioni.
 - `data/bookings.json` - archivio prenotazioni locale generato automaticamente, escluso da Git.
 - `assets/` - loghi e immagini.
@@ -52,28 +76,3 @@ Non inserire password reali nel codice e non caricare file `.env` su GitHub.
 
 Il sito include un selettore lingua `IT/EN` nella testata.
 La lingua scelta viene ricordata dal browser per le visite successive.
-
-## Prenotazioni
-
-Il modulo salva le richieste in `data/bookings.json`.
-Gli stati disponibili sono `richiesta`, `confermata` e `cancellata`.
-Le prenotazioni in stato `richiesta` o `confermata` bloccano le date nel calendario.
-
-La notifica email viene inviata solo se sono configurate queste variabili ambiente:
-
-```powershell
-$env:PB_SMTP_HOST="smtp.example.com"
-$env:PB_SMTP_PORT="587"
-$env:PB_SMTP_USER="email@example.com"
-$env:PB_SMTP_PASSWORD="password"
-$env:PB_NOTIFY_EMAIL="destinatario@example.com"
-python app.py
-```
-
-## Da completare
-
-- Inserire numero WhatsApp reale.
-- Inserire email reale.
-- Inserire link Booking.
-- Inserire link Google Maps.
-- Aggiungere foto reali della casa e della vista.
