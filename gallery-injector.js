@@ -1,6 +1,6 @@
 (() => {
   const originalScript = document.createElement("script");
-  originalScript.src = "script-original.js";
+  originalScript.src = "https://cdn.jsdelivr.net/gh/stocchinoangelo-collab/piccolabellavista@775fe889c339a793dbedc1563bb6139ff9c60818/script.js";
   originalScript.async = false;
   document.head.appendChild(originalScript);
 
