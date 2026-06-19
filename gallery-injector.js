@@ -103,7 +103,7 @@
   }
 
   function setShareImage() {
-    const fallbackPath = "assets/foto/booking/panoramica-alloggio.jpg";
+    const fallbackPath = "assets/foto/booking/panoramica-allogio.jpg";
     const heroPath = "assets/foto/booking/vista-verso-poetto-mare-hero.jpg";
     const ogImage = document.querySelector('meta[property="og:image"]');
     const twitterImage = document.querySelector('meta[name="twitter:image"]');
@@ -153,14 +153,14 @@
       <p class="section-lead" data-photo-copy="intro">Foto reali dell'alloggio: zona giorno, letto matrimoniale, bagno e spazio pranzo con le dotazioni disponibili.</p>
       <div class="photo-grid">
         <figure class="photo-card">
-          <a href="assets/foto/booking/panoramica-alloggio.jpg" target="_blank" rel="noreferrer">
-            <img src="assets/foto/booking/panoramica-alloggio.jpg" data-photo-alt="panoramaAlt" alt="Panoramica della zona giorno con cucina, frigorifero, tavolo e televisore">
+          <a href="assets/foto/booking/panoramica-allogio.jpg" target="_blank" rel="noreferrer">
+            <img src="assets/foto/booking/panoramica-allogio.jpg" data-photo-alt="panoramaAlt" alt="Panoramica della zona giorno con cucina, frigorifero, tavolo e televisore">
           </a>
           <figcaption data-photo-copy="panorama">Panoramica dell'alloggio</figcaption>
         </figure>
         <figure class="photo-card">
-          <a href="assets/foto/booking/camera-letto.jpg" target="_blank" rel="noreferrer">
-            <img src="assets/foto/booking/camera-letto.jpg" data-photo-alt="bedroomAlt" alt="Letto matrimoniale preparato con biancheria bianca e cuscini verdi" loading="lazy">
+          <a href="assets/foto/booking/camera letto.jpg" target="_blank" rel="noreferrer">
+            <img src="assets/foto/booking/camera letto.jpg" data-photo-alt="bedroomAlt" alt="Letto matrimoniale preparato con biancheria bianca e cuscini verdi" loading="lazy">
           </a>
           <figcaption data-photo-copy="bedroom">Letto matrimoniale</figcaption>
         </figure>
@@ -171,8 +171,8 @@
           <figcaption data-photo-copy="bathroom">Bagno privato</figcaption>
         </figure>
         <figure class="photo-card">
-          <a href="assets/foto/booking/zona-pranzo.jpg" target="_blank" rel="noreferrer">
-            <img src="assets/foto/booking/zona-pranzo.jpg" data-photo-alt="diningAlt" alt="Zona pranzo con tavolo, sedie, microonde, friggitrice ad aria e armadio" loading="lazy">
+          <a href="assets/foto/booking/zona pranzo .jpg" target="_blank" rel="noreferrer">
+            <img src="assets/foto/booking/zona pranzo .jpg" data-photo-alt="diningAlt" alt="Zona pranzo con tavolo, sedie, microonde, friggitrice ad aria e armadio" loading="lazy">
           </a>
           <figcaption data-photo-copy="dining">Zona pranzo e dotazioni</figcaption>
         </figure>
