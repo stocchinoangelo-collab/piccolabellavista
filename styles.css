@@ -126,7 +126,7 @@ nav a:hover {
   background:
     linear-gradient(135deg, rgba(60, 36, 22, 0.9), rgba(127, 66, 43, 0.74) 48%, rgba(88, 93, 57, 0.74)),
     radial-gradient(circle at 50% 42%, rgba(255, 248, 238, 0.18), transparent 30%),
-    url("assets/logo-instagram.png") center / min(620px, 82vw) no-repeat,
+    var(--hero-image, url("assets/foto/booking/panoramica-alloggio.jpg")) center / cover no-repeat,
     linear-gradient(135deg, var(--terracotta-dark), var(--olive));
   content: "";
 }
