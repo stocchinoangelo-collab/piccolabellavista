@@ -126,7 +126,7 @@ nav a:hover {
   background:
     linear-gradient(135deg, rgba(60, 36, 22, 0.6), rgba(127, 66, 43, 0.42) 48%, rgba(88, 93, 57, 0.42)),
     radial-gradient(circle at 50% 42%, rgba(255, 248, 238, 0.12), transparent 30%),
-    var(--hero-image, url("assets/foto/booking/panoramica-alloggio.jpg")) center / cover no-repeat,
+    var(--hero-image, url("assets/foto/booking/vista-mare-hero.jpg")) center / cover no-repeat,
     linear-gradient(135deg, var(--terracotta-dark), var(--olive));
   content: "";
 }
@@ -894,7 +894,7 @@ summary:focus-visible {
   .hero::before {
     background:
       linear-gradient(135deg, rgba(60, 36, 22, 0.42), rgba(127, 66, 43, 0.28) 48%, rgba(88, 93, 57, 0.28)),
-      var(--hero-image, url("assets/foto/booking/panoramica-alloggio.jpg")) center / cover no-repeat,
+      var(--hero-image, url("assets/foto/booking/vista-mare-hero.jpg")) center / cover no-repeat,
       linear-gradient(135deg, var(--terracotta-dark), var(--olive)) !important;
   }
   /* Ombra del testo piu marcata, cosi resta leggibile sulla foto piu chiara */
