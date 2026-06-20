@@ -11,18 +11,30 @@
       title: "Guarda Piccola Bellavista.",
       intro: "Foto reali dell'alloggio: zona giorno, letto matrimoniale, bagno e spazio pranzo con le dotazioni disponibili.",
       panorama: "Panoramica dell'alloggio",
+      kitchen: "Angolo cucina e zona giorno",
       bedroom: "Letto matrimoniale",
       bathroom: "Bagno privato",
       dining: "Zona pranzo e dotazioni",
+      viewBalcony: "Vista dal balcone al tramonto",
+      viewLagoon: "Verso la laguna e i monti",
+      viewDusk: "Vista al crepuscolo",
+      viewDistrict: "Il quartiere verso la laguna",
+      viewRooftops: "Tetti e laguna all'orizzonte",
       viewKicker: "La vista",
       viewTitle: "Vista verso Poetto e mare",
       viewText: "Dal balcone lo sguardo si apre verso lo stagno, il Poetto e il mare di Cagliari. Non è una struttura fronte mare, ma offre una vista ampia e luminosa che rende piacevole il soggiorno.",
       hospitalTitle: "Comoda per ospedali e trasferte",
       hospitalText: "La posizione è utile anche per chi deve raggiungere Brotzu, Oncologico e Microcitemico. Una soluzione pratica per accompagnatori, visite, brevi permanenze o trasferte a Cagliari.",
       panoramaAlt: "Panoramica della zona giorno con cucina, frigorifero, tavolo e televisore",
+      kitchenAlt: "Angolo cucina con lavello, piano cottura, cappa, frigorifero, pensili e tavola apparecchiata",
       bedroomAlt: "Letto matrimoniale preparato con biancheria bianca e cuscini verdi",
       bathroomAlt: "Bagno privato con lavabo, WC, bidet e doccia",
-      diningAlt: "Zona pranzo con tavolo, sedie, microonde, friggitrice ad aria e armadio"
+      diningAlt: "Zona pranzo con tavolo, sedie, microonde, friggitrice ad aria e armadio",
+      viewBalconyAlt: "Vista dal balcone verso il quartiere di Pirri e la laguna nella luce del tramonto",
+      viewLagoonAlt: "Vista panoramica verso la laguna di Cagliari e i monti all'orizzonte",
+      viewDuskAlt: "Vista al crepuscolo con il cielo viola sopra il quartiere e la laguna",
+      viewDistrictAlt: "Vista del quartiere di Pirri che si apre verso la laguna e il mare",
+      viewRooftopsAlt: "Vista sui tetti del quartiere con la laguna e i monti sullo sfondo"
     },
     en: {
       nav: "Photos",
@@ -30,18 +42,30 @@
       title: "Take a look inside Piccola Bellavista.",
       intro: "Real photos of the accommodation: living area, double bed, private bathroom and dining area with the available appliances.",
       panorama: "Accommodation overview",
+      kitchen: "Kitchenette and living area",
       bedroom: "Double bed",
       bathroom: "Private bathroom",
       dining: "Dining area and appliances",
+      viewBalcony: "Balcony view at sunset",
+      viewLagoon: "Toward the lagoon and the hills",
+      viewDusk: "View at dusk",
+      viewDistrict: "The neighbourhood toward the lagoon",
+      viewRooftops: "Rooftops and lagoon on the horizon",
       viewKicker: "The view",
       viewTitle: "View toward Poetto and the sea",
       viewText: "From the balcony, the view opens toward the lagoon, Poetto and the sea of Cagliari. It is not a beachfront property, but it offers a wide and bright view that makes the stay more pleasant.",
       hospitalTitle: "Convenient for hospitals and work trips",
       hospitalText: "The location is also useful for guests who need to reach Brotzu, Oncologico and Microcitemico hospitals. A practical base for companions, appointments, short stays or work trips in Cagliari.",
       panoramaAlt: "Overview of the living area with kitchen, refrigerator, table and television",
+      kitchenAlt: "Kitchenette with sink, hob, hood, refrigerator, cabinets and a set table",
       bedroomAlt: "Double bed prepared with white linen and green cushions",
       bathroomAlt: "Private bathroom with washbasin, toilet, bidet and shower",
-      diningAlt: "Dining area with table, chairs, microwave, air fryer and wardrobe"
+      diningAlt: "Dining area with table, chairs, microwave, air fryer and wardrobe",
+      viewBalconyAlt: "Balcony view over the Pirri neighbourhood and the lagoon in the sunset light",
+      viewLagoonAlt: "Panoramic view toward the Cagliari lagoon and the hills on the horizon",
+      viewDuskAlt: "View at dusk with a purple sky over the neighbourhood and the lagoon",
+      viewDistrictAlt: "View of the Pirri neighbourhood opening toward the lagoon and the sea",
+      viewRooftopsAlt: "View over the neighbourhood rooftops with the lagoon and hills in the background"
     }
   };
 
@@ -103,7 +127,7 @@
   }
 
   function setShareImage() {
-    const fallbackPath = "assets/foto/booking/panoramica-allogio.jpg";
+    const fallbackPath = "assets/foto/booking/panoramica-alloggio.jpg";
     const heroPath = "assets/foto/booking/vista-verso-poetto-mare-hero.jpg";
     const ogImage = document.querySelector('meta[property="og:image"]');
     const twitterImage = document.querySelector('meta[name="twitter:image"]');
@@ -153,14 +177,20 @@
       <p class="section-lead" data-photo-copy="intro">Foto reali dell'alloggio: zona giorno, letto matrimoniale, bagno e spazio pranzo con le dotazioni disponibili.</p>
       <div class="photo-grid">
         <figure class="photo-card">
-          <a href="assets/foto/booking/panoramica-allogio.jpg" target="_blank" rel="noreferrer">
-            <img src="assets/foto/booking/panoramica-allogio.jpg" data-photo-alt="panoramaAlt" alt="Panoramica della zona giorno con cucina, frigorifero, tavolo e televisore">
+          <a href="assets/foto/booking/panoramica-alloggio.jpg" target="_blank" rel="noreferrer">
+            <img src="assets/foto/booking/panoramica-alloggio.jpg" data-photo-alt="panoramaAlt" alt="Panoramica della zona giorno con cucina, frigorifero, tavolo e televisore" loading="lazy">
           </a>
           <figcaption data-photo-copy="panorama">Panoramica dell'alloggio</figcaption>
         </figure>
         <figure class="photo-card">
-          <a href="assets/foto/booking/camera letto.jpg" target="_blank" rel="noreferrer">
-            <img src="assets/foto/booking/camera letto.jpg" data-photo-alt="bedroomAlt" alt="Letto matrimoniale preparato con biancheria bianca e cuscini verdi" loading="lazy">
+          <a href="assets/foto/booking/cucina-zona-giorno.jpg" target="_blank" rel="noreferrer">
+            <img src="assets/foto/booking/cucina-zona-giorno.jpg" data-photo-alt="kitchenAlt" alt="Angolo cucina con lavello, piano cottura, cappa, frigorifero, pensili e tavola apparecchiata" loading="lazy">
+          </a>
+          <figcaption data-photo-copy="kitchen">Angolo cucina e zona giorno</figcaption>
+        </figure>
+        <figure class="photo-card">
+          <a href="assets/foto/booking/camera-letto.jpg" target="_blank" rel="noreferrer">
+            <img src="assets/foto/booking/camera-letto.jpg" data-photo-alt="bedroomAlt" alt="Letto matrimoniale preparato con biancheria bianca e cuscini verdi" loading="lazy">
           </a>
           <figcaption data-photo-copy="bedroom">Letto matrimoniale</figcaption>
         </figure>
@@ -171,10 +201,40 @@
           <figcaption data-photo-copy="bathroom">Bagno privato</figcaption>
         </figure>
         <figure class="photo-card">
-          <a href="assets/foto/booking/zona pranzo .jpg" target="_blank" rel="noreferrer">
-            <img src="assets/foto/booking/zona pranzo .jpg" data-photo-alt="diningAlt" alt="Zona pranzo con tavolo, sedie, microonde, friggitrice ad aria e armadio" loading="lazy">
+          <a href="assets/foto/booking/zona-pranzo.jpg" target="_blank" rel="noreferrer">
+            <img src="assets/foto/booking/zona-pranzo.jpg" data-photo-alt="diningAlt" alt="Zona pranzo con tavolo, sedie, microonde, friggitrice ad aria e armadio" loading="lazy">
           </a>
           <figcaption data-photo-copy="dining">Zona pranzo e dotazioni</figcaption>
+        </figure>
+        <figure class="photo-card">
+          <a href="assets/foto/booking/vista-balcone-tramonto.jpg" target="_blank" rel="noreferrer">
+            <img src="assets/foto/booking/vista-balcone-tramonto.jpg" data-photo-alt="viewBalconyAlt" alt="Vista dal balcone verso il quartiere di Pirri e la laguna nella luce del tramonto" loading="lazy">
+          </a>
+          <figcaption data-photo-copy="viewBalcony">Vista dal balcone al tramonto</figcaption>
+        </figure>
+        <figure class="photo-card">
+          <a href="assets/foto/booking/vista-laguna-monti.jpg" target="_blank" rel="noreferrer">
+            <img src="assets/foto/booking/vista-laguna-monti.jpg" data-photo-alt="viewLagoonAlt" alt="Vista panoramica verso la laguna di Cagliari e i monti all'orizzonte" loading="lazy">
+          </a>
+          <figcaption data-photo-copy="viewLagoon">Verso la laguna e i monti</figcaption>
+        </figure>
+        <figure class="photo-card">
+          <a href="assets/foto/booking/vista-crepuscolo.jpg" target="_blank" rel="noreferrer">
+            <img src="assets/foto/booking/vista-crepuscolo.jpg" data-photo-alt="viewDuskAlt" alt="Vista al crepuscolo con il cielo viola sopra il quartiere e la laguna" loading="lazy">
+          </a>
+          <figcaption data-photo-copy="viewDusk">Vista al crepuscolo</figcaption>
+        </figure>
+        <figure class="photo-card">
+          <a href="assets/foto/booking/vista-quartiere-laguna.jpg" target="_blank" rel="noreferrer">
+            <img src="assets/foto/booking/vista-quartiere-laguna.jpg" data-photo-alt="viewDistrictAlt" alt="Vista del quartiere di Pirri che si apre verso la laguna e il mare" loading="lazy">
+          </a>
+          <figcaption data-photo-copy="viewDistrict">Il quartiere verso la laguna</figcaption>
+        </figure>
+        <figure class="photo-card">
+          <a href="assets/foto/booking/vista-tetti-laguna.jpg" target="_blank" rel="noreferrer">
+            <img src="assets/foto/booking/vista-tetti-laguna.jpg" data-photo-alt="viewRooftopsAlt" alt="Vista sui tetti del quartiere con la laguna e i monti sullo sfondo" loading="lazy">
+          </a>
+          <figcaption data-photo-copy="viewRooftops">Tetti e laguna all'orizzonte</figcaption>
         </figure>
       </div>
     `;
