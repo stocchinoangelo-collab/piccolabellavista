@@ -1,4 +1,3 @@
-Script original · JS
 const translations = {
   it: {
     navHouse: "La casa",
