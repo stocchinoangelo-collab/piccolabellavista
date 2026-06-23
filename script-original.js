@@ -1,3 +1,4 @@
+Script original · JS
 const translations = {
   it: {
     navHouse: "La casa",
@@ -296,7 +297,7 @@ const translations = {
     footerText: "Piccola Bellavista - Holiday studio in Pirri, Cagliari"
   }
 };
-
+ 
 const languageButtons = document.querySelectorAll(".lang-button");
 const translatableElements = document.querySelectorAll("[data-i18n]");
 const translatablePlaceholders = document.querySelectorAll("[data-i18n-placeholder]");
@@ -310,58 +311,58 @@ let activeLanguage = localStorage.getItem("piccolaBellavistaLanguage") || "it";
 let bookings = [];
 let visibleMonth = new Date();
 visibleMonth.setDate(1);
-
+ 
 function setLanguage(language) {
   const dictionary = translations[language] || translations.it;
-
+ 
   translatableElements.forEach((element) => {
     const key = element.dataset.i18n;
     if (dictionary[key]) {
       element.textContent = dictionary[key];
     }
   });
-
+ 
   translatablePlaceholders.forEach((element) => {
     const key = element.dataset.i18nPlaceholder;
     if (dictionary[key]) {
       element.setAttribute("placeholder", dictionary[key]);
     }
   });
-
+ 
   languageButtons.forEach((button) => {
     const isActive = button.dataset.lang === language;
     button.classList.toggle("active", isActive);
     button.setAttribute("aria-pressed", String(isActive));
   });
-
+ 
   document.documentElement.lang = language;
   localStorage.setItem("piccolaBellavistaLanguage", language);
   activeLanguage = language;
   renderCalendar();
 }
-
+ 
 languageButtons.forEach((button) => {
   button.addEventListener("click", () => setLanguage(button.dataset.lang));
 });
-
+ 
 function dateToISO(date) {
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, "0");
   const day = String(date.getDate()).padStart(2, "0");
   return `${year}-${month}-${day}`;
 }
-
+ 
 function parseLocalDate(value) {
   const [year, month, day] = value.split("-").map(Number);
   return new Date(year, month - 1, day);
 }
-
+ 
 function addDays(date, days) {
   const next = new Date(date);
   next.setDate(next.getDate() + days);
   return next;
 }
-
+ 
 function isBookedDate(day) {
   return bookings.some((booking) => {
     const arrival = parseLocalDate(booking.arrival);
@@ -369,7 +370,7 @@ function isBookedDate(day) {
     return day >= arrival && day < departure;
   });
 }
-
+ 
 function hasSelectedDateConflict(arrival, departure) {
   if (!arrival || !departure) {
     return false;
@@ -383,26 +384,26 @@ function hasSelectedDateConflict(arrival, departure) {
   }
   return false;
 }
-
+ 
 function renderCalendar() {
   if (!calendarElement || !calendarMonth) {
     return;
   }
-
+ 
   calendarElement.innerHTML = "";
   calendarMonth.textContent = visibleMonth.toLocaleDateString(activeLanguage === "en" ? "en-GB" : "it-IT", {
     month: "long",
     year: "numeric",
   });
-
+ 
   const firstDay = new Date(visibleMonth);
   const offset = (firstDay.getDay() + 6) % 7;
   const daysInMonth = new Date(firstDay.getFullYear(), firstDay.getMonth() + 1, 0).getDate();
-
+ 
   for (let i = 0; i < offset; i += 1) {
     calendarElement.append(document.createElement("span"));
   }
-
+ 
   for (let day = 1; day <= daysInMonth; day += 1) {
     const current = new Date(firstDay.getFullYear(), firstDay.getMonth(), day);
     const cell = document.createElement("button");
@@ -428,7 +429,7 @@ function renderCalendar() {
     calendarElement.append(cell);
   }
 }
-
+ 
 async function loadAvailability() {
   try {
     const response = await fetch("/api/bookings");
@@ -438,50 +439,53 @@ async function loadAvailability() {
   }
   renderCalendar();
 }
-
+ 
 prevMonthButton?.addEventListener("click", () => {
   visibleMonth.setMonth(visibleMonth.getMonth() - 1);
   renderCalendar();
 });
-
+ 
 nextMonthButton?.addEventListener("click", () => {
   visibleMonth.setMonth(visibleMonth.getMonth() + 1);
   renderCalendar();
 });
-
+ 
 bookingForm?.addEventListener("submit", async (event) => {
   event.preventDefault();
   const dictionary = translations[activeLanguage] || translations.it;
   const formData = new FormData(bookingForm);
   const payload = Object.fromEntries(formData.entries());
-
+ 
   bookingMessage.textContent = "";
   bookingMessage.className = "form-message";
-
+ 
   if (hasSelectedDateConflict(payload.arrival, payload.departure)) {
     bookingMessage.textContent = dictionary.formDateConflict;
     bookingMessage.classList.add("error");
     return;
   }
-
-  try {
-    const response = await fetch("/api/bookings", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
-    const result = await response.json();
-    bookingMessage.textContent = result.message || dictionary.formGenericError;
-    bookingMessage.classList.add(response.ok ? "success" : "error");
-    if (response.ok) {
-      bookingForm.reset();
-      await loadAvailability();
-    }
-  } catch (error) {
-    bookingMessage.textContent = dictionary.formGenericError;
-    bookingMessage.classList.add("error");
-  }
+ 
+  const waNumber = "393931104422";
+  const righe = [
+    "Richiesta prenotazione - Piccola Bellavista",
+    "Nome: " + (payload.fullName || ""),
+    "Telefono: " + (payload.phone || ""),
+    "Email: " + (payload.email || ""),
+    "Arrivo: " + (payload.arrival || ""),
+    "Partenza: " + (payload.departure || ""),
+    "Ospiti: " + (payload.guests || ""),
+    "Note: " + (payload.notes || ""),
+  ];
+  const waUrl = "https://wa.me/" + waNumber + "?text=" + encodeURIComponent(righe.join("\n"));
+  window.open(waUrl, "_blank");
+  bookingMessage.textContent = dictionary.formWhatsappRedirect ||
+    (activeLanguage === "en"
+      ? "Opening WhatsApp to send your request. Press send to confirm."
+      : "Ti apriamo WhatsApp con la richiesta gia compilata: premi invio per confermare.");
+  bookingMessage.classList.add("success");
+  bookingForm.reset();
 });
-
+ 
 setLanguage(activeLanguage);
 loadAvailability();
+ 
