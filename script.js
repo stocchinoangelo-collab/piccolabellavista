@@ -1,5 +1,5 @@
 (() => {
-  const fallbackPath = "assets/foto/booking/panoramica-allogio.jpg";
+  const fallbackPath = "assets/foto/booking/panoramica-alloggio.jpg";
   const heroPath = "assets/foto/booking/vista-verso-poetto-mare-hero.jpg";
   const setHeroImage = (imagePath) => {
     document.documentElement.style.setProperty("--hero-image", `url("${imagePath}")`);
