@@ -134,7 +134,7 @@ const translations = {
     faq3Question: "La posizione è comoda per il Poetto?",
     faq3Answer: "Sì, il Poetto è raggiungibile in auto in circa 15-20 minuti. La posizione è utile anche per visitare Cagliari.",
     faq4Question: "Come posso prenotare?",
-    faq4Answer: "Puoi inviare una richiesta dal calendario disponibilità oppure scrivere via WhatsApp o email.",
+    faq4Answer: "Puoi inviare una richiesta dal modulo qui sopra oppure scriverci direttamente su WhatsApp o via email.",
     locationKicker: "Posizione",
     locationTitle: "Via Bellavista 14, Pirri.",
     locationText: "Una base comoda per chi arriva in aereo, vuole scoprire Cagliari o cerca un appoggio tranquillo per muoversi nel sud Sardegna.",
@@ -282,7 +282,7 @@ const translations = {
     faq3Question: "Is the location convenient for Poetto beach?",
     faq3Answer: "Yes, Poetto beach can be reached by car in about 15-20 minutes. The location is also useful for visiting Cagliari.",
     faq4Question: "How can I book?",
-    faq4Answer: "You can send a request through the availability calendar, or contact us by WhatsApp or email.",
+    c
     locationKicker: "Location",
     locationTitle: "Via Bellavista 14, Pirri.",
     locationText: "A convenient base for guests arriving by plane, exploring Cagliari or looking for a quiet place to move around southern Sardinia.",
