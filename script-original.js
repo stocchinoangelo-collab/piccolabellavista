@@ -282,8 +282,7 @@ const translations = {
     faq3Question: "Is the location convenient for Poetto beach?",
     faq3Answer: "Yes, Poetto beach can be reached by car in about 15-20 minutes. The location is also useful for visiting Cagliari.",
     faq4Question: "How can I book?",
-c    
-    locationKicker: "Location",
+       faq4Answer: "You can send a request using the form above, or contact us directly by WhatsApp or email.",
     locationTitle: "Via Bellavista 14, Pirri.",
     locationText: "A convenient base for guests arriving by plane, exploring Cagliari or looking for a quiet place to move around southern Sardinia.",
     distanceAirport: "Airport",
