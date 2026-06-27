@@ -486,5 +486,6 @@ bookingForm?.addEventListener("submit", async (event) => {
 });
  
 setLanguage(activeLanguage);
-loadAvailability();
+// Calendario disponibilita rimosso: la verifica date avviene via WhatsApp.
+// loadAvailability() non viene piu chiamata (chiamava /api/bookings, inesistente su GitHub Pages).
  

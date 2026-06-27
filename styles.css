@@ -251,6 +251,17 @@ h3 {
   background: rgba(255, 248, 238, 0.08);
 }
 
+.button.btn-whatsapp {
+  margin-top: 14px;
+  color: #fffaf2;
+  background: #25d366;
+  box-shadow: 0 14px 30px rgba(18, 140, 70, 0.28);
+}
+
+.button.btn-whatsapp:hover {
+  background: #1da851;
+}
+
 .quick-card {
   display: grid;
   gap: 10px;
