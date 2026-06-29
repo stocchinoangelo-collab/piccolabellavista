@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://stocchinoangelo-collab.github.io/piccolabellavista/sitemap.xml
+Sitemap: https://piccolabellavista.it/sitemap.xml
