@@ -1,0 +1,51 @@
+name: Correzione testi statici
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/fix-static-copy.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  fix-copy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Scarica repository
+        uses: actions/checkout@v4
+
+      - name: Correggi testi statici
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path("index.html")
+          text = path.read_text(encoding="utf-8")
+
+          replacements = {
+              '<h2 data-i18n="bookingTitle">Controlla le date e invia una richiesta.</h2>': '<h2 data-i18n="bookingTitle">Chiedi disponibilità e invia una richiesta.</h2>',
+              '<p data-i18n="bookingText">Le richieste vengono salvate come "richiesta" e saranno confermate dall\'host dopo controllo finale.</p>': '<p data-i18n="bookingText">Compila il modulo: si aprirà WhatsApp con la richiesta già pronta. La prenotazione sarà confermata solo dopo il controllo delle date.</p>',
+              '<h3 data-i18n="calendarTitle">Verifica le date disponibili</h3>': '<h3 data-i18n="calendarTitle">Chiedi la disponibilità delle date</h3>',
+              'name="guests" min="1" max="4" value="2"': 'name="guests" min="1" max="2" value="2"',
+              '<h3 data-i18n="rule2Title">Quiet hours</h3>': '<h3 data-i18n="rule2Title">Orari di silenzio</h3>',
+          }
+
+          for old, new in replacements.items():
+              if old not in text:
+                  raise SystemExit(f"Testo atteso non trovato: {old}")
+              text = text.replace(old, new, 1)
+
+          path.write_text(text, encoding="utf-8")
+          PY
+
+      - name: Registra correzioni
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Correggi testi statici e capienza massima"
+          git push
