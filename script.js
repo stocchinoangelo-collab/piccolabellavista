@@ -12,8 +12,14 @@
 })();
 
 (() => {
-  const script = document.createElement("script");
-  script.src = "gallery-injector.js";
-  script.async = false;
-  document.head.appendChild(script);
+  const galleryScript = document.createElement("script");
+  galleryScript.src = "gallery-injector.js";
+  galleryScript.async = false;
+  galleryScript.onload = () => {
+    const fixesScript = document.createElement("script");
+    fixesScript.src = "site-fixes.js";
+    fixesScript.async = false;
+    document.head.appendChild(fixesScript);
+  };
+  document.head.appendChild(galleryScript);
 })();
