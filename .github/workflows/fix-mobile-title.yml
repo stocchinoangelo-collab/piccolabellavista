@@ -1,0 +1,34 @@
+name: Correzione titolo mobile
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/fix-mobile-title.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  fix-title:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Ridimensiona titolo su smartphone
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('styles.css')
+          text = path.read_text(encoding='utf-8')
+          marker = '/* CORREZIONE TITOLO MOBILE 2026-07-11 */'
+          if marker not in text:
+              text += '''\n\n/* CORREZIONE TITOLO MOBILE 2026-07-11 */\n@media (max-width: 520px) {\n  .hero h1 {\n    max-width: 100%;\n    font-size: clamp(27px, 9.6vw, 42px);\n    line-height: 1;\n    letter-spacing: -0.025em;\n    white-space: nowrap;\n  }\n}\n'''
+              path.write_text(text, encoding='utf-8')
+          PY
+      - name: Registra la correzione
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add styles.css
+          git diff --cached --quiet || git commit -m "Correggi titolo Piccolabellavista su smartphone"
+          git push
