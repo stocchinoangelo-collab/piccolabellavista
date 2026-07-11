@@ -1,4 +1,5 @@
 (() => {
+  const BRAND = "Piccolabellavista";
   const copy = {
     it: {
       bookingTitle: "Chiedi disponibilità e invia una richiesta.",
@@ -7,7 +8,8 @@
       rule2Title: "Orari di silenzio",
       contactsText: "Puoi compilare il modulo e inviare la richiesta tramite WhatsApp, scriverci direttamente o mandare una email.",
       invalidDates: "La data di partenza deve essere successiva alla data di arrivo.",
-      tooManyGuests: "Piccola Bellavista può ospitare al massimo 2 persone."
+      tooManyGuests: `${BRAND} può ospitare al massimo 2 persone.`,
+      whatsappReady: "Si apre WhatsApp con la richiesta già compilata: premi invio per confermare."
     },
     en: {
       bookingTitle: "Ask about availability and send a request.",
@@ -16,19 +18,44 @@
       rule2Title: "Quiet hours",
       contactsText: "Complete the form and send the request through WhatsApp, message us directly or send an email.",
       invalidDates: "The departure date must be after the arrival date.",
-      tooManyGuests: "Piccola Bellavista can accommodate a maximum of 2 guests."
+      tooManyGuests: `${BRAND} can accommodate a maximum of 2 guests.`,
+      whatsappReady: "WhatsApp is opening with your request ready to send. Press send to confirm."
     }
   };
 
   const getLanguage = () => document.documentElement.lang === "en" ? "en" : "it";
+  const normalizeBrand = (value) => value
+    .replaceAll("PICCOLA BELLAVISTA", BRAND)
+    .replaceAll("Piccola Bellavista", BRAND)
+    .replaceAll("piccola bellavista", BRAND.toLowerCase());
+
+  function normalizeBrandEverywhere(root = document) {
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    const textNodes = [];
+    while (walker.nextNode()) textNodes.push(walker.currentNode);
+    textNodes.forEach((node) => {
+      const next = normalizeBrand(node.nodeValue || "");
+      if (next !== node.nodeValue) node.nodeValue = next;
+    });
+
+    root.querySelectorAll?.("[aria-label], [alt], [title], [placeholder]").forEach((element) => {
+      ["aria-label", "alt", "title", "placeholder"].forEach((attribute) => {
+        if (!element.hasAttribute(attribute)) return;
+        const current = element.getAttribute(attribute) || "";
+        const next = normalizeBrand(current);
+        if (next !== current) element.setAttribute(attribute, next);
+      });
+    });
+  }
 
   function applyCorrectCopy() {
     const dictionary = copy[getLanguage()];
     Object.entries(dictionary).forEach(([key, value]) => {
-      if (key === "invalidDates" || key === "tooManyGuests") return;
+      if (["invalidDates", "tooManyGuests", "whatsappReady"].includes(key)) return;
       const element = document.querySelector(`[data-i18n="${key}"]`);
       if (element) element.textContent = value;
     });
+    normalizeBrandEverywhere();
   }
 
   function configureBookingForm() {
@@ -59,18 +86,47 @@
     updateDepartureLimit();
 
     form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+
       const dictionary = copy[getLanguage()];
-      const guestCount = Number(guests?.value || 0);
-      const datesInvalid = arrival?.value && departure?.value && departure.value <= arrival.value;
+      const formData = new FormData(form);
+      const payload = Object.fromEntries(formData.entries());
+      const guestCount = Number(payload.guests || 0);
+      const datesInvalid = payload.arrival && payload.departure && payload.departure <= payload.arrival;
+
+      if (message) {
+        message.textContent = "";
+        message.className = "form-message";
+      }
 
       if (guestCount > 2 || datesInvalid) {
-        event.preventDefault();
-        event.stopImmediatePropagation();
         if (message) {
           message.textContent = guestCount > 2 ? dictionary.tooManyGuests : dictionary.invalidDates;
-          message.className = "form-message error";
+          message.classList.add("error");
         }
+        return;
       }
+
+      const lines = [
+        `Richiesta prenotazione - ${BRAND}`,
+        `Nome: ${payload.fullName || ""}`,
+        `Telefono: ${payload.phone || ""}`,
+        `Email: ${payload.email || ""}`,
+        `Arrivo: ${payload.arrival || ""}`,
+        `Partenza: ${payload.departure || ""}`,
+        `Ospiti: ${payload.guests || ""}`,
+        `Note: ${payload.notes || ""}`
+      ];
+      const whatsappUrl = `https://wa.me/393931104422?text=${encodeURIComponent(lines.join("\n"))}`;
+      window.open(whatsappUrl, "_blank", "noopener");
+
+      if (message) {
+        message.textContent = dictionary.whatsappReady;
+        message.classList.add("success");
+      }
+      form.reset();
+      updateDepartureLimit();
     }, true);
 
     form.dataset.capacityConfigured = "true";
@@ -91,4 +147,7 @@
   document.addEventListener("click", (event) => {
     if (event.target.closest(".lang-button")) setTimeout(applyCorrectCopy, 0);
   });
+
+  const observer = new MutationObserver(() => normalizeBrandEverywhere());
+  observer.observe(document.documentElement, { childList: true, subtree: true });
 })();
