@@ -913,3 +913,15 @@ summary:focus-visible {
     text-shadow: 0 2px 18px rgba(20, 12, 6, 0.85), 0 1px 4px rgba(20, 12, 6, 0.9);
   }
 }
+
+
+/* CORREZIONE TITOLO MOBILE 2026-07-11 */
+@media (max-width: 520px) {
+  .hero h1 {
+    max-width: 100%;
+    font-size: clamp(27px, 9.6vw, 42px);
+    line-height: 1;
+    letter-spacing: -0.025em;
+    white-space: nowrap;
+  }
+}
