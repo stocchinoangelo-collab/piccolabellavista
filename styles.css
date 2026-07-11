@@ -919,7 +919,7 @@ summary:focus-visible {
 @media (max-width: 520px) {
   .hero h1 {
     max-width: 100%;
-    font-size: clamp(27px, 9.6vw, 42px);
+    font-size: clamp(30px, 10.4vw, 45px);
     line-height: 1;
     letter-spacing: -0.025em;
     white-space: nowrap;
