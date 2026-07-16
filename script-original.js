@@ -145,6 +145,15 @@ const translations = {
     contactsTitle: "Richiedi disponibilità o fai una domanda.",
     contactsText: "Puoi inviare una richiesta dal modulo disponibilità, scriverci su WhatsApp o mandare una email.",
     contactEmail: "Email",
+    taxKicker: "Tassa di soggiorno",
+    taxTitle: "Imposta di soggiorno — Comune di Cagliari",
+    taxIntro: "Come previsto dal regolamento del Comune di Cagliari, ogni ospite non residente è tenuto al pagamento dell'imposta di soggiorno per i pernottamenti presso la nostra struttura.",
+    taxItem1: "3 € a persona per notte nei mesi di luglio, agosto e settembre.",
+    taxItem2: "2 € a persona per notte nei restanti mesi dell'anno.",
+    taxItem3: "L'imposta si applica fino a un massimo di 5 notti consecutive per ciascun ospite: dalla sesta notte in poi non è dovuta.",
+    taxItem4: "Pagamento in contanti al momento dell'arrivo. Rilasciamo sempre regolare ricevuta.",
+    taxItem5: "Esenzioni: sono esenti i residenti nel Comune di Cagliari (è sufficiente una dichiarazione firmata, che prepariamo noi) e le altre categorie previste dal regolamento comunale.",
+    taxContact: "Per qualsiasi informazione puoi contattarci: saremo felici di chiarire ogni dubbio prima del tuo arrivo.",
     footerText: "Piccola Bellavista - Casa vacanza a Pirri, Cagliari"
   },
   en: {
@@ -292,6 +301,15 @@ const translations = {
     contactsTitle: "Ask for availability or send a question.",
     contactsText: "You can send a request from the availability form, message us on WhatsApp or send an email.",
     contactEmail: "Email",
+    taxKicker: "Tourist tax",
+    taxTitle: "Tourist tax — Municipality of Cagliari",
+    taxIntro: "As required by the regulations of the Municipality of Cagliari, every non-resident guest is required to pay the tourist tax for their stay at our property.",
+    taxItem1: "€3 per person per night in July, August and September.",
+    taxItem2: "€2 per person per night for the rest of the year.",
+    taxItem3: "The tax applies for a maximum of 5 consecutive nights per guest: from the sixth night onwards it is no longer due.",
+    taxItem4: "Payment in cash on arrival. We always issue a proper receipt.",
+    taxItem5: "Exemptions: residents of the Municipality of Cagliari are exempt (a signed declaration is sufficient, which we prepare for you), along with the other categories set out in the municipal regulations.",
+    taxContact: "Feel free to contact us for any clarification: we will be happy to answer any questions before your arrival.",
     footerText: "Piccola Bellavista - Holiday studio in Pirri, Cagliari"
   }
 };
