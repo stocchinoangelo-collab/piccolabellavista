@@ -159,6 +159,7 @@
     font-weight:600;
   }
   .indirizzo{display:block;margin-top:4px;font-size:13px;color:var(--grigio);}
+  .fascia{display:block;margin-top:3px;font-size:13px;color:var(--mare);font-weight:600;}
   .consiglio{
     display:inline-block;
     font-size:11px;
@@ -171,6 +172,7 @@
     border-radius:3px;
     margin-left:8px;
     vertical-align:2px;
+    white-space:nowrap;
   }
 
   /* ---------- NOTA ---------- */
@@ -201,7 +203,7 @@
   }
   .rimando-testo{flex:1;}
   .rimando .qr{
-    width:104px;height:104px;
+    width:132px;height:132px;flex:none;
     border:1px solid var(--linea);
     background:#fff;
     display:flex;align-items:center;justify-content:center;
@@ -354,8 +356,9 @@
         <span class="nome">Su Cumbidu</span>
         <span class="it">Cucina sarda tradizionale.</span>
         <span class="en">Traditional Sardinian cuisine.</span>
+        <span class="fascia">Intorno a 30 &euro; a persona.</span>
       </div>
-      <span class="prezzo">DA VERIFICARE</span>
+      <span class="prezzo">&euro;&euro;</span>
     </div>
 
     <div class="voce">
@@ -364,7 +367,6 @@
         <span class="it">Cucina moderna, ingredienti di qualità.</span>
         <span class="en">Modern cuisine, quality ingredients.</span>
       </div>
-      <span class="prezzo">DA VERIFICARE</span>
     </div>
 
     <div class="voce">
@@ -373,7 +375,6 @@
         <span class="it">Classico e curato. Adatto a coppie e famiglie.</span>
         <span class="en">Classic and refined. Good for couples and families.</span>
       </div>
-      <span class="prezzo">DA VERIFICARE</span>
     </div>
 
     <h3>Per una cena speciale <span class="en">/ For a special dinner</span></h3>
@@ -385,18 +386,9 @@
         <span class="en">Sardinian and seafood cuisine in the old town.</span>
         <span class="avviso">Prezzi più alti della media. / Higher than average prices.</span>
       </div>
-      <span class="prezzo">DA VERIFICARE</span>
+      <span class="prezzo">&euro;&euro;&euro;</span>
     </div>
 
-    <div class="voce">
-      <div class="voce-testo">
-        <span class="nome">Cala Regina</span><span class="consiglio">Consiglio di Angelo</span>
-        <span class="it">Cucina di mare con vista sul golfo. Un'esperienza da ricordare.</span>
-        <span class="en">Seafood with a view over the gulf. An experience to remember.</span>
-        <span class="avviso">Prezzi più alti della media. / Higher than average prices.</span>
-      </div>
-      <span class="prezzo">DA VERIFICARE</span>
-    </div>
 
     <h3>Scelti da noi e dalla nostra amica chef <span class="en">/ Chosen by us and our chef friend</span></h3>
 
@@ -415,18 +407,20 @@
         <span class="it">Cucina sarda di terra, radici della Barbagia rilette con misura. Bib Gourmand Michelin.</span>
         <span class="en">Sardinian inland cooking, Barbagia roots handled with restraint. Michelin Bib Gourmand.</span>
         <span class="indirizzo">Corso Vittorio Emanuele II 380 &middot; tel. 347 963 0924</span>
+        <span class="fascia">Intorno a 36&ndash;45 &euro; a persona.</span>
       </div>
-      <span class="prezzo">&euro;&euro;<br>36&ndash;45 &euro;</span>
+      <span class="prezzo">&euro;&euro;</span>
     </div>
 
     <div class="voce">
       <div class="voce-testo">
-        <span class="nome">Sa Piola</span>
+        <span class="nome">Sa Piola</span><span class="consiglio">Consiglio di Angelo e Viviana</span>
         <span class="it">Trattoria di quartiere a Stampace dal 2008, tradizione sarda senza scorciatoie. Premiata da Slow Food.</span>
         <span class="en">A neighbourhood trattoria in Stampace since 2008, Sardinian tradition with no shortcuts. Slow Food award.</span>
         <span class="indirizzo">Vico Santa Margherita 3, presso le scalette di Santa Chiara &middot; tel. 070 666714</span>
+        <span class="fascia">Men&ugrave; degustazione da circa 30&ndash;35 &euro;; alla carta si sale.</span>
       </div>
-      <span class="prezzo">&euro;&euro;<br>degustazione da 30&ndash;35 &euro;</span>
+      <span class="prezzo">&euro;&euro;</span>
     </div>
 
     <div class="voce">
@@ -435,8 +429,9 @@
         <span class="it">Un'ex falegnameria diventata sala da pranzo. Cucina sarda contemporanea dello chef Pierluigi Fais.</span>
         <span class="en">A former carpentry workshop turned dining room. Contemporary Sardinian cuisine by chef Pierluigi Fais.</span>
         <span class="indirizzo">Via Sassari 25 &middot; tel. 070 351 0722</span>
+        <span class="fascia">Degustazione da 7 portate intorno a 70 &euro;.</span>
       </div>
-      <span class="prezzo">&euro;&euro;&euro;<br>degustazione 7 portate ~70 &euro;</span>
+      <span class="prezzo">&euro;&euro;&euro;</span>
     </div>
 
     <div class="voce">
@@ -445,8 +440,9 @@
         <span class="it">Cucina contemporanea e di ricerca dello chef Luca Marini: tecnica, fermentazioni, sapori netti. Solo cena; chiuso martedì e domenica.</span>
         <span class="en">Contemporary, research-driven cooking by chef Luca Marini: technique, ferments, clean flavours. Dinner only; closed Tuesday and Sunday.</span>
         <span class="indirizzo">Via XX Settembre 51 &middot; tel. 379 223 87 28</span>
+        <span class="fascia">Prezzi non pubblicati: chiedere al ristorante.</span>
       </div>
-      <span class="prezzo">&euro;&euro;&euro;<br>chiedere al ristorante</span>
+      <span class="prezzo">&euro;&euro;&euro;</span>
     </div>
 
     <p class="avviso" style="margin-top:14px;">
@@ -524,7 +520,7 @@
         <p class="en" style="margin-top:6px;">Concerts, exhibitions and festivals change every week. That's why we keep them online instead of printing them: scan the code for the events happening right now, with times and prices.</p>
         <p style="margin-top:8px;"><a href="https://piccolabellavista.it/consigli.html">piccolabellavista.it/consigli.html</a></p>
       </div>
-      <div class="qr">QR CODE<br>da inserire<br><em>to be added</em></div>
+      <div class="qr"><img src="qr-eventi.png" alt="Codice QR verso la pagina eventi di Piccolabellavista" style="width:118px;height:118px;display:block;"></div>
     </div>
   </section>
 

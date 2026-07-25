@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="canonical" href="https://piccolabellavista.it/consigli.html">
-<meta name="description" content="Eventi, concerti, sagre e mostre a Cagliari in questi giorni. Aggiornato dai gestori di Piccolabellavista.">
+<meta name="description" content="Eventi, concerti, sagre e mostre a Cagliari in questi giorni. Aggiornato a mano dai gestori di Piccolabellavista.">
 <meta property="og:type" content="article">
 <meta property="og:locale" content="it_IT">
 <meta property="og:site_name" content="Piccolabellavista">
@@ -40,7 +40,6 @@
   header.testata{
     border-bottom:2px solid var(--linea);
     padding-bottom:18px;
-    margin-bottom:8px;
   }
 
   .occhiello{
@@ -78,15 +77,16 @@
   }
   .aggiornato strong{color:var(--inchiostro);}
 
-  h2.mese{
+  h2.periodo{
     font-family:'Cormorant Garamond',Georgia,serif;
-    font-size:24px;
+    font-size:25px;
     font-weight:600;
     color:var(--mare);
-    margin:34px 0 4px;
+    margin:36px 0 4px;
     padding-bottom:6px;
     border-bottom:1px solid var(--linea);
   }
+  h2.periodo .en{font-size:16px;font-style:italic;color:var(--grigio);font-family:'Source Sans 3',sans-serif;}
 
   /* ---------- SCHEDA EVENTO ---------- */
   .evento{
@@ -94,7 +94,7 @@
     border:1px solid var(--linea);
     border-left:4px solid var(--mare);
     border-radius:6px;
-    padding:16px 18px;
+    padding:15px 17px;
     margin-top:14px;
   }
 
@@ -108,29 +108,32 @@
 
   .evento h3{
     font-family:'Cormorant Garamond',Georgia,serif;
-    font-size:22px;
+    font-size:21px;
     font-weight:600;
     margin:3px 0 6px;
   }
 
-  .evento p{margin-bottom:6px;}
+  .evento p{margin-bottom:5px;}
   .evento p:last-child{margin-bottom:0;}
   .evento .en{color:var(--grigio);font-style:italic;font-size:15px;}
 
-  .evento .dove{
+  .evento .info{
+    display:block;
+    margin-top:7px;
     font-size:14px;
     color:var(--grigio);
   }
-  .evento .dove b{color:var(--inchiostro);font-weight:600;}
+  .evento .info b{color:var(--inchiostro);font-weight:600;}
 
-  .evento a{
-    color:var(--mare);
+  .evento .scadenza{
+    display:block;
+    margin-top:7px;
+    font-size:14px;
     font-weight:600;
-    text-decoration:none;
-    border-bottom:1px solid var(--mare);
+    color:var(--corallo);
   }
 
-  /* evidenzia un evento speciale: aggiungi class="evento top" */
+  /* evento in evidenza: class="evento top" */
   .evento.top{border-left-color:var(--ocra);background:#FFFDF7;}
 
   .vuoto{
@@ -142,8 +145,18 @@
     color:var(--grigio);
   }
 
+  .nota{
+    background:#fff;
+    border:1px solid var(--linea);
+    border-radius:6px;
+    padding:14px 16px;
+    margin-top:18px;
+    font-size:14px;
+    color:var(--grigio);
+  }
+  .nota b{color:var(--inchiostro);}
+
   /* ---------- FISSI ---------- */
-  .fissi{margin-top:40px;}
   .fissi ul{list-style:none;margin-top:10px;}
   .fissi li{
     padding:10px 0;
@@ -163,10 +176,12 @@
   footer.chiusura a{color:var(--mare);font-weight:600;text-decoration:none;}
   .firma{
     font-family:'Cormorant Garamond',Georgia,serif;
-    font-size:18px;
+    font-style:italic;
+    font-size:19px;
     color:var(--inchiostro);
     margin-top:10px;
   }
+  .cuore{color:var(--corallo);font-style:normal;}
 
   @media (max-width:480px){
     h1{font-size:28px;}
@@ -185,48 +200,142 @@
       Concerti, mostre, sagre e feste di questi giorni, scelti da noi.<br>
       <span class="en">Concerts, exhibitions and festivals happening right now, picked by us.</span>
     </p>
-    <!-- AGGIORNA QUESTA DATA OGNI VOLTA CHE MODIFICHI LA PAGINA -->
-    <div class="aggiornato">Aggiornato il <strong>24 luglio 2026</strong></div>
+    <!-- ▼ AGGIORNA QUESTA DATA OGNI VOLTA CHE MODIFICHI LA PAGINA ▼ -->
+    <div class="aggiornato">Aggiornato il <strong>25 luglio 2026</strong></div>
   </header>
 
 
   <!-- =======================================================
-       DA QUI IN GIÙ: GLI EVENTI.
-       Per aggiungerne uno, copia un blocco <div class="evento">
-       ...</div> intero e cambia le scritte.
-       Per toglierlo, cancella il blocco dalla riga <div class="evento">
-       fino al </div> che lo chiude.
+       COME SI AGGIORNA QUESTA PAGINA
+       - Per aggiungere un evento: copia un blocco intero, dal
+         <div class="evento"> fino al </div> che lo chiude, e
+         cambia le scritte.
+       - Per togliere un evento passato: cancella lo stesso blocco.
+       - Per metterlo in evidenza: scrivi class="evento top"
+         invece di class="evento" (diventa dorato).
+       - Ricordati sempre di cambiare la data "Aggiornato il" qui sopra.
        ======================================================= -->
 
-  <h2 class="mese">Luglio</h2>
+
+  <h2 class="periodo">Questo fine settimana <span class="en">/ This weekend</span></h2>
 
   <div class="evento top">
-    <div class="quando">Ven 25 luglio · 21:30</div>
-    <h3>Titolo dell'evento</h3>
-    <p>Una o due righe di descrizione, con il tuo consiglio da chi ci vive.</p>
-    <p class="en">One or two lines in English for our international guests.</p>
-    <p class="dove"><b>Dove:</b> nome del luogo · <b>Ingresso:</b> gratuito</p>
+    <div class="quando">Sabato 25 luglio · 18:00–24:00</div>
+    <h3>Notti Colorate</h3>
+    <p>Musica, dj set e spettacoli sul Bastione Saint Remy, la terrazza sopra la città. Ci si arriva anche solo per la vista.</p>
+    <p class="en">Music, DJ sets and street performances on the Saint Remy Bastion, the terrace above the old town. Worth going just for the view.</p>
+    <span class="info"><b>Dove:</b> Bastione Saint Remy · <b>Ingresso:</b> gratuito · <b>Da noi:</b> circa 7–9 km</span>
   </div>
 
   <div class="evento">
-    <div class="quando">Sab 26 luglio · tutto il giorno</div>
-    <h3>Secondo evento</h3>
-    <p>Descrizione breve.</p>
-    <p class="en">Short description in English.</p>
-    <p class="dove"><b>Dove:</b> luogo · <b>Ingresso:</b> 10 €</p>
+    <div class="quando">Domenica 26 luglio · ore 10:30</div>
+    <h3>Colazione al Castello di San Michele</h3>
+    <p>Colazione con visita guidata, ricostruzioni virtuali e ingresso alle mostre. Il castello è la collina che si vede da casa nostra.</p>
+    <p class="en">Breakfast with a guided tour, virtual reconstructions and museum access. The castle sits on the hill you can see from the flat.</p>
+    <span class="info"><b>Prezzo:</b> 10 € · <b>Da noi:</b> circa 3–5 km, il più vicino di tutti</span>
+    <span class="scadenza">Si prenota entro sabato 25 luglio alle 18:00. / Booking closes Saturday 25 July at 6pm.</span>
   </div>
 
   <div class="evento">
-    <div class="quando">Fino al 31 luglio</div>
-    <h3>Una mostra o qualcosa che dura più giorni</h3>
-    <p>Descrizione breve.</p>
-    <p class="en">Short description in English.</p>
-    <p class="dove"><b>Dove:</b> luogo · <b>Orari:</b> 10–20</p>
+    <div class="quando">25 e 26 luglio</div>
+    <h3>Giardini Aperti — Villaspeciosa</h3>
+    <p>Cortili e giardini privati aperti al pubblico, con mostre e laboratori. Una gita fuori città, in un paese dell'entroterra.</p>
+    <p class="en">Private courtyards and gardens open to visitors, with exhibitions and workshops. A trip out of town, into an inland village.</p>
+    <span class="info"><b>Ingresso:</b> mostre e laboratori gratuiti; per gli spettacoli si lascia un'offerta libera</span>
   </div>
 
 
-  <!-- Se in un periodo non c'è nulla, cancella gli eventi qui sopra
-       e togli le due righe <!- - - -> attorno al blocco seguente.
+  <h2 class="periodo">Fine luglio <span class="en">/ End of July</span></h2>
+
+  <div class="evento">
+    <div class="quando">Giovedì 30 luglio · ore 19:00</div>
+    <h3>Alfonso Alberti — concerto per pianoforte</h3>
+    <p>Musiche di Chopin e Schumann al Teatro Carmen Melis. Cinque euro per una serata di pianoforte: raro.</p>
+    <p class="en">Chopin and Schumann at the Carmen Melis Theatre. Five euros for a piano recital — a rare price.</p>
+    <span class="info"><b>Prezzo:</b> 5 € · <b>Da noi:</b> circa 4–6 km</span>
+  </div>
+
+  <div class="evento">
+    <div class="quando">Giovedì 30 luglio · ore 20:00</div>
+    <h3>LibrAmare — «La Fiera e la furia»</h3>
+    <p>Incontro con l'autore sulla spiaggia del Poetto, all'aperto, con il mare davanti.</p>
+    <p class="en">An open-air author talk on the Poetto beachfront, facing the sea.</p>
+    <span class="info"><b>Dove:</b> Golfo 1, Spazio Agorà, Poetto · <b>Da noi:</b> circa 9–11 km</span>
+  </div>
+
+  <div class="evento">
+    <div class="quando">30 e 31 luglio</div>
+    <h3>Giardini Aperti — Vallermosa</h3>
+    <p>Seconda tappa: giardini e cortili aperti in un altro paese dell'entroterra.</p>
+    <p class="en">Second stop: gardens and courtyards open to visitors in another inland village.</p>
+    <span class="info"><b>Ingresso:</b> mostre e laboratori gratuiti; spettacoli a offerta libera</span>
+  </div>
+
+  <div class="evento">
+    <div class="quando">Venerdì 31 luglio e sabato 1 agosto</div>
+    <h3>Notti Colorate — secondo fine settimana</h3>
+    <p>Si replica sul Bastione Saint Remy. Se lo hai perso a luglio, questa è la seconda occasione.</p>
+    <p class="en">A second round on the Saint Remy Bastion. If you missed it in July, this is your chance.</p>
+    <span class="info"><b>Ingresso:</b> libero · <b>Da noi:</b> circa 7–9 km</span>
+  </div>
+
+  <div class="evento">
+    <div class="quando">Venerdì 31 luglio · 19:30–22:30</div>
+    <h3>Summer is Back — viale Colombo</h3>
+    <p>Artigianato, musica e attività per bambini sul viale, a due passi dal Poetto. Si ripete anche il 7, 21 e 28 agosto e in settembre.</p>
+    <p class="en">Crafts, music and activities for children along the avenue, a short walk from Poetto beach. Also on 7, 21 and 28 August, and again in September.</p>
+    <span class="info"><b>Ingresso:</b> gratuito, tutte le date</span>
+  </div>
+
+
+  <h2 class="periodo">Agosto <span class="en">/ August</span></h2>
+
+  <div class="evento">
+    <div class="quando">Dal 1 al 3 agosto</div>
+    <h3>Giardini Aperti — Torre delle Stelle</h3>
+    <p>Terza e ultima tappa, questa volta sulla costa a sud-est.</p>
+    <p class="en">Third and final stop, this time on the south-eastern coast.</p>
+    <span class="info"><b>Ingresso:</b> mostre e laboratori gratuiti; spettacoli a offerta libera</span>
+  </div>
+
+  <div class="evento">
+    <div class="quando">Giovedì 6 agosto · ore 20:00</div>
+    <h3>LibrAmare — «Terre, anime e libertà»</h3>
+    <p>Secondo incontro della rassegna, sempre sul Poetto all'aperto.</p>
+    <p class="en">The second talk in the series, again open-air on the Poetto seafront.</p>
+    <span class="info"><b>Dove:</b> Golfo 1, Spazio Agorà, Poetto · <b>Da noi:</b> circa 9–11 km</span>
+  </div>
+
+  <div class="evento">
+    <div class="quando">8 e 9 agosto · 18:00–24:00</div>
+    <h3>Summer is Back — Tropical Vibes</h3>
+    <p>Musica latina e cubana, dj set, cibo di strada e artigianato nel parco di viale Golfo di Quartu.</p>
+    <p class="en">Latin and Cuban music, DJ sets, street food and crafts in the park on viale Golfo di Quartu.</p>
+    <span class="info"><b>Ingresso:</b> gratuito</span>
+  </div>
+
+
+  <h2 class="periodo">Mostre, tutta l'estate <span class="en">/ Exhibitions, all summer</span></h2>
+
+  <div class="evento">
+    <div class="quando">Fino al 31 agosto · ogni giorno 10:00–20:00</div>
+    <h3>Tutankhamon</h3>
+    <p>La grande mostra dell'estate, sul Bastione Saint Remy. Con lo stesso biglietto si sale sulla terrazza.</p>
+    <p class="en">The big summer exhibition, on the Saint Remy Bastion. The same ticket gets you up to the terrace.</p>
+    <span class="info"><b>Prezzo:</b> 11 € intero, 9 € ridotto; gratis fino a 6 anni e per persone con disabilità · esperienza virtuale facoltativa 5 €</span>
+  </div>
+
+  <div class="evento">
+    <div class="quando">Fino al 30 agosto · da martedì a domenica, 10:00–20:00</div>
+    <h3>Le origini della Repubblica &amp; Astrolicamus</h3>
+    <p>Due mostre insieme al Castello di San Michele, la collina che si vede dal nostro balcone. Chiuso il lunedì.</p>
+    <p class="en">Two exhibitions at the Castle of San Michele, the hill you can see from our balcony. Closed on Mondays.</p>
+    <span class="info"><b>Da noi:</b> circa 3–5 km</span>
+  </div>
+
+
+  <!-- Se in un periodo non c'è nulla, togli i simboli attorno al blocco qui sotto
+       per far comparire il messaggio, e cancella gli eventi passati.
   <div class="vuoto">
     In questi giorni non ci sono eventi particolari in città: è il momento
     buono per le spiagge e per la guida cartacea che trovi in casa.
@@ -237,16 +346,25 @@
 
 
   <!-- =======================================================
-       APPUNTAMENTI FISSI — cambiano di rado, lasciali stare
+       APPUNTAMENTI FISSI — cambiano di rado
        ======================================================= -->
   <section class="fissi">
-    <h2 class="mese">Ogni settimana</h2>
+    <h2 class="periodo">Ogni settimana <span class="en">/ Every week</span></h2>
     <ul>
-      <li><b>Mercato di San Benedetto</b> <span>— lun–sab mattina, il mercato coperto più grande d'Italia</span></li>
-      <li><b>Mercatino di Pirri</b> <span>— controlla il giorno e aggiorna qui</span></li>
-      <li><b>Passeggiata al Poetto</b> <span>— al tramonto, sempre</span></li>
+      <li><b>Mercato di San Benedetto</b> <span>— da lunedì a sabato, la mattina. Il mercato coperto più grande d'Italia: il pesce vale la visita anche solo per guardare.</span></li>
+      <li><b>Passeggiata al Poetto</b> <span>— al tramonto, sempre. Otto chilometri di spiaggia dentro la città.</span></li>
     </ul>
   </section>
+
+
+  <div class="nota">
+    <b>Un avvertimento onesto:</b> date e prezzi possono cambiare all'ultimo, e qualche
+    evento viene annullato per il meteo. Prima di uscire vale la pena una ricerca veloce
+    col nome dell'evento, o chiedete a noi.
+    <br><span style="font-style:italic;">Dates and prices can change at short notice and events
+    are sometimes cancelled due to weather. A quick search before heading out is worth it —
+    or just ask us.</span>
+  </div>
 
 
   <footer class="chiusura">
@@ -258,7 +376,8 @@
       <a href="guida.html">← Torna alla guida di Cagliari</a> ·
       <a href="https://piccolabellavista.it/">Il nostro sito</a>
     </p>
-    <p class="firma">Piccolabellavista</p>
+    <p class="firma">Angelo <span class="cuore">&#10084;</span> Viviana</p>
+      <p style="margin-top:2px;">Piccolabellavista</p>
   </footer>
 
 </div>
