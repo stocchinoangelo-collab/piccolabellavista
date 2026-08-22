@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="it" data-lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Piccola Bellavista — Consigli per te</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Karla:wght@400;500;700&display=swap');
+
+  :root{
+    --sea:#1B4B5A;
+    --sea-deep:#122F38;
+    --sand:#EFE6D3;
+    --paper:#FBF8F2;
+    --terracotta:#C16B4E;
+    --gold:#B8935A;
+    --ink:#22282B;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+
+  body{
+    font-family:'Karla', sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3{ font-family:'Fraunces', serif; font-weight:600; letter-spacing:-0.01em; }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:linear-gradient(180deg, var(--sea) 0%, var(--sea-deep) 100%);
+    color:var(--sand);
+    padding:64px 24px 88px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";
+    position:absolute; left:0; right:0; bottom:0; height:40px;
+    background:var(--paper);
+    border-radius:60% 40% 0 0 / 100% 100% 0 0;
+  }
+  .hero-inner{ max-width:640px; margin:0 auto; text-align:center; position:relative; z-index:1; }
+  .eyebrow{ font-size:0.78rem; letter-spacing:0.14em; text-transform:uppercase; opacity:0.75; margin-bottom:14px; }
+  .hero h1{ font-size:clamp(1.8rem, 5vw, 2.6rem); margin-bottom:14px; }
+  .hero p{ font-size:1.02rem; opacity:0.88; max-width:460px; margin:0 auto; }
+
+  .lang-toggle{
+    position:absolute; top:20px; right:20px; z-index:2;
+    display:flex; gap:6px; background:rgba(255,255,255,0.12);
+    border-radius:20px; padding:4px;
+  }
+  .lang-toggle button{
+    border:none; background:transparent; color:var(--sand);
+    font-family:'Karla',sans-serif; font-size:0.78rem; font-weight:700;
+    padding:6px 14px; border-radius:16px; cursor:pointer; letter-spacing:0.03em;
+    transition:background 0.2s;
+  }
+  .lang-toggle button.active{ background:var(--sand); color:var(--sea-deep); }
+
+  /* ---------- SECTIONS ---------- */
+  main{ max-width:640px; margin:-40px auto 0; padding:0 20px 60px; position:relative; z-index:2;}
+
+  .section-title{
+    font-size:1.5rem; margin:52px 0 8px;
+    display:flex; align-items:baseline; gap:10px;
+  }
+  .section-title span.mark{ color:var(--terracotta); font-size:1.1rem; }
+  .section-sub{ color:#5b6266; font-size:0.94rem; margin-bottom:24px; max-width:480px; }
+
+  /* postcard-style card */
+  .card{
+    background:#fff;
+    border:1px solid #E4DCC9;
+    border-radius:2px;
+    padding:22px 24px;
+    margin-bottom:16px;
+    position:relative;
+    box-shadow:0 1px 2px rgba(20,30,35,0.04);
+  }
+  .card::before{
+    content:"";
+    position:absolute; top:16px; right:16px;
+    width:34px; height:34px;
+    border:1.5px dashed var(--gold);
+    border-radius:50%;
+    opacity:0.55;
+  }
+  .card .stamp-icon{
+    position:absolute; top:26px; right:26px;
+    font-size:1rem; opacity:0.7;
+  }
+  .card h3{ font-size:1.12rem; margin-bottom:6px; max-width:80%; }
+  .card .tag{
+    display:inline-block; font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase;
+    color:var(--terracotta); font-weight:700; margin-bottom:8px;
+  }
+  .card p{ font-size:0.92rem; color:#3f4548; }
+  .card .practical{ font-size:0.82rem; color:#7a746a; margin-top:10px; border-top:1px dashed #e4dcc9; padding-top:10px; }
+  .card .why{
+    font-size:0.86rem; color:var(--sea-deep); margin-top:10px;
+    background:var(--sand); border-radius:2px; padding:9px 12px;
+  }
+  .card .why b{ color:var(--terracotta); font-weight:700; }
+  .maplink{
+    display:inline-flex; align-items:center; gap:5px;
+    margin-top:10px; font-size:0.82rem; font-weight:700;
+    color:var(--sea); text-decoration:none;
+  }
+  .maplink:hover{ text-decoration:underline; }
+
+  .signature{
+    margin-top:56px; padding-top:28px; border-top:1px solid #e4dcc9;
+    text-align:center; color:#5b6266; font-size:0.9rem;
+  }
+  .signature .from{ font-family:'Fraunces', serif; font-size:1.15rem; color:var(--sea-deep); margin-top:6px; }
+
+  [data-i18n-lang="en"]{ display:none; }
+  html[data-lang="en"] [data-i18n-lang="it"]{ display:none; }
+  html[data-lang="en"] [data-i18n-lang="en"]{ display:block; }
+  html[data-lang="en"] .card [data-i18n-lang="en"]{ display:inline; }
+  html[data-lang="en"] .card p[data-i18n-lang="en"]{ display:block; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="lang-toggle">
+    <button id="btn-it" class="active" onclick="setLang('it')">IT</button>
+    <button id="btn-en" onclick="setLang('en')">EN</button>
+  </div>
+  <div class="hero-inner">
+    <div class="eyebrow" data-i18n-lang="it">Piccola Bellavista — Pirri, Cagliari</div>
+    <div class="eyebrow" data-i18n-lang="en">Piccola Bellavista — Pirri, Cagliari</div>
+    <h1 data-i18n-lang="it">Benvenuti, ci fa piacere avervi qui</h1>
+    <h1 data-i18n-lang="en">Welcome — we're glad you're here</h1>
+    <p data-i18n-lang="it">Questa pagina è solo per voi: i posti che consigliamo davvero, provati di persona da noi e da chi la Sardegna la conosce bene.</p>
+    <p data-i18n-lang="en">This page is just for you: the places we genuinely recommend, tried in person by us and by people who know Sardinia well.</p>
+  </div>
+</div>
+
+<main>
+
+  <!-- RISTORANTI -->
+  <div class="section-title">
+    <span class="mark">—</span>
+    <span data-i18n-lang="it">Dove mangiare</span>
+    <span data-i18n-lang="en">Where to eat</span>
+  </div>
+  <div class="section-sub" data-i18n-lang="it">Scelti da noi e dalla nostra amica chef, esperta di cucina sarda.</div>
+  <div class="section-sub" data-i18n-lang="en">Chosen by us and our friend, a chef specialized in Sardinian cuisine.</div>
+
+  <div class="card">
+    <span class="stamp-icon">🍽️</span>
+    <div class="tag" data-i18n-lang="it">Consiglio di Angelo e Viviana</div>
+    <div class="tag" data-i18n-lang="en">Recommended by Angelo and Viviana</div>
+    <h3>Sa Piola</h3>
+    <p data-i18n-lang="it">Cucina sarda autentica, ambiente informale, la scelta giusta se volete mangiare bene senza cerimonie.</p>
+    <p data-i18n-lang="en">Authentic Sardinian cooking, informal setting — the right choice if you want to eat well without ceremony.</p>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Sa%20Piola%20Cagliari" target="_blank" rel="noopener">
+      <span data-i18n-lang="it">📍 Apri in Google Maps</span>
+      <span data-i18n-lang="en">📍 Open in Google Maps</span>
+    </a>
+  </div>
+
+  <div class="card">
+    <span class="stamp-icon">🍽️</span>
+    <h3>ChiaroScuro · Josto · Nakoa</h3>
+    <p data-i18n-lang="it">Tre indirizzi diversi per tre serate diverse, tutti provati e approvati da noi.</p>
+    <p data-i18n-lang="en">Three different addresses for three different evenings, all tried and approved by us.</p>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=ChiaroScuro%20Cagliari" target="_blank" rel="noopener">
+      <span data-i18n-lang="it">📍 Apri in Google Maps</span>
+      <span data-i18n-lang="en">📍 Open in Google Maps</span>
+    </a>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Josto%20Cagliari" target="_blank" rel="noopener">
+      <span data-i18n-lang="it">📍 Apri in Google Maps</span>
+      <span data-i18n-lang="en">📍 Open in Google Maps</span>
+    </a>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Nakoa%20Cagliari" target="_blank" rel="noopener">
+      <span data-i18n-lang="it">📍 Apri in Google Maps</span>
+      <span data-i18n-lang="en">📍 Open in Google Maps</span>
+    </a>
+  </div>
+
+  <div class="card">
+    <span class="stamp-icon">🐟</span>
+    <h3>Su Cumbidu</h3>
+    <p data-i18n-lang="it">Circa 30€ a persona. Buon rapporto qualità-prezzo per un pasto più completo.</p>
+    <p data-i18n-lang="en">About €30 per person. Good value for a fuller meal.</p>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Su%20Cumbidu%20Cagliari" target="_blank" rel="noopener">
+      <span data-i18n-lang="it">📍 Apri in Google Maps</span>
+      <span data-i18n-lang="en">📍 Open in Google Maps</span>
+    </a>
+  </div>
+
+  <!-- STORIA -->
+  <div class="section-title">
+    <span class="mark">—</span>
+    <span data-i18n-lang="it">Storia poco conosciuta</span>
+    <span data-i18n-lang="en">Lesser-known history</span>
+  </div>
+  <div class="section-sub" data-i18n-lang="it">Non le solite tappe: i posti che consigliamo a chi vuole vedere qualcosa di vero.</div>
+  <div class="section-sub" data-i18n-lang="en">Not the usual stops: places we recommend to anyone who wants to see something real.</div>
+
+  <div class="card">
+    <span class="stamp-icon">🕯️</span>
+    <h3 data-i18n-lang="it">Cripta di Santa Restituta</h3>
+    <h3 data-i18n-lang="en">Crypt of Santa Restituta</h3>
+    <p data-i18n-lang="it">Un ipogeo nel quartiere di Stampace: cava punica, tempio pagano, chiesa bizantina, rifugio antiaereo — 2000 anni di storia in un unico luogo.</p>
+    <p data-i18n-lang="en">An underground site in Stampace: a Punic quarry, a pagan temple, a Byzantine church, a WWII air-raid shelter — 2,000 years of history in one place.</p>
+    <div class="why" data-i18n-lang="it"><b>Perché vederla:</b> è raro trovare in un unico spazio, piccolo e accessibile a piedi dal centro, la stratificazione completa della storia di Cagliari — dai punici alla Seconda Guerra Mondiale.</div>
+    <div class="why" data-i18n-lang="en"><b>Why see it:</b> it's rare to find, in one small space you can reach on foot from the centre, the full layering of Cagliari's history — from the Punics to WWII.</div>
+    <div class="practical" data-i18n-lang="it">Tutti i giorni 10:00–13:00 / 15:00–19:00 (estivo) · 3€</div>
+    <div class="practical" data-i18n-lang="en">Daily 10:00 AM–1:00 PM / 3:00–7:00 PM (summer) · €3</div>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Cripta%20di%20Santa%20Restituta%20Cagliari" target="_blank" rel="noopener">
+      <span data-i18n-lang="it">📍 Apri in Google Maps</span>
+      <span data-i18n-lang="en">📍 Open in Google Maps</span>
+    </a>
+  </div>
+
+  <div class="card">
+    <span class="stamp-icon">🕯️</span>
+    <h3>Grotta della Vipera</h3>
+    <p data-i18n-lang="it">Il mausoleo romano di una storia d'amore: una moglie che, secondo la leggenda, si sacrificò agli dei per salvare il marito malato.</p>
+    <p data-i18n-lang="en">A Roman mausoleum with a love story: a wife who, legend says, sacrificed herself to the gods to save her sick husband.</p>
+    <div class="why" data-i18n-lang="it"><b>Perché vederla:</b> è una delle poche testimonianze romane in Sardegna con un racconto umano, non solo archeologico — e si salvò per un soffio dalla distruzione nell'Ottocento.</div>
+    <div class="why" data-i18n-lang="en"><b>Why see it:</b> one of the few Roman remains in Sardinia with a human story attached, not just an archaeological one — and it narrowly escaped destruction in the 1800s.</div>
+    <div class="practical" data-i18n-lang="it">⚠️ D'estate il pomeriggio solo su prenotazione: tel. 070-6777900 entro le 12:00</div>
+    <div class="practical" data-i18n-lang="en">⚠️ In summer, afternoons require booking: call +39 070-6777900 by 12:00 PM</div>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Grotta%20della%20Vipera%20Cagliari" target="_blank" rel="noopener">
+      <span data-i18n-lang="it">📍 Apri in Google Maps</span>
+      <span data-i18n-lang="en">📍 Open in Google Maps</span>
+    </a>
+  </div>
+
+  <div class="card">
+    <span class="stamp-icon">🏺</span>
+    <h3 data-i18n-lang="it">Necropoli di Tuvixeddu</h3>
+    <h3 data-i18n-lang="en">Tuvixeddu Necropolis</h3>
+    <p data-i18n-lang="it">La più grande necropoli punica del Mediterraneo, scavata nella roccia viva, proprio accanto alla Grotta della Vipera — potete visitarle insieme in un'unica passeggiata. Ingresso gratuito.</p>
+    <p data-i18n-lang="en">The largest Punic necropolis in the Mediterranean, carved into the bare rock, right next to Grotta della Vipera — you can visit both in a single walk. Free admission.</p>
+    <div class="why" data-i18n-lang="it"><b>Perché vederla:</b> non è un museo, è una vera collina scavata nella roccia 2600 anni fa — si cammina dentro la necropoli, non solo intorno.</div>
+    <div class="why" data-i18n-lang="en"><b>Why see it:</b> it isn't a museum, it's an actual hillside carved into rock 2,600 years ago — you walk inside the necropolis, not just around it.</div>
+    <div class="practical" data-i18n-lang="it">Aperta ogni giorno, orari ampi che variano col mese (es. giugno-luglio 5:30–24:00) · via Falzarego</div>
+    <div class="practical" data-i18n-lang="en">Open daily, wide hours that vary by month (e.g. June-July 5:30 AM–midnight) · via Falzarego</div>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Necropoli%20di%20Tuvixeddu%20Cagliari" target="_blank" rel="noopener">
+      <span data-i18n-lang="it">📍 Apri in Google Maps</span>
+      <span data-i18n-lang="en">📍 Open in Google Maps</span>
+    </a>
+  </div>
+
+  <div class="card">
+    <span class="stamp-icon">⛰️</span>
+    <h3>Genna Maria, Villanovaforru</h3>
+    <p data-i18n-lang="it">Un nuraghe su una collina panoramica con vista su 53 paesi, e un museo con un tesoro di oro e argento punico-romano. Circa 50 km da Cagliari, un'ora d'auto.</p>
+    <p data-i18n-lang="en">A nuraghe on a hilltop with views over 53 villages, and a museum holding a treasure of Punic-Roman gold and silver. About 50 km from Cagliari, one hour by car.</p>
+    <div class="why" data-i18n-lang="it"><b>Perché vederlo:</b> è tra i nuraghi meglio conservati dell'isola e la maggior parte dei turisti non lo raggiunge mai — panorama e reperti senza folla.</div>
+    <div class="why" data-i18n-lang="en"><b>Why see it:</b> one of the best-preserved nuraghi on the island, and most tourists never make it here — the view and the finds, without the crowds.</div>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Nuraghe%20Genna%20Maria%20Villanovaforru" target="_blank" rel="noopener">
+      <span data-i18n-lang="it">📍 Apri in Google Maps</span>
+      <span data-i18n-lang="en">📍 Open in Google Maps</span>
+    </a>
+  </div>
+
+  <div class="card">
+    <span class="stamp-icon">🗿</span>
+    <h3 data-i18n-lang="it">I Giganti di Mont'e Prama</h3>
+    <h3 data-i18n-lang="en">The Giants of Mont'e Prama</h3>
+    <div class="tag" data-i18n-lang="it">Il nostro consiglio più forte</div>
+    <div class="tag" data-i18n-lang="en">Our strongest recommendation</div>
+    <p data-i18n-lang="it">Le statue in pietra più antiche e misteriose della Sardegna, alte fino a 2,5 metri: pugilatori, arcieri e guerrieri nuragici con gli occhi a doppio cerchio. Dal 2026 sono finalmente riunite tutte insieme, per la prima volta nella storia, al Museo di Cabras. Merita una giornata intera: circa 1h30 d'auto da Cagliari, magari abbinata al vicino sito di Tharros sul mare.</p>
+    <p data-i18n-lang="en">Sardinia's oldest and most mysterious stone statues, up to 2.5m tall: boxers, archers and nuragic warriors with distinctive double-circle eyes. Since 2026 they've finally been reunited, for the first time ever, at the Cabras museum. Worth a full day: about 1h30 by car from Cagliari, easily combined with the nearby seaside site of Tharros.</p>
+    <div class="why" data-i18n-lang="it"><b>Perché vederli:</b> sono considerati la più importante statuaria antropomorfa del Mediterraneo antico, e il 2026 è il primo anno in assoluto in cui si possono ammirare tutti insieme.</div>
+    <div class="why" data-i18n-lang="en"><b>Why see them:</b> considered the most important anthropomorphic statuary of the ancient Mediterranean, and 2026 is the very first year they can all be seen together.</div>
+    <div class="practical" data-i18n-lang="it">Museo Civico Giovanni Marongiu, Cabras (Or)</div>
+    <div class="practical" data-i18n-lang="en">Museo Civico Giovanni Marongiu, Cabras (Or)</div>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Museo%20Civico%20Giovanni%20Marongiu%20Cabras" target="_blank" rel="noopener">
+      <span data-i18n-lang="it">📍 Apri in Google Maps</span>
+      <span data-i18n-lang="en">📍 Open in Google Maps</span>
+    </a>
+  </div>
+
+  <div class="signature">
+    <div data-i18n-lang="it">Con affetto,</div>
+    <div data-i18n-lang="en">With warm regards,</div>
+    <div class="from">Angelo &amp; Viviana</div>
+  </div>
+
+</main>
+
+<script>
+  function setLang(lang){
+    document.documentElement.setAttribute('data-lang', lang);
+    document.getElementById('btn-it').classList.toggle('active', lang==='it');
+    document.getElementById('btn-en').classList.toggle('active', lang==='en');
+  }
+</script>
+
+</body>
+</html>
