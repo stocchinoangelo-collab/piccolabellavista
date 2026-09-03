@@ -1,144 +1,476 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Piccolabellavista · Guida privata alla Sardegna</title>
-<meta name="description" content="Guida privata riservata agli ospiti di Piccolabellavista, Pirri/Cagliari.">
-<meta name="robots" content="noindex,nofollow">
-<meta name="theme-color" content="#faf7f2">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="PBV Guida">
-<meta name="format-detection" content="telephone=no">
-<link rel="manifest" href="manifest.webmanifest">
-<!-- FIX: icon.svg da solo non basta su iOS/Safari (apple-touch-icon SVG non è
-     supportato in modo affidabile); aggiunte varianti PNG generate in
-     img/icons/. Vedi CHANGELOG.md. -->
-<link rel="apple-touch-icon" sizes="180x180" href="img/icons/apple-touch-icon.png">
-<link rel="icon" href="icon.svg" type="image/svg+xml">
-<link rel="icon" sizes="192x192" href="img/icons/icon-192.png">
-<link rel="icon" sizes="512x512" href="img/icons/icon-512.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Piccolabellavista: monovano luminoso a Pirri, Cagliari, con balcone e vista verso il mare e il Poetto. Gestione diretta e familiare, comodo per spiagge, centro e ospedali.">
+  <meta name="keywords" content="Piccolabellavista, casa vacanza Pirri, casa vacanza Cagliari, affittacamere Cagliari, studio panoramico Cagliari, soggiorno Sardegna, alloggio vicino ospedale Brotzu, alloggio vicino Oncologico Cagliari, soggiorno vicino ospedali Cagliari">
+  <meta name="author" content="Piccolabellavista">
+  <meta name="theme-color" content="#a85f3d">
+  <meta property="og:title" content="Piccolabellavista | Casa vacanza a Pirri, Cagliari">
+  <meta property="og:description" content="Casa vacanza a Pirri, Cagliari, comoda per mare, centro e spiagge del Sud Sardegna.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://piccolabellavista.it/assets/foto/booking/panoramica-alloggio.jpg">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:url" content="https://piccolabellavista.it/">
+  <link rel="canonical" href="https://piccolabellavista.it/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Piccolabellavista | Casa vacanza a Pirri">
+  <meta name="twitter:description" content="Casa vacanza a Pirri, Cagliari, per soggiorni semplici e luminosi in Sardegna.">
+  <meta name="twitter:image" content="https://piccolabellavista.it/assets/foto/booking/panoramica-alloggio.jpg">
+  <title>Piccolabellavista | Casa vacanza a Pirri, Cagliari</title>
+  <link rel="icon" type="image/png" href="assets/logo-instagram.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;600;700;800&display=swap">
+  <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LodgingBusiness",
+    "name": "Piccolabellavista",
+    "description": "Casa vacanza a Pirri, Cagliari: base semplice, luminosa e comoda tra mare, centro e spiagge del Sud Sardegna.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Via Bellavista 14",
+      "addressLocality": "Pirri",
+      "addressRegion": "CA",
+      "addressCountry": "IT"
+    },
+    "amenityFeature": [
+      {"@type": "LocationFeatureSpecification", "name": "Self check-in", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Vista panoramica", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Posizione comoda per aeroporto e Poetto", "value": true}
+    ]
+  }
+  </script>
 </head>
 <body>
-
-<!-- GATE -->
-<div id="gate" class="gate" role="dialog" aria-modal="true" aria-labelledby="gate-title">
-  <div class="gate__box">
-    <div class="gate__logo">PBV</div>
-    <h1 class="gate__title" id="gate-title">Piccolabellavista</h1>
-    <p class="gate__subtitle" data-i18n="gate_text">Guida riservata agli ospiti</p>
-    <div class="gate__input-wrap">
-      <input type="password" id="gate-pass" placeholder="Password" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="Password" inputmode="text">
-    </div>
-    <button class="btn btn--primary btn--full" id="gate-btn" data-i18n="gate_enter">Entra</button>
-    <p class="gate__err hidden" id="gate-err" data-i18n="gate_err">Password non corretta</p>
-  </div>
-  <div class="gate__footer">
-    <span>Pirri, Cagliari</span>
-    <span>·</span>
-    <span>Sardegna</span>
-  </div>
-</div>
-
-<!-- APP -->
-<div id="app" class="app hidden">
-
-  <header class="topbar">
-    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-    <a class="brand" href="#home">
-      <span class="brand__small">Piccola</span><span class="brand__accent">bella</span><span class="brand__small">vista</span>
+  <a class="skip-link" href="#top">Salta al contenuto</a>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Piccolabellavista">
+      <img src="assets/logo-orizzontale.svg" alt="Piccolabellavista">
     </a>
-    <div class="langs" role="group" aria-label="Lingua">
-      <button data-lang="it" aria-label="Italiano" class="active">IT</button>
-      <button data-lang="en" aria-label="English">EN</button>
-      <button data-lang="de" aria-label="Deutsch">DE</button>
+    <div class="header-tools">
+      <nav aria-label="Navigazione principale">
+        <a href="#casa" data-i18n="navHouse">La casa</a>
+        <a href="#spiagge" data-i18n="navBeaches">Spiagge</a>
+        <a href="#cagliari" data-i18n="navCity">Cagliari</a>
+        <a href="#prenota" data-i18n="navBook">Prenota</a>
+        <a href="#posizione" data-i18n="navLocation">Posizione</a>
+        <a href="#contatti" data-i18n="navContacts">Contatti</a>
+        <a href="guida.html" data-i18n="navGuide">Guida</a>
+        <a href="consigli.html" data-i18n="navEvents">Eventi</a>
+      </nav>
+      <div class="language-switcher" aria-label="Selettore lingua">
+        <button type="button" class="lang-button active" data-lang="it" aria-pressed="true">IT</button>
+        <button type="button" class="lang-button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
     </div>
   </header>
 
-  <nav class="menu" id="menu" aria-label="Principale" aria-hidden="true" inert>
-    <div class="menu__header">
-      <span class="menu__label" data-i18n="nav_menu">Menu</span>
-      <button class="menu__close" id="menu-close" aria-label="Chiudi menu">✕</button>
-    </div>
-    <ul class="menu__list" id="menu-list"></ul>
-  </nav>
-  <div class="scrim" id="scrim" aria-hidden="true"></div>
+  <main id="top">
+    <section class="hero">
+      <div class="hero-content">
+        <img class="hero-logo" src="assets/logo-completo.svg" alt="" aria-hidden="true">
+        <p class="eyebrow" data-i18n="heroPlace">Casa vacanza a Pirri, Cagliari</p>
+        <h1>Piccolabellavista</h1>
+        <p class="lead" data-i18n="heroLead">Monovano luminoso a Pirri con vista verso il mare e il Poetto.</p>
+        <p class="lead-alt" data-i18n="heroAlt">Una base semplice e comoda per Cagliari, ospedali, aeroporto e spiagge.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#prenota" data-i18n="heroBook">Prenota ora</a>
+          <a class="button secondary" href="https://wa.me/393931104422" target="_blank" rel="noreferrer" data-i18n="heroWhatsapp">Scrivici su WhatsApp</a>
+        </div>
+      </div>
+      <aside class="quick-card" aria-label="Informazioni rapide">
+        <span data-i18n="quickBeach">Poetto a circa 15-20 min</span>
+        <span data-i18n="quickCenter">Centro di Cagliari a circa 15-20 min</span>
+        <span data-i18n="quickSouth">Base comoda per il Sud Sardegna</span>
+        <span data-i18n="quickStay">Studio luminoso da 33 mq</span>
+      </aside>
+    </section>
 
-  <main id="view" class="view"></main>
+    <section id="casa" class="section split">
+      <div>
+        <p class="eyebrow" data-i18n="houseKicker">La casa</p>
+        <h2 data-i18n="houseTitle">Un nido semplice, curato e luminoso.</h2>
+      </div>
+      <div class="copy">
+        <p data-i18n="houseText1">Piccolabellavista è uno studio accogliente in Via Bellavista 14, Pirri. È una soluzione pratica per chi vuole visitare Cagliari, muoversi verso il mare o lavorare qualche giorno con tranquillità.</p>
+        <p data-i18n="houseText2">Gli ospiti trovano ambienti ordinati, istruzioni chiare e comunicazione rapida prima, durante e dopo il soggiorno.</p>
+        <ul class="comfort-list">
+          <li data-i18n="roomItem1">Studio di 33 mq ideale per soggiorni brevi.</li>
+          <li data-i18n="roomItem2">Atmosfera luminosa e funzionale.</li>
+          <li data-i18n="roomItem3">Base comoda per aeroporto, centro e mare.</li>
+        </ul>
+      </div>
+    </section>
 
-  <footer class="foot">
-    <div class="foot__links">
-      <a href="#fonti" data-i18n="nav_fonti">Fonti e credits</a>
-    </div>
-    <p class="foot__copy">
-      © Piccolabellavista · Pirri, Cagliari · <span data-i18n="foot_private">Guida privata</span>
-    </p>
+    <section id="servizi" class="section">
+      <p class="eyebrow" data-i18n="servicesKicker">Servizi</p>
+      <h2 data-i18n="servicesTitle">Tutto quello che serve, senza complicazioni.</h2>
+      <div class="features">
+        <article>
+          <h3 data-i18n="service1Title">Check-in semplice</h3>
+          <p data-i18n="service1Text">Indicazioni chiare prima dell'arrivo e accesso comodo per organizzare il viaggio senza stress.</p>
+        </article>
+        <article>
+          <h3 data-i18n="service2Title">Posizione pratica</h3>
+          <p data-i18n="service2Text">Pirri permette di raggiungere aeroporto, centro di Cagliari e spiagge principali con spostamenti brevi.</p>
+        </article>
+        <article>
+          <h3 data-i18n="service3Title">Host presente</h3>
+          <p data-i18n="service3Text">Messaggi automatici e assistenza diretta aiutano l'ospite a sentirsi seguito in ogni fase.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="spiagge" class="section warm-section">
+      <p class="eyebrow" data-i18n="beachesKicker">Spiagge entro 40 km</p>
+      <h2 data-i18n="beachesTitle">Dal Poetto alle cale della litoranea.</h2>
+      <p class="section-lead" data-i18n="beachesText">Da Pirri puoi scegliere ogni giorno un mare diverso: spiagge cittadine, piccole baie e tratti panoramici verso il Sud Sardegna.</p>
+      <div class="destination-grid">
+        <article class="destination-card">
+          <h3 data-i18n="beachPoettoTitle">Poetto</h3>
+          <span data-i18n="beachPoettoTime">circa 15-20 min in auto</span>
+          <p data-i18n="beachPoettoText">La spiaggia lunga di Cagliari, ideale per una giornata facile tra mare, passeggiata e locali sul lungomare.</p>
+          <a class="button map-button" href="https://www.google.com/maps/dir/?api=1&origin=Via%20Bellavista%2014%2C%20Pirri%2C%20Cagliari&destination=Poetto%2C%20Cagliari&travelmode=driving" target="_blank" rel="noreferrer" data-i18n="directionsButton">Apri indicazioni su Google Maps</a>
+        </article>
+        <article class="destination-card">
+          <h3 data-i18n="beachCalamoscaTitle">Calamosca</h3>
+          <span data-i18n="beachCalamoscaTime">circa 20-25 min in auto</span>
+          <p data-i18n="beachCalamoscaText">Una baia riparata sotto la Sella del Diavolo, comoda quando vuoi un mare raccolto vicino alla città.</p>
+          <a class="button map-button" href="https://www.google.com/maps/dir/?api=1&origin=Via%20Bellavista%2014%2C%20Pirri%2C%20Cagliari&destination=Calamosca%2C%20Cagliari&travelmode=driving" target="_blank" rel="noreferrer" data-i18n="directionsButton">Apri indicazioni su Google Maps</a>
+        </article>
+        <article class="destination-card">
+          <h3 data-i18n="beachFigheraTitle">Cala Fighera</h3>
+          <span data-i18n="beachFigheraTime">circa 25-30 min in auto</span>
+          <p data-i18n="beachFigheraText">Una cala scenografica e più selvaggia, amata per le rocce chiare e l'acqua intensa.</p>
+          <a class="button map-button" href="https://www.google.com/maps/dir/?api=1&origin=Via%20Bellavista%2014%2C%20Pirri%2C%20Cagliari&destination=Cala%20Fighera%2C%20Cagliari&travelmode=driving" target="_blank" rel="noreferrer" data-i18n="directionsButton">Apri indicazioni su Google Maps</a>
+        </article>
+        <article class="destination-card">
+          <h3 data-i18n="beachMargineTitle">Margine Rosso</h3>
+          <span data-i18n="beachMargineTime">circa 25-30 min in auto</span>
+          <p data-i18n="beachMargineText">Un tratto arioso del litorale verso Quartu, con sabbia chiara, fondali bassi e vista sul Golfo.</p>
+          <a class="button map-button" href="https://www.google.com/maps/dir/?api=1&origin=Via%20Bellavista%2014%2C%20Pirri%2C%20Cagliari&destination=Margine%20Rosso%2C%20Quartu%20Sant%27Elena&travelmode=driving" target="_blank" rel="noreferrer" data-i18n="directionsButton">Apri indicazioni su Google Maps</a>
+        </article>
+        <article class="destination-card">
+          <h3 data-i18n="beachAndreaTitle">Sant'Andrea / Flumini</h3>
+          <span data-i18n="beachAndreaTime">circa 30-35 min in auto</span>
+          <p data-i18n="beachAndreaText">Costa ampia e rilassata, perfetta per uscire dalla città restando comunque vicino a Cagliari.</p>
+          <a class="button map-button" href="https://www.google.com/maps/dir/?api=1&origin=Via%20Bellavista%2014%2C%20Pirri%2C%20Cagliari&destination=Sant%27Andrea%20Flumini%2C%20Quartu%20Sant%27Elena&travelmode=driving" target="_blank" rel="noreferrer" data-i18n="directionsButton">Apri indicazioni su Google Maps</a>
+        </article>
+        <article class="destination-card">
+          <h3 data-i18n="beachCapitanaTitle">Capitana</h3>
+          <span data-i18n="beachCapitanaTime">circa 35-40 min in auto</span>
+          <p data-i18n="beachCapitanaText">Una zona costiera comoda e panoramica lungo la strada verso Villasimius.</p>
+          <a class="button map-button" href="https://www.google.com/maps/dir/?api=1&origin=Via%20Bellavista%2014%2C%20Pirri%2C%20Cagliari&destination=Capitana%2C%20Quartu%20Sant%27Elena&travelmode=driving" target="_blank" rel="noreferrer" data-i18n="directionsButton">Apri indicazioni su Google Maps</a>
+        </article>
+        <article class="destination-card">
+          <h3 data-i18n="beachReginaTitle">Cala Regina</h3>
+          <span data-i18n="beachReginaTime">circa 40 min in auto</span>
+          <p data-i18n="beachReginaText">Una cala piccola e suggestiva sulla litoranea, tra roccia, macchia mediterranea e mare intenso.</p>
+          <a class="button map-button" href="https://www.google.com/maps/dir/?api=1&origin=Via%20Bellavista%2014%2C%20Pirri%2C%20Cagliari&destination=Cala%20Regina%2C%20Quartu%20Sant%27Elena&travelmode=driving" target="_blank" rel="noreferrer" data-i18n="directionsButton">Apri indicazioni su Google Maps</a>
+        </article>
+        <article class="destination-card">
+          <h3 data-i18n="beachPintauTitle">Mari Pintau</h3>
+          <span data-i18n="beachPintauTime">circa 40 min in auto</span>
+          <p data-i18n="beachPintauText">Un tratto celebre per acqua trasparente e ciottoli chiari: una meta breve, ma molto scenografica.</p>
+          <a class="button map-button" href="https://www.google.com/maps/dir/?api=1&origin=Via%20Bellavista%2014%2C%20Pirri%2C%20Cagliari&destination=Mari%20Pintau%2C%20Quartu%20Sant%27Elena&travelmode=driving" target="_blank" rel="noreferrer" data-i18n="directionsButton">Apri indicazioni su Google Maps</a>
+        </article>
+        <article class="destination-card">
+          <h3 data-i18n="beachNoraTitle">Nora / Pula</h3>
+          <span data-i18n="beachNoraTime">circa 40 min in auto</span>
+          <p data-i18n="beachNoraText">Spiaggia, area archeologica e atmosfera da gita completa quando vuoi unire mare e storia.</p>
+          <a class="button map-button" href="https://www.google.com/maps/dir/?api=1&origin=Via%20Bellavista%2014%2C%20Pirri%2C%20Cagliari&destination=Nora%2C%20Pula&travelmode=driving" target="_blank" rel="noreferrer" data-i18n="directionsButton">Apri indicazioni su Google Maps</a>
+        </article>
+      </div>
+    </section>
+
+        <section id="spiagge-top" class="section warm-section">
+      <p class="eyebrow" data-i18n="bestBeachesKicker">Le gite di mare</p>
+      <h2 data-i18n="bestBeachesTitle">Le spiagge più belle, a circa un'ora da qui.</h2>
+      <p class="section-lead" data-i18n="bestBeachesText">A circa un'ora d'auto ci sono alcune delle spiagge più famose della Sardegna: valgono la gita di un giorno. In estate diverse hanno l'accesso a numero chiuso, quindi conviene prenotare online il giorno prima.</p>
+      <div class="destination-grid">
+        <article class="destination-card">
+          <h3 data-i18n="beachTuerreddaTitle">Tuerredda</h3>
+          <span data-i18n="beachTuerreddaTime">circa 1 ora e 15 in auto</span>
+          <p data-i18n="beachTuerreddaText">Sabbia chiara e mare dai colori caraibici, con l'isolotto davanti alla riva. In estate l'accesso è su prenotazione online con ticket giornaliero: meglio prenotare il giorno prima.</p>
+          <a class="button map-button" href="https://www.google.com/maps/dir/?api=1&origin=Via%20Bellavista%2014%2C%20Pirri%2C%20Cagliari&destination=Spiaggia%20di%20Tuerredda%2C%20Teulada&travelmode=driving" target="_blank" rel="noreferrer" data-i18n="directionsButton">Apri indicazioni su Google Maps</a>
+        </article>
+        <article class="destination-card">
+          <h3 data-i18n="beachGiuncoTitle">Porto Giunco</h3>
+          <span data-i18n="beachGiuncoTime">circa 1 ora in auto</span>
+          <p data-i18n="beachGiuncoText">Sabbia bianca finissima e lo stagno di Notteri alle spalle, dove capita di vedere i fenicotteri. In alta stagione conviene arrivare presto per il parcheggio.</p>
+          <a class="button map-button" href="https://www.google.com/maps/dir/?api=1&origin=Via%20Bellavista%2014%2C%20Pirri%2C%20Cagliari&destination=Porto%20Giunco%2C%20Villasimius&travelmode=driving" target="_blank" rel="noreferrer" data-i18n="directionsButton">Apri indicazioni su Google Maps</a>
+        </article>
+        <article class="destination-card">
+          <h3 data-i18n="beachMolentisTitle">Punta Molentis</h3>
+          <span data-i18n="beachMolentisTime">circa 1 ora in auto</span>
+          <p data-i18n="beachMolentisText">Una mezzaluna di sabbia tra due mari, tra le spiagge più fotografate del Sud Sardegna. In estate accesso a numero chiuso e a pagamento: prenotazione online obbligatoria.</p>
+          <a class="button map-button" href="https://www.google.com/maps/dir/?api=1&origin=Via%20Bellavista%2014%2C%20Pirri%2C%20Cagliari&destination=Punta%20Molentis%2C%20Villasimius&travelmode=driving" target="_blank" rel="noreferrer" data-i18n="directionsButton">Apri indicazioni su Google Maps</a>
+        </article>
+      </div>
+    </section>
+    <section id="movida" class="section warm-section">
+      <p class="eyebrow" data-i18n="nightKicker">Dove uscire la sera</p>
+      <h2 data-i18n="nightTitle">Aperitivo e serata, le zone più vive di Cagliari.</h2>
+      <p class="section-lead" data-i18n="nightText">Se ti chiedi dove andare la sera per un aperitivo o due passi, queste sono le zone più animate del centro, tutte a circa 15-20 minuti da qui.</p>
+      <div class="destination-grid">
+        <article class="destination-card">
+          <h3 data-i18n="nightMarinaTitle">Marina</h3>
+          <span data-i18n="nightMarinaTime">circa 15-20 min in auto</span>
+          <p data-i18n="nightMarinaText">Il cuore della movida cittadina: tra via Sardegna e via Roma, vicoli pieni di ristoranti, bar e locali dove iniziare la serata con un aperitivo e la cucina sarda.</p>
+          <a class="button map-button" href="https://www.google.com/maps/search/?api=1&query=Marina%2C%20Cagliari" target="_blank" rel="noreferrer" data-i18n="mapsButton">Apri su Google Maps</a>
+        </article>
+        <article class="destination-card">
+          <h3 data-i18n="nightYenneTitle">Piazza Yenne</h3>
+          <span data-i18n="nightYenneTime">circa 15-20 min in auto</span>
+          <p data-i18n="nightYenneText">Una delle piazze più vivaci del centro, sempre animata la sera: cocktail bar e localini storici, punto di ritrovo classico dei cagliaritani.</p>
+          <a class="button map-button" href="https://www.google.com/maps/search/?api=1&query=Piazza%20Yenne%2C%20Cagliari" target="_blank" rel="noreferrer" data-i18n="mapsButton">Apri su Google Maps</a>
+        </article>
+        <article class="destination-card">
+          <h3 data-i18n="nightPoettoTitle">Poetto</h3>
+          <span data-i18n="nightPoettoTime">circa 15-20 min in auto</span>
+          <p data-i18n="nightPoettoText">D'estate il lungomare si trasforma: chioschi e beach bar aperti fino a tardi, tra musica, aperitivi e cocktail vicino alla spiaggia. È la movida all'aperto della bella stagione.</p>
+          <a class="button map-button" href="https://www.google.com/maps/search/?api=1&query=Poetto%2C%20Cagliari" target="_blank" rel="noreferrer" data-i18n="mapsButton">Apri su Google Maps</a>
+        </article>
+        <article class="destination-card">
+          <h3 data-i18n="nightDoglioTitle">Palazzo Doglio</h3>
+          <span data-i18n="nightDoglioTime">circa 15-20 min in auto</span>
+          <p data-i18n="nightDoglioText">Per una serata elegante: la corte interna dell'hotel di lusso della città ospita bar e ristoranti aperti anche a chi non alloggia, per un aperitivo o una cena raffinata.</p>
+          <a class="button map-button" href="https://www.google.com/maps/search/?api=1&query=Palazzo%20Doglio%2C%20Cagliari" target="_blank" rel="noreferrer" data-i18n="mapsButton">Apri su Google Maps</a>
+        </article>
+      </div>
+    </section>
+      <section id="cagliari" class="section city-section">
+      <p class="eyebrow" data-i18n="cityKicker">Cosa vedere a Cagliari</p>
+      <h2 data-i18n="cityTitle">Quartieri, panorami e luoghi simbolo a pochi minuti.</h2>
+      <p class="section-lead" data-i18n="cityText">Cagliari si scopre bene a piccoli itinerari: un mercato al mattino, Castello nel pomeriggio, il mare quando la luce cambia.</p>
+      <div class="destination-grid">
+        <article class="destination-card">
+          <h3 data-i18n="cityBastioneTitle">Bastione di Saint Remy</h3>
+          <span data-i18n="cityBastioneTime">circa 15-20 min in auto</span>
+          <p data-i18n="cityBastioneText">Una terrazza monumentale sul cuore della città, perfetta per iniziare da un panorama ampio.</p>
+          <a class="button map-button" href="https://www.google.com/maps/search/?api=1&query=Bastione%20di%20Saint%20Remy%2C%20Cagliari" target="_blank" rel="noreferrer" data-i18n="mapsButton">Apri su Google Maps</a>
+        </article>
+        <article class="destination-card">
+          <h3 data-i18n="cityCastelloTitle">Quartiere Castello</h3>
+          <span data-i18n="cityCastelloTime">circa 15-20 min in auto</span>
+          <p data-i18n="cityCastelloText">Il quartiere alto e antico, tra vicoli, palazzi storici, belvedere e scorci sul porto.</p>
+          <a class="button map-button" href="https://www.google.com/maps/search/?api=1&query=Quartiere%20Castello%2C%20Cagliari" target="_blank" rel="noreferrer" data-i18n="mapsButton">Apri su Google Maps</a>
+        </article>
+        <article class="destination-card">
+          <h3 data-i18n="cityCathedralTitle">Cattedrale di Santa Maria</h3>
+          <span data-i18n="cityCathedralTime">circa 15-20 min in auto</span>
+          <p data-i18n="cityCathedralText">Nel cuore di Castello, un luogo elegante dove leggere secoli di storia cittadina.</p>
+          <a class="button map-button" href="https://www.google.com/maps/search/?api=1&query=Cattedrale%20di%20Santa%20Maria%2C%20Cagliari" target="_blank" rel="noreferrer" data-i18n="mapsButton">Apri su Google Maps</a>
+        </article>
+        <article class="destination-card">
+          <h3 data-i18n="cityTowerTitle">Torre dell'Elefante</h3>
+          <span data-i18n="cityTowerTime">circa 15-20 min in auto</span>
+          <p data-i18n="cityTowerText">Una torre medievale simbolo della città, ideale per entrare nell'atmosfera del centro storico.</p>
+          <a class="button map-button" href="https://www.google.com/maps/search/?api=1&query=Torre%20dell%27Elefante%2C%20Cagliari" target="_blank" rel="noreferrer" data-i18n="mapsButton">Apri su Google Maps</a>
+        </article>
+        <article class="destination-card">
+          <h3 data-i18n="cityMarketTitle">Mercato di San Benedetto</h3>
+          <span data-i18n="cityMarketTime">circa 10-15 min in auto</span>
+          <p data-i18n="cityMarketText">Uno dei mercati più vivi della città, da visitare per colori, profumi e prodotti locali.</p>
+          <a class="button map-button" href="https://www.google.com/maps/search/?api=1&query=Mercato%20di%20San%20Benedetto%2C%20Cagliari" target="_blank" rel="noreferrer" data-i18n="mapsButton">Apri su Google Maps</a>
+        </article>
+        <article class="destination-card">
+          <h3 data-i18n="cityMolentargiusTitle">Parco di Molentargius</h3>
+          <span data-i18n="cityMolentargiusTime">circa 15-20 min in auto</span>
+          <p data-i18n="cityMolentargiusText">Un'oasi naturale tra saline, percorsi lenti e fenicotteri, bellissima anche al tramonto.</p>
+          <a class="button map-button" href="https://www.google.com/maps/search/?api=1&query=Parco%20di%20Molentargius%2C%20Cagliari" target="_blank" rel="noreferrer" data-i18n="mapsButton">Apri su Google Maps</a>
+        </article>
+        <article class="destination-card">
+          <h3 data-i18n="citySellaTitle">Sella del Diavolo</h3>
+          <span data-i18n="citySellaTime">circa 20-25 min in auto</span>
+          <p data-i18n="citySellaText">Il promontorio iconico del Golfo, con sentieri panoramici e vista memorabile sul Poetto.</p>
+          <a class="button map-button" href="https://www.google.com/maps/search/?api=1&query=Sella%20del%20Diavolo%2C%20Cagliari" target="_blank" rel="noreferrer" data-i18n="mapsButton">Apri su Google Maps</a>
+        </article>
+        <article class="destination-card">
+          <h3 data-i18n="cityPoettoTitle">Poetto</h3>
+          <span data-i18n="cityPoettoTime">circa 15-20 min in auto</span>
+          <p data-i18n="cityPoettoText">La grande spiaggia cittadina: mare, passeggiate, colazioni vista acqua e serate estive.</p>
+          <a class="button map-button" href="https://www.google.com/maps/search/?api=1&query=Poetto%2C%20Cagliari" target="_blank" rel="noreferrer" data-i18n="mapsButton">Apri su Google Maps</a>
+        </article>
+        <article class="destination-card">
+          <h3 data-i18n="cityMarinaTitle">Marina</h3>
+          <span data-i18n="cityMarinaTime">circa 15-20 min in auto</span>
+          <p data-i18n="cityMarinaText">Un quartiere centrale e conviviale, tra ristoranti, vicoli, botteghe e porto vicino.</p>
+          <a class="button map-button" href="https://www.google.com/maps/search/?api=1&query=Marina%2C%20Cagliari" target="_blank" rel="noreferrer" data-i18n="mapsButton">Apri su Google Maps</a>
+        </article>
+        <article class="destination-card">
+          <h3 data-i18n="cityVillanovaTitle">Villanova</h3>
+          <span data-i18n="cityVillanovaTime">circa 15-20 min in auto</span>
+          <p data-i18n="cityVillanovaText">Un quartiere quieto e colorato, con case basse, piante alle porte e ritmo piacevole.</p>
+          <a class="button map-button" href="https://www.google.com/maps/search/?api=1&query=Villanova%2C%20Cagliari" target="_blank" rel="noreferrer" data-i18n="mapsButton">Apri su Google Maps</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="prenota" class="section booking-section">
+      <div class="booking-copy">
+        <p class="eyebrow" data-i18n="bookingKicker">Disponibilita</p>
+        <h2 data-i18n="bookingTitle">Chiedi disponibilità e invia una richiesta.</h2>
+        <p data-i18n="bookingText">Compila il modulo: si aprirà WhatsApp con la richiesta già pronta. La prenotazione sarà confermata solo dopo il controllo delle date.</p>
+        <div class="availability-box">
+          <h3 data-i18n="calendarTitle">Chiedi la disponibilità delle date</h3>
+          <p data-i18n="availabilityText">Per sapere se le tue date sono libere, scrivici su WhatsApp: ti rispondiamo in giornata.</p>
+          <a class="button primary btn-whatsapp" href="https://wa.me/393931104422?text=Ciao%2C%20vorrei%20sapere%20se%20avete%20disponibilit%C3%A0%20per%20le%20date..." target="_blank" rel="noopener" data-i18n="availabilityCta">Chiedi disponibilità su WhatsApp</a>
+        </div>
+      </div>
+
+      <form class="booking-form" id="bookingForm">
+        <h3 data-i18n="formTitle">Richiesta prenotazione</h3>
+        <div class="form-grid">
+          <label>
+            <span data-i18n="fieldName">Nome e cognome</span>
+            <input type="text" name="fullName" autocomplete="name" required>
+          </label>
+          <label>
+            <span data-i18n="fieldPhone">Telefono</span>
+            <input type="tel" name="phone" autocomplete="tel" required>
+          </label>
+          <label>
+            <span>Email</span>
+            <input type="email" name="email" autocomplete="email" required>
+          </label>
+          <label>
+            <span data-i18n="fieldArrival">Data arrivo</span>
+            <input type="date" name="arrival" required>
+          </label>
+          <label>
+            <span data-i18n="fieldDeparture">Data partenza</span>
+            <input type="date" name="departure" required>
+          </label>
+          <label>
+            <span data-i18n="fieldGuests">Numero ospiti</span>
+            <input type="number" name="guests" min="1" max="2" value="2" required>
+          </label>
+        </div>
+        <label>
+          <span data-i18n="fieldNotes">Note</span>
+          <textarea name="notes" rows="4" data-i18n-placeholder="fieldNotesPlaceholder" placeholder="Orario arrivo, richieste particolari, dubbi."></textarea>
+        </label>
+        <p class="form-message" id="bookingMessage" aria-live="polite"></p>
+        <button class="button primary form-submit" type="submit" data-i18n="formSubmit">Invia richiesta</button>
+      </form>
+    </section>
+
+    <section id="faq" class="section faq">
+      <p class="eyebrow">FAQ</p>
+      <h2 data-i18n="faqTitle">Domande frequenti degli ospiti.</h2>
+      <div class="faq-grid">
+        <details>
+          <summary data-i18n="faq1Question">Come funziona il check-in?</summary>
+          <p data-i18n="faq1Answer">Le istruzioni vengono inviate prima dell'arrivo. L'obiettivo è rendere il check-in semplice e senza stress.</p>
+        </details>
+        <details>
+          <summary data-i18n="faq2Question">Quanto dista dall'aeroporto?</summary>
+          <p data-i18n="faq2Answer">La casa si trova a Pirri, in posizione comoda per raggiungere l'aeroporto di Cagliari in circa 15 minuti, traffico permettendo.</p>
+        </details>
+        <details>
+          <summary data-i18n="faq3Question">La posizione è comoda per il Poetto?</summary>
+          <p data-i18n="faq3Answer">Sì, il Poetto è raggiungibile in auto in circa 15 minuti. La posizione è utile anche per visitare Cagliari.</p>
+        </details>
+        <details>
+          <summary data-i18n="faq4Question">Come posso prenotare?</summary>
+          <p data-i18n="faq4Answer">Puoi inviare una richiesta dal modulo qui sopra oppure scriverci direttamente su WhatsApp o via email.</p>
+        </details>
+      </div>
+    </section>
+
+    <section id="posizione" class="section location">
+      <div>
+        <p class="eyebrow" data-i18n="locationKicker">Posizione</p>
+        <h2 data-i18n="locationTitle">Via Bellavista 14, Pirri.</h2>
+        <p data-i18n="locationText">Una base comoda per chi arriva in aereo, vuole scoprire Cagliari o cerca un appoggio tranquillo per muoversi nel sud Sardegna.</p>
+        <a class="button location-button" href="https://www.google.com/maps/search/?api=1&query=Via%20Bellavista%2014%2C%20Pirri%2C%20Cagliari" target="_blank" rel="noreferrer" data-i18n="mapsButton">Apri su Google Maps</a>
+      </div>
+      <div class="location-panel">
+        <div class="distance-list">
+          <div><strong>15 min</strong><span data-i18n="distanceAirport">Aeroporto</span></div>
+          <div><strong>15-20 min</strong><span data-i18n="distanceBeach">Poetto</span></div>
+          <div><strong>15-20 min</strong><span data-i18n="distanceCenter">Centro Cagliari</span></div>
+        </div>
+        <div class="map-frame" aria-label="Mappa Google Maps di Via Bellavista 14, Pirri">
+          <iframe
+            title="Mappa di Piccolabellavista a Pirri, Cagliari"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=Via%20Bellavista%2014%2C%20Pirri%2C%20Cagliari&output=embed">
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+    <section id="checkin" class="section info-band">
+      <div>
+        <p class="eyebrow" data-i18n="checkinKicker">Check-in</p>
+        <h2 data-i18n="checkinTitle">Arrivo semplice, anche per chi viaggia da lontano.</h2>
+        <p data-i18n="checkinText">Prima del soggiorno vengono inviate indicazioni pratiche per raggiungere la casa, entrare con calma e sapere a chi scrivere in caso di necessità.</p>
+      </div>
+      <div class="step-list">
+        <div><strong>1</strong><span data-i18n="checkinStep1">Conferma prenotazione</span></div>
+        <div><strong>2</strong><span data-i18n="checkinStep2">Ricevi istruzioni di arrivo</span></div>
+        <div><strong>3</strong><span data-i18n="checkinStep3">Entra e goditi il soggiorno</span></div>
+      </div>
+    </section>
+
+    <section id="regole" class="section rules">
+      <p class="eyebrow" data-i18n="rulesKicker">Regole</p>
+      <h2 data-i18n="rulesTitle">Poche regole chiare per stare bene.</h2>
+      <div class="features compact">
+        <article>
+          <h3 data-i18n="rule1Title">Rispetto della casa</h3>
+          <p data-i18n="rule1Text">Lascia gli spazi ordinati e segnala subito eventuali problemi, così possiamo intervenire rapidamente.</p>
+        </article>
+        <article>
+          <h3 data-i18n="rule2Title">Orari di silenzio</h3>
+          <p data-i18n="rule2Text">Evita rumori nelle ore serali e notturne, nel rispetto del vicinato e degli altri ospiti.</p>
+        </article>
+        <article>
+          <h3 data-i18n="rule3Title">Comunicazione</h3>
+          <p data-i18n="rule3Text">Per dubbi su arrivo, parcheggio o servizi, scrivi prima possibile: una risposta rapida evita stress.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="contatti" class="section contact">
+      <p class="eyebrow" data-i18n="contactsKicker">Prenotazioni</p>
+      <h2 data-i18n="contactsTitle">Richiedi disponibilità o fai una domanda.</h2>
+      <p data-i18n="contactsText">Puoi inviare una richiesta dal modulo disponibilità, scriverci su WhatsApp o mandare una email.</p>
+      <div class="contact-grid">
+        <a href="mailto:piccolabellavista1@gmail.com" aria-label="Invia email a Piccolabellavista" data-i18n="contactEmail">Email</a>
+        <a href="https://wa.me/393931104422" aria-label="Scrivi su WhatsApp a Piccolabellavista">WhatsApp</a>
+        <a href="https://www.booking.com/hotel/it/casa-vacanze-bellavista-cagliari.it.html" aria-label="Apri Piccolabellavista su Booking">Booking</a>
+      </div>
+    </section>
+
+    <section id="tassa" class="section">
+      <p class="eyebrow" data-i18n="taxKicker">Tassa di soggiorno</p>
+      <h2 data-i18n="taxTitle">Imposta di soggiorno &mdash; Comune di Cagliari</h2>
+      <p data-i18n="taxIntro">Come previsto dal regolamento del Comune di Cagliari, ogni ospite non residente &egrave; tenuto al pagamento dell'imposta di soggiorno per i pernottamenti presso la nostra struttura.</p>
+      <ul class="comfort-list">
+        <li data-i18n="taxItem1">3 &euro; a persona per notte nei mesi di luglio, agosto e settembre.</li>
+        <li data-i18n="taxItem2">2 &euro; a persona per notte nei restanti mesi dell'anno.</li>
+        <li data-i18n="taxItem3">L'imposta si applica fino a un massimo di 5 notti consecutive per ciascun ospite: dalla sesta notte in poi non &egrave; dovuta.</li>
+        <li data-i18n="taxItem4">Pagamento in contanti al momento dell'arrivo. Rilasciamo sempre regolare ricevuta.</li>
+        <li data-i18n="taxItem5">Esenzioni: sono esenti i residenti nel Comune di Cagliari (&egrave; sufficiente una dichiarazione firmata, che prepariamo noi) e le altre categorie previste dal regolamento comunale.</li>
+      </ul>
+      <p data-i18n="taxContact">Per qualsiasi informazione puoi contattarci: saremo felici di chiarire ogni dubbio prima del tuo arrivo.</p>
+    </section>
+  </main>
+
+  <footer>
+    <img src="assets/logo-completo.svg" alt="" aria-hidden="true">
+    <p data-i18n="footerText">Piccolabellavista - Casa vacanza a Pirri, Cagliari</p>
+    <p>CIN: IT092009C2000T9156</p>
   </footer>
-
-  <!-- BOTTOM NAV -->
-  <nav class="bottom-nav" id="bottom-nav" aria-label="Navigazione rapida">
-    <a href="#home" class="bottom-nav__item active" data-section="home">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-      <span data-i18n="nav_home">Home</span>
-    </a>
-    <a href="#spiagge" class="bottom-nav__item" data-section="spiagge">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20"/><path d="M6 16l4-8 4 4 4-6"/><path d="M12 20V10"/></svg>
-      <span data-i18n="nav_spiagge">Spiagge</span>
-    </a>
-    <a href="#cagliari" class="bottom-nav__item" data-section="cagliari">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
-      <span data-i18n="nav_cagliari">Cagliari</span>
-    </a>
-    <a href="#mangiare" class="bottom-nav__item" data-section="mangiare">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-      <span data-i18n="nav_mangiare">Dove mangiare</span>
-    </a>
-    <a href="#eventi" class="bottom-nav__item" data-section="eventi">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2z"/></svg>
-      <span data-i18n="nav_eventi">Eventi</span>
-    </a>
-    <button class="bottom-nav__item" id="bottom-more" type="button" aria-label="Altro">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
-      <span data-i18n="nav_altro">Altro</span>
-    </button>
-  </nav>
-
-</div>
-
-<!-- SHEET / MODAL -->
-<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-hidden="true">
-  <div class="sheet__backdrop" id="sheet-backdrop"></div>
-  <div class="sheet__body">
-    <div class="sheet__handle"></div>
-    <button class="sheet__x" id="sheet-x" aria-label="Chiudi">✕</button>
-    <div class="sheet__scroll" id="sheet-content"></div>
-  </div>
-</div>
-
-<!-- FIX: prima il gate (position:fixed, z-index:1000) copriva sempre questo
-     messaggio quando JS è disattivato, perché il gate resta nel markup a
-     prescindere. z-index più alto + posizionamento fisso così è sempre
-     leggibile in quel caso. -->
-<noscript>
-  <div style="position:fixed;inset:0;z-index:1002;display:flex;align-items:center;justify-content:center;padding:2rem;text-align:center;font-family:Inter,sans-serif;background:#faf7f2;color:#4a4a48;">
-    Questa guida richiede JavaScript attivo. / JavaScript is required. / JavaScript wird benötigt.
-  </div>
-</noscript>
-
-<script src="js/i18n.js"></script>
-<script src="js/data.js"></script>
-<script src="js/app.js"></script>
-<script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js').catch(console.error);
-  }
-</script>
+  <script src="i18n.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
