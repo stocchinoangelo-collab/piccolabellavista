@@ -1,0 +1,397 @@
+/* ============================================================
+   CORREZIONI PICCOLABELLAVISTA — versione 2
+   Scritta sui nomi di classe REALI letti da index.html
+   ------------------------------------------------------------
+   Da incollare IN FONDO al file styles.css (nella radice del
+   progetto, non in una cartella css/).
+
+   Come funziona: il CSS legge dall'alto in basso e, a parita' di
+   importanza, vince l'ultima regola scritta. Incollando alla fine
+   sovrascrivi lo stile precedente senza modificare nulla di
+   esistente. Per annullare: cancella da qui alla fine del file.
+
+   Ogni blocco e' numerato e indipendente. Se uno non ti piace,
+   cancella solo quello.
+   ============================================================ */
+
+
+/* ------------------------------------------------------------
+   BLOCCO 1 — INTESTAZIONE COMPRESSA
+   Problema: .site-header con logo, nav a 8 voci su due righe e
+   .language-switcher occupa il 35-40% dello schermo del telefono,
+   e resta fisso mentre scorri.
+   Soluzione: logo piccolo, menu su una riga sola scorrevole col
+   dito, meno spazi. Recuperi circa mezzo schermo.
+   ------------------------------------------------------------ */
+
+.site-header {
+  padding: 8px 12px !important;
+  gap: 6px !important;
+}
+
+.site-header .brand img {
+  max-height: 38px !important;
+  width: auto !important;
+  display: block !important;
+}
+
+.header-tools {
+  gap: 6px !important;
+  margin: 0 !important;
+}
+
+/* Il menu resta su UNA riga e si scorre lateralmente.
+   Perche': meglio uno scorrimento col dito che due righe fisse
+   che rubano spazio a OGNI schermata del sito. */
+.site-header nav {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  overflow-x: auto !important;
+  gap: 16px !important;
+  padding: 2px 0 !important;
+  margin: 0 !important;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.site-header nav::-webkit-scrollbar {
+  display: none;
+}
+
+.site-header nav a {
+  flex: 0 0 auto !important;
+  font-size: 15px !important;
+  white-space: nowrap !important;
+}
+
+.language-switcher {
+  transform: scale(0.85);
+  transform-origin: left center;
+  margin: 0 !important;
+}
+
+.language-switcher .lang-button {
+  padding: 6px 14px !important;
+}
+
+
+/* ------------------------------------------------------------
+   BLOCCO 2 — VIA IL LOGO DALL'APERTURA
+   Problema: il logo compare TRE volte nella stessa pagina —
+   .brand img nell'intestazione, .hero-logo nell'apertura,
+   footer img in fondo. Una volta basta, e lo spazio migliore
+   (la prima schermata) deve andare alla casa, non al marchio.
+   Nota: .hero-logo ha gia' aria-hidden="true" nel codice, quindi
+   nasconderlo non toglie nulla a chi usa uno screen reader.
+   ------------------------------------------------------------ */
+
+.hero-logo {
+  display: none !important;
+}
+
+/* Il logo del piede pagina resta, ma piu' discreto */
+footer img {
+  max-height: 70px !important;
+  width: auto !important;
+}
+
+
+/* ------------------------------------------------------------
+   BLOCCO 3 — TESTO LEGGIBILE SULL'APERTURA
+   Problema: testo bianco su foto chiara (tetti color sabbia):
+   illeggibile. Riguarda .hero-content e .quick-card.
+   Soluzione: una velatura scura sopra l'immagine di fondo. Il
+   testo resta leggibile su QUALSIASI foto, anche se domani la
+   cambi con la vista dal balcone.
+   ------------------------------------------------------------ */
+
+.hero {
+  position: relative !important;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.20) 0%,
+    rgba(0, 0, 0, 0.58) 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-content,
+.quick-card {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+.hero-content h1,
+.hero-content .eyebrow,
+.hero-content .lead,
+.hero-content .lead-alt {
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.55) !important;
+}
+
+/* La scheda informazioni rapide su fondo leggibile invece che
+   trasparente sopra la foto */
+.quick-card {
+  background: rgba(20, 14, 10, 0.55) !important;
+  backdrop-filter: blur(3px);
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+}
+
+.quick-card span {
+  text-shadow: none !important;
+}
+
+
+/* ------------------------------------------------------------
+   BLOCCO 4 — UN SOLO COLORE PER LE AZIONI
+   Problema: sei colori si contendono l'attenzione. Il verde
+   acqua di .contact-grid a e' quello piu' estraneo alla palette
+   crema/terracotta del resto del sito.
+   Soluzione: terracotta = "qui si clicca". Un colore, un
+   significato, e tutto il resto smette di competere.
+   ------------------------------------------------------------ */
+
+:root {
+  --pbv-terracotta: #A85F3D;   /* lo stesso del theme-color del sito */
+  --pbv-terracotta-scuro: #8C4B2E;
+}
+
+.button.primary,
+.form-submit,
+.btn-whatsapp {
+  background: var(--pbv-terracotta) !important;
+  color: #fff !important;
+  border: 1px solid var(--pbv-terracotta) !important;
+  border-radius: 8px !important;
+  padding: 14px 20px !important;
+  font-weight: 700 !important;
+  font-size: 16px !important;
+}
+
+.button.secondary,
+.map-button,
+.location-button {
+  background: transparent !important;
+  color: var(--pbv-terracotta) !important;
+  border: 1.5px solid var(--pbv-terracotta) !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+}
+
+/* Sopra la foto dell'apertura il bordo terracotta si perde:
+   li' il secondario resta bianco */
+.hero-actions .button.secondary {
+  color: #fff !important;
+  border-color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.button.primary:hover,
+.form-submit:hover,
+.btn-whatsapp:hover {
+  background: var(--pbv-terracotta-scuro) !important;
+}
+
+
+/* ------------------------------------------------------------
+   BLOCCO 5 — GERARCHIA NEI CONTATTI
+   Problema: nella .contact-grid Email, WhatsApp e Booking hanno
+   lo stesso peso: l'occhio non sa dove andare, e spesso non va
+   da nessuna parte.
+   Soluzione: WhatsApp pieno (su mobile e' quello che converte
+   di piu'), gli altri due col solo bordo. Restano visibili ma
+   smettono di competere.
+   ------------------------------------------------------------ */
+
+.contact-grid a {
+  border-radius: 8px !important;
+  padding: 15px 18px !important;
+  font-weight: 600 !important;
+  font-size: 16px !important;
+}
+
+.contact-grid a[href*="wa.me"] {
+  background: var(--pbv-terracotta) !important;
+  color: #fff !important;
+  border: 1px solid var(--pbv-terracotta) !important;
+}
+
+.contact-grid a[href^="mailto"],
+.contact-grid a[href*="booking.com"] {
+  background: transparent !important;
+  color: var(--pbv-terracotta) !important;
+  border: 1.5px solid var(--pbv-terracotta) !important;
+}
+
+
+/* ------------------------------------------------------------
+   BLOCCO 6 — TITOLI IN PROPORZIONE
+   Problema: i titoli h2 occupano mezzo schermo. Nella sezione
+   #tassa questo significa dare a un adempimento fiscale lo
+   stesso spazio visivo che ha la casa.
+   Soluzione: scala piu' contenuta. Lo spazio grande va a cio'
+   che vende.
+   ------------------------------------------------------------ */
+
+.hero-content h1 {
+  font-size: clamp(30px, 8vw, 52px) !important;
+  line-height: 1.08 !important;
+  margin: 0 0 10px !important;
+}
+
+.section h2 {
+  font-size: clamp(22px, 5.4vw, 32px) !important;
+  line-height: 1.18 !important;
+  margin: 0 0 12px !important;
+}
+
+.section h3,
+.destination-card h3 {
+  font-size: clamp(18px, 4.4vw, 21px) !important;
+  line-height: 1.25 !important;
+}
+
+.section p,
+.section li,
+.destination-card p {
+  font-size: 16.5px !important;
+  line-height: 1.55 !important;
+}
+
+.eyebrow {
+  font-size: 12.5px !important;
+  letter-spacing: 0.14em !important;
+}
+
+/* Meno aria sprecata: su mobile lo spazio verticale e' oro */
+.section {
+  padding-top: 30px !important;
+  padding-bottom: 30px !important;
+}
+
+
+/* ------------------------------------------------------------
+   BLOCCO 7 — LA SEZIONE FISCALE RIDIMENSIONATA
+   L'imposta di soggiorno deve esserci: informare correttamente
+   e' giusto e dovuto. Ma non merita il carattere da manifesto.
+   ------------------------------------------------------------ */
+
+#tassa h2 {
+  font-size: 21px !important;
+}
+
+#tassa p,
+#tassa li {
+  font-size: 15.5px !important;
+}
+
+#tassa {
+  padding-top: 22px !important;
+  padding-bottom: 22px !important;
+}
+
+
+/* ------------------------------------------------------------
+   BLOCCO 8 — LE PILLOLE DEI TEMPI, PIU' DISCRETE
+   Problema: nel codice ci sono DODICI schede che dicono tutte
+   "circa 15-20 min in auto". Ripetuto dodici volte il dato
+   perde credibilita' e sembra un copia-incolla.
+   Soluzione grafica: renderle piu' piccole e sobrie, cosi'
+   pesano meno finche' non differenzi i numeri nel testo.
+   La cura vera resta scrivere i minuti reali.
+   ------------------------------------------------------------ */
+
+.destination-card > span {
+  font-size: 13px !important;
+  padding: 5px 11px !important;
+  opacity: 0.92;
+}
+
+
+/* ------------------------------------------------------------
+   BLOCCO 9 — PULSANTE WHATSAPP SEMPRE RAGGIUNGIBILE
+   Problema: per scrivere bisogna scorrere fino ai contatti.
+   Ogni scorrimento in piu' e' una richiesta persa.
+   Serve anche UNA riga di HTML: vedi istruzioni.
+   ------------------------------------------------------------ */
+
+.pbv-whatsapp-fisso {
+  position: fixed;
+  right: 14px;
+  bottom: 16px;
+  z-index: 999;
+  display: inline-flex;
+  align-items: center;
+  padding: 13px 20px;
+  border-radius: 999px;
+  background: var(--pbv-terracotta);
+  color: #fff !important;
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+
+/* ------------------------------------------------------------
+   BLOCCO 10 — LE FOTO DELLA CASA, QUANDO CI SARANNO
+   Le foto vengono inserite da gallery-injector.js dopo il
+   caricamento della pagina. Questo blocco le fa apparire
+   ordinate qualunque sia la loro proporzione, e le tiene
+   verticali su telefono: un ambiente di 33 mq si racconta
+   meglio in verticale che in strisce orizzontali.
+   ------------------------------------------------------------ */
+
+#foto img,
+.gallery img,
+.photo-grid img {
+  width: 100% !important;
+  height: auto !important;
+  border-radius: 10px !important;
+  display: block !important;
+}
+
+@media (max-width: 700px) {
+  #foto img,
+  .gallery img,
+  .photo-grid img {
+    aspect-ratio: 3 / 4 !important;
+    object-fit: cover !important;
+  }
+}
+
+
+/* ------------------------------------------------------------
+   BLOCCO 11 — ACCESSIBILITA'
+   Il sito ha gia' .skip-link e gli attributi aria: buon lavoro.
+   Qui si aggiunge il contorno di messa a fuoco per chi naviga
+   da tastiera, e il rispetto di chi ha chiesto al telefono di
+   ridurre le animazioni.
+   Non e' un vezzo: sono anche fattori che Google valuta.
+   ------------------------------------------------------------ */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+summary:focus-visible {
+  outline: 3px solid var(--pbv-terracotta) !important;
+  outline-offset: 2px !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001s !important;
+    transition-duration: 0.001s !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ============================================================
+   FINE CORREZIONI v2
+   ============================================================ */

@@ -1,0 +1,162 @@
+<!--
+============================================================
+  BLOCCO RECENSIONI - Piccolabellavista
+============================================================
+
+PERCHE' SERVE
+Hai recensioni ottime su Booking e sul sito non sono scritte
+da nessuna parte. Sono l'elemento che convince di piu' un
+visitatore indeciso, perche' non parlano con la voce di chi
+vende. E ce le hai gia', gratis.
+
+DOVE VA
+In index.html, subito PRIMA di questa riga:
+
+    <section id="prenota" class="section booking-section">
+
+Il posto e' scelto: si leggono le recensioni e subito dopo si
+trova il modo di prenotare. Metterle in fondo alla pagina
+significa che quasi nessuno le vedra'.
+
+ATTENZIONE AI NUMERI
+Ho usato media 9,0 su 6 recensioni, che e' il calcolo esatto
+dei punteggi che mi hai dato (10+10+10+8+8+8 = 54, diviso 6).
+Se nell'extranet Booking il punteggio ufficiale e' diverso,
+sostituisci in DUE punti: nel testo visibile e nei dati
+strutturati in fondo a questo file. Devono coincidere.
+
+Non gonfiare il numero: Google confronta i dati strutturati
+con le fonti pubbliche, e una valutazione dichiarata piu' alta
+del reale fa perdere le stelline invece di guadagnarle.
+
+LE RECENSIONI NON SI TRADUCONO
+Restano nella lingua in cui l'ospite le ha scritte. E' la
+prassi corretta: una recensione tradotta perde autenticita' e,
+se ritoccata, diventa una dichiarazione tua e non sua.
+Solo i titoli hanno gli attributi data-i18n.
+
+============================================================
+-->
+
+<section id="recensioni" class="section warm-section">
+
+  <p class="eyebrow" data-i18n="reviewsKicker">Recensioni</p>
+  <h2 data-i18n="reviewsTitle">Cosa dicono gli ospiti.</h2>
+
+  <p class="section-lead" data-i18n="reviewsLead">
+    Valutazione media 9,0 su 10 su Booking.com, su 6 recensioni verificate.
+  </p>
+
+  <div class="destination-grid">
+
+    <article class="destination-card">
+      <span>10 / 10</span>
+      <p>Viviana &egrave; stata una ottima host. Ci ha fatto trovare un aperitivo
+      in frigo, &egrave; stata gentile e ha acconsentito sempre alle nostre
+      richieste. La posizione &egrave; vicina al centro e a tutti i servizi
+      necessari.</p>
+      <p><strong>Luglio 2026</strong></p>
+    </article>
+
+    <article class="destination-card">
+      <span>10 / 10</span>
+      <p>Accogliente e proprietaria molto gentile. Situata a pochi passi dalla
+      fermata del bus che porta al centro di Cagliari.</p>
+      <p><strong>Maggio 2026</strong></p>
+    </article>
+
+    <article class="destination-card">
+      <span>10 / 10</span>
+      <p>La casa &egrave; piccola ma ben strutturata, con tutto il necessario e
+      con un bel balconcino dove potersi rilassare. I gestori disponibili
+      in tutto.</p>
+      <p><strong>Giugno 2026</strong></p>
+    </article>
+
+  </div>
+
+  <a class="button map-button"
+     href="https://www.booking.com/hotel/it/casa-vacanze-bellavista-cagliari.it.html"
+     target="_blank" rel="noreferrer"
+     data-i18n="reviewsCta">Leggi tutte le recensioni su Booking</a>
+
+</section>
+
+
+<!--
+============================================================
+  SECONDA PARTE - DATI STRUTTURATI
+============================================================
+
+A COSA SERVONO
+I dati strutturati sono informazioni scritte per Google, non
+per il visitatore: descrivono la struttura in un formato che il
+motore capisce. Con la valutazione dichiarata correttamente,
+nei risultati di ricerca possono comparire le stelline accanto
+al tuo sito. Occupano piu' spazio e attirano piu' clic.
+
+DOVE VA
+In index.html hai gia' un blocco che comincia con:
+
+    <script type="application/ld+json">
+
+Dentro quel blocco, dopo la riga  "addressCountry": "IT"  e la
+graffa che la chiude, aggiungi le tre sezioni qui sotto.
+Attenzione alle virgole: in questo formato ogni voce va
+separata da una virgola, tranne l'ultima.
+
+Se ti sembra delicato, fermati: questa parte e' la meno
+urgente di tutte e possiamo farla insieme guardando il file.
+
+============================================================
+-->
+
+  "url": "https://piccolabellavista.it/",
+
+  "telephone": "+393931104422",
+
+  "image": "https://piccolabellavista.it/assets/foto/booking/panoramica-alloggio.jpg",
+
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 39.2395,
+    "longitude": 9.1272
+  },
+
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "9.0",
+    "bestRating": "10",
+    "worstRating": "1",
+    "reviewCount": "6"
+  },
+
+
+<!--
+============================================================
+  TERZA PARTE - TRADUZIONI (opzionale)
+============================================================
+
+Se vuoi che i titoli della sezione cambino anche in inglese,
+in i18n.js vanno aggiunte quattro voci nel blocco "it" e
+quattro nel blocco "en":
+
+  ITALIANO
+    reviewsKicker: "Recensioni",
+    reviewsTitle: "Cosa dicono gli ospiti.",
+    reviewsLead: "Valutazione media 9,0 su 10 su Booking.com, su 6 recensioni verificate.",
+    reviewsCta: "Leggi tutte le recensioni su Booking",
+
+  INGLESE
+    reviewsKicker: "Reviews",
+    reviewsTitle: "What our guests say.",
+    reviewsLead: "Average rating 9.0 out of 10 on Booking.com, from 6 verified reviews.",
+    reviewsCta: "Read all reviews on Booking",
+
+Se salti questo passaggio non si rompe niente: la sezione
+resta in italiano anche nella versione inglese. E' lo stesso
+difetto che il controllore automatico aveva segnalato sulla
+pull request #3 di giugno, quindi vale la pena non ripeterlo.
+
+============================================================
+-->
