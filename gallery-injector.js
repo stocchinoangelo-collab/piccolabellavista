@@ -1,9 +1,5 @@
 (() => {
-  const originalScript = document.createElement("script");
-  originalScript.src = "script-original.js";
-  originalScript.async = false;
-  document.head.appendChild(originalScript);
-
+ 
   const copy = {
     it: {
       nav: "Foto",
