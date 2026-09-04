@@ -188,7 +188,12 @@
     "taxItem4": "Pagamento in contanti al momento dell'arrivo. Rilasciamo sempre regolare ricevuta.",
     "taxItem5": "Esenzioni: sono esenti i residenti nel Comune di Cagliari (è sufficiente una dichiarazione firmata, che prepariamo noi) e le altre categorie previste dal regolamento comunale.",
     "taxKicker": "Tassa di soggiorno",
-    "taxTitle": "Imposta di soggiorno — Comune di Cagliari"
+    "taxTitle": "Imposta di soggiorno — Comune di Cagliari",
+     "reviewsKicker": "Recensioni",
+    "reviewsTitle": "Cosa dicono gli ospiti.",
+    "reviewsLead": "Valutazione media 9,0 su 10 su Booking.com, su 6 recensioni verificate.",
+    "reviewsCta": "Leggi tutte le recensioni su Booking"
+     
   },
   en: {
     "availabilityCta": "Ask about availability on WhatsApp",
@@ -372,7 +377,12 @@
     "taxItem4": "Payable in cash on arrival. We always issue a proper receipt.",
     "taxItem5": "Exemptions: residents of the City of Cagliari are exempt (a signed declaration is enough, and we prepare it for you), along with the other categories set out in the municipal rules.",
     "taxKicker": "Tourist tax",
-    "taxTitle": "Tourist tax — City of Cagliari"
+    "taxTitle": "Tourist tax — City of Cagliari",
+     "reviewsKicker": "Reviews",
+    "reviewsTitle": "What our guests say.",
+    "reviewsLead": "Average rating 9.0 out of 10 on Booking.com, from 6 verified reviews.",
+    "reviewsCta": "Read all reviews on Booking"
+     
   }
   };
 
