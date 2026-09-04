@@ -33,21 +33,7 @@ body {
   line-height: 1.6;
 }
 
-/* ============================================================
-   CORREZIONI PICCOLABELLAVISTA — versione 2
-   Scritta sui nomi di classe REALI letti da index.html
-   ------------------------------------------------------------
-   Da incollare IN FONDO al file styles.css (nella radice del
-   progetto, non in una cartella css/).
 
-   Come funziona: il CSS legge dall'alto in basso e, a parita' di
-   importanza, vince l'ultima regola scritta. Incollando alla fine
-   sovrascrivi lo stile precedente senza modificare nulla di
-   esistente. Per annullare: cancella da qui alla fine del file.
-
-   Ogni blocco e' numerato e indipendente. Se uno non ti piace,
-   cancella solo quello.
-   ============================================================ */
 
 
 /* ------------------------------------------------------------
