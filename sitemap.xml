@@ -1,18 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  SITEMAP CORRETTA - Piccolabellavista
+
+  COSA CAMBIA RISPETTO A PRIMA
+  1. Aggiunte guida.html e consigli.html. Prima c'era solo la
+     homepage: e' il motivo per cui nell'indice di Google
+     compariva una pagina sola, e tutto il lavoro sulla guida
+     e sugli eventi non portava visite.
+  2. Togliuto il "www". Il tag canonical di index.html dichiara
+     https://piccolabellavista.it/ senza www: se la sitemap dice
+     www e la pagina dice senza, per Google sono due siti
+     diversi e il segnale si divide a meta'.
+  3. changefreq differenziato: la pagina eventi viene aggiornata
+     ogni due giorni, e dirlo invita il motore a ripassare piu'
+     spesso.
+
+  DOVE VA
+  Sostituisce il file sitemap.xml nella radice del progetto.
+-->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
   <url>
     <loc>https://piccolabellavista.it/</loc>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
+
   <url>
     <loc>https://piccolabellavista.it/guida.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://piccolabellavista.it/consigli.html</loc>
-    <changefreq>daily</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
+
 </urlset>
