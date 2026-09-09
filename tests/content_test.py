@@ -43,4 +43,11 @@ class ContentTests(unittest.TestCase):
   self.assertEqual({a['name'] for a in fields},{'fullName','arrival','departure','guests'})
   guests=next(a for a in fields if a['name']=='guests')
   self.assertEqual((guests['min'],guests['max'],guests['step']),('1','2','1'))
+ def test_retired_public_pages_are_noindex_and_out_of_sitemap(self):
+  retired=['guida.html','consigli.html','ospiti (1).html','blocco-recensioni.html']
+  sitemap=(ROOT/'sitemap.xml').read_text()
+  for name in retired:
+   content=(ROOT/name).read_text()
+   self.assertRegex(content,r'<meta[^>]+name="robots"[^>]+content="noindex,follow"|<meta[^>]+content="noindex,follow"[^>]+name="robots"')
+   self.assertNotIn(f'https://piccolabellavista.it/{name}',sitemap)
 if __name__=='__main__': unittest.main()
