@@ -1,78 +1,26 @@
-# Piccola Bellavista
+# Piccolabellavista
 
-Sito leggero per la casa vacanza Piccola Bellavista, a Pirri, Cagliari.
+Sito commerciale statico a Pirri, Cagliari. Ospitalità di Angelo e Viviana, massimo 2 ospiti, terzo piano senza ascensore.
 
-## Avvio in locale
+## Avvio locale
 
-Dalla cartella del progetto avvia il server con:
-
-```bash
-python app.py
+```sh
+python -m http.server 8765 --bind 127.0.0.1
 ```
 
-Poi apri il sito all'indirizzo:
+Aprire http://127.0.0.1:8765. Non occorrono backend, CMS o credenziali.
 
-```text
-http://127.0.0.1:8080
-```
+- `index.html`: contenuti e fotografie presenti nell'HTML, anche senza JavaScript.
+- `i18n.js`: unico dizionario IT / EN / DE.
+- `script.js`: lingua e unico handler per richiesta WhatsApp. Nessuna prenotazione automatica.
+- `styles.css`: stile esistente e stili della galleria consolidati.
+- `guida.html`: presentazione pubblica del Concierge, senza contenuti o credenziali privati.
+- `consigli.html`, `ospiti (1).html`, `blocco-recensioni.html`: vecchi URL ritirati, con pagina di orientamento senza contenuti obsoleti e `noindex`.
+- `privacy.html`: descrizione del trattamento tecnico dei dati e dei servizi esterni; vedere limiti editoriali nel report QA.
+- `sw.js`: disinstallazione del vecchio service worker erroneamente distribuito; nessuna nuova registrazione.
 
-La pagina admin e disponibile su:
+Le richieste vengono preparate nel browser e aperte su WhatsApp. L'ospite deve premere invio nell'app. Non vengono registrate in un database e non confermano una prenotazione.
 
-```text
-http://127.0.0.1:8080/admin.html
-```
+## Verifica
 
-## Area admin
-
-Le API admin sono protette con autenticazione Basic tramite variabili ambiente.
-Prima di avviare il server configura `PB_ADMIN_USER` e `PB_ADMIN_PASSWORD` nel tuo terminale.
-
-Esempio PowerShell:
-
-```powershell
-$env:PB_ADMIN_USER="admin"
-$env:PB_ADMIN_PASSWORD="valore-locale-da-scegliere"
-python app.py
-```
-
-Non inserire credenziali reali nel codice e non caricare file `.env` su GitHub.
-Se le variabili admin non sono configurate, la pagina admin mostra un messaggio di configurazione mancante.
-
-## Prenotazioni e dati locali
-
-Il modulo salva le richieste in `data/bookings.json`.
-Gli stati disponibili sono `richiesta`, `confermata` e `cancellata`.
-Le prenotazioni in stato `richiesta` o `confermata` bloccano le date nel calendario.
-
-`data/bookings.json` contiene dati locali reali, viene generato automaticamente dal server ed e escluso da Git tramite `.gitignore`.
-Per mantenere un esempio vuoto nel repository si usa `data/bookings.example.json`.
-
-La notifica email viene inviata solo se sono configurate le variabili SMTP previste in `app.py`.
-
-## Test
-
-La suite automatizzata copre la validazione delle prenotazioni e le API principali di `app.py`.
-Per eseguirla:
-
-```bash
-python -m unittest discover -s tests
-```
-
-## Struttura
-
-- `index.html` - pagina principale del sito.
-- `styles.css` - grafica e layout.
-- `script.js` - traduzioni, calendario disponibilita e validazione frontend del modulo.
-- `app.py` - server locale, API prenotazioni e salvataggio dati.
-- `admin.html` - gestione prenotazioni.
-- `admin.js` - logica pagina admin.
-- `tests/` - test automatizzati per il server e la validazione.
-- `.github/workflows/ci.yml` - workflow CI minimo per eseguire i test.
-- `data/bookings.example.json` - esempio vuoto dei dati prenotazioni.
-- `data/bookings.json` - archivio prenotazioni locale generato automaticamente, escluso da Git.
-- `assets/` - loghi e immagini.
-
-## Traduzione
-
-Il sito include un selettore lingua `IT/EN` nella testata.
-La lingua scelta viene ricordata dal browser per le visite successive.
+Consultare `QA_COMMERCIALE.md` e i test in `tests/`. Questo branch prepara una candidata alla revisione: nessun merge o intervento sui servizi di produzione è incluso.
