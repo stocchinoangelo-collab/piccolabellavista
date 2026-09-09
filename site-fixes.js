@@ -9,7 +9,10 @@
       contactsText: "Puoi compilare il modulo e inviare la richiesta tramite WhatsApp, scriverci direttamente o mandare una email.",
       beachesKicker: "Il mare vicino",
       beachesTitle: "Cinque spiagge comode da raggiungere.",
-      beachesText: "Per una giornata di mare senza trasformarla in una gita: dal Poetto alle spiagge e baie più vicine tra Cagliari e Quartu.",
+      beachesText: "Per una giornata di mare senza trasformarla in una gita: dal Poetto alle spiagge e baie più vicine tra Cagliari e la costa sud-orientale.",
+      beachGeremeasTitle: "Geremeas",
+      beachGeremeasTime: "circa 35-40 min in auto",
+      beachGeremeasText: "Una lunga spiaggia di sabbia chiara e mare trasparente sulla costa verso Villasimius, ideale quando vuoi un mare più aperto restando a distanza comoda da Cagliari.",
       invalidDates: "La data di partenza deve essere successiva alla data di arrivo.",
       tooManyGuests: `${BRAND} può ospitare al massimo 2 persone.`,
       whatsappReady: "Si apre WhatsApp con la richiesta già compilata: premi invio per confermare."
@@ -22,7 +25,10 @@
       contactsText: "Complete the form and send the request through WhatsApp, message us directly or send an email.",
       beachesKicker: "Nearby beaches",
       beachesTitle: "Five easy beaches to reach.",
-      beachesText: "For a day by the sea without turning it into a long excursion: from Poetto to the closest beaches and bays around Cagliari and Quartu.",
+      beachesText: "For a day by the sea without turning it into a long excursion: from Poetto to nearby beaches and bays along Cagliari's south-eastern coast.",
+      beachGeremeasTitle: "Geremeas",
+      beachGeremeasTime: "about 35-40 min by car",
+      beachGeremeasText: "A long beach of pale sand and clear water on the road toward Villasimius, ideal when you want a more open stretch of coast within easy reach of Cagliari.",
       invalidDates: "The departure date must be after the arrival date.",
       tooManyGuests: `${BRAND} can accommodate a maximum of 2 guests.`,
       whatsappReady: "WhatsApp is opening with your request ready to send. Press send to confirm."
@@ -69,6 +75,17 @@
     if (nearbyGrid && nearbyGrid.dataset.commercialTrimmed !== "true") {
       const cards = [...nearbyGrid.querySelectorAll(":scope > .destination-card")];
       cards.slice(5).forEach((card) => card.remove());
+
+      const geremeasCard = cards[4];
+      if (geremeasCard) {
+        geremeasCard.innerHTML = `
+          <h3 data-i18n="beachGeremeasTitle">Geremeas</h3>
+          <span data-i18n="beachGeremeasTime">circa 35-40 min in auto</span>
+          <p data-i18n="beachGeremeasText">Una lunga spiaggia di sabbia chiara e mare trasparente sulla costa verso Villasimius, ideale quando vuoi un mare più aperto restando a distanza comoda da Cagliari.</p>
+          <a class="button map-button" href="https://www.google.com/maps/dir/?api=1&origin=Via%20Bellavista%2014%2C%20Pirri%2C%20Cagliari&destination=Geremeas%2C%20Quartu%20Sant%27Elena&travelmode=driving" target="_blank" rel="noreferrer" data-i18n="directionsButton">Apri indicazioni su Google Maps</a>
+        `;
+      }
+
       nearbyGrid.dataset.commercialTrimmed = "true";
     }
 
