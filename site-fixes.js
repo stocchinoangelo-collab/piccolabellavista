@@ -2,6 +2,9 @@
   const BRAND = "Piccolabellavista";
   const copy = {
     it: {
+      heroLead: "Un soggiorno luminoso a Pirri, con vista verso il mare e il Poetto.",
+      heroAlt: "Accoglienza diretta di Angelo e Viviana e un Concierge digitale riservato agli ospiti per vivere meglio Cagliari.",
+      heroBook: "Verifica disponibilità",
       bookingTitle: "Chiedi disponibilità e invia una richiesta.",
       bookingText: "Compila il modulo: si aprirà WhatsApp con la richiesta già pronta. La prenotazione sarà confermata solo dopo il controllo delle date.",
       calendarTitle: "Chiedi la disponibilità delle date",
@@ -18,6 +21,9 @@
       whatsappReady: "Si apre WhatsApp con la richiesta già compilata: premi invio per confermare."
     },
     en: {
+      heroLead: "A bright stay in Pirri, with views toward the sea and Poetto.",
+      heroAlt: "Personal hosting by Angelo and Viviana, plus a private digital Concierge to help guests enjoy Cagliari.",
+      heroBook: "Check availability",
       bookingTitle: "Ask about availability and send a request.",
       bookingText: "Complete the form: WhatsApp will open with your request ready to send. The booking is confirmed only after the dates have been checked.",
       calendarTitle: "Ask whether your dates are available",
