@@ -14,7 +14,7 @@ Aprire http://127.0.0.1:8765. Non occorrono backend, CMS o credenziali.
 - `i18n.js`: unico dizionario IT / EN / DE.
 - `script.js`: lingua e unico handler per richiesta WhatsApp. Nessuna prenotazione automatica.
 - `styles.css`: stile esistente e stili della galleria consolidati.
-- `guida.html`: presentazione pubblica del Concierge, senza contenuti o credenziali privati.
+- `guida.html`: teaser pubblico del Concierge, senza contenuti o credenziali privati, escluso dall'indicizzazione.
 - `consigli.html`, `ospiti (1).html`, `blocco-recensioni.html`: vecchi URL ritirati, con pagina di orientamento senza contenuti obsoleti e `noindex`.
 - `privacy.html`: descrizione del trattamento tecnico dei dati e dei servizi esterni; vedere limiti editoriali nel report QA.
 - `sw.js`: disinstallazione del vecchio service worker erroneamente distribuito; nessuna nuova registrazione.
@@ -23,4 +23,4 @@ Le richieste vengono preparate nel browser e aperte su WhatsApp. L'ospite deve p
 
 ## Verifica
 
-Consultare `QA_COMMERCIALE.md` e i test in `tests/`. Questo branch prepara una candidata alla revisione: nessun merge o intervento sui servizi di produzione è incluso.
+Consultare `QA_COMMERCIALE.md` e i test in `tests/`. La versione commerciale consolidata è stata chiusa il 9 settembre 2026 tramite PR #5.
