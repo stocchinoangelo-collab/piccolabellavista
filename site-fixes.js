@@ -7,6 +7,9 @@
       calendarTitle: "Chiedi la disponibilità delle date",
       rule2Title: "Orari di silenzio",
       contactsText: "Puoi compilare il modulo e inviare la richiesta tramite WhatsApp, scriverci direttamente o mandare una email.",
+      beachesKicker: "Il mare vicino",
+      beachesTitle: "Cinque spiagge comode da raggiungere.",
+      beachesText: "Per una giornata di mare senza trasformarla in una gita: dal Poetto alle spiagge e baie più vicine tra Cagliari e Quartu.",
       invalidDates: "La data di partenza deve essere successiva alla data di arrivo.",
       tooManyGuests: `${BRAND} può ospitare al massimo 2 persone.`,
       whatsappReady: "Si apre WhatsApp con la richiesta già compilata: premi invio per confermare."
@@ -17,6 +20,9 @@
       calendarTitle: "Ask whether your dates are available",
       rule2Title: "Quiet hours",
       contactsText: "Complete the form and send the request through WhatsApp, message us directly or send an email.",
+      beachesKicker: "Nearby beaches",
+      beachesTitle: "Five easy beaches to reach.",
+      beachesText: "For a day by the sea without turning it into a long excursion: from Poetto to the closest beaches and bays around Cagliari and Quartu.",
       invalidDates: "The departure date must be after the arrival date.",
       tooManyGuests: `${BRAND} can accommodate a maximum of 2 guests.`,
       whatsappReady: "WhatsApp is opening with your request ready to send. Press send to confirm."
@@ -56,6 +62,17 @@
       if (element) element.textContent = value;
     });
     normalizeBrandEverywhere();
+  }
+
+  function simplifyBeachSections() {
+    const nearbyGrid = document.querySelector("#spiagge .destination-grid");
+    if (nearbyGrid && nearbyGrid.dataset.commercialTrimmed !== "true") {
+      const cards = [...nearbyGrid.querySelectorAll(":scope > .destination-card")];
+      cards.slice(5).forEach((card) => card.remove());
+      nearbyGrid.dataset.commercialTrimmed = "true";
+    }
+
+    document.getElementById("spiagge-top")?.remove();
   }
 
   function configureBookingForm() {
@@ -133,6 +150,7 @@
   }
 
   function applyFixes() {
+    simplifyBeachSections();
     applyCorrectCopy();
     configureBookingForm();
   }
