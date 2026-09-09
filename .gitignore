@@ -28,3 +28,5 @@ originali_backup/
 Thumbs.db
 .vscode/
 .idea/
+
+__pycache__/
