@@ -1,0 +1,10 @@
+/* Hospital landing pages only: reuse the commercial site's palette and layout. */
+.hospital-page h1 { max-width: 24ch; font-size: clamp(34px, 5.8vw, 64px); line-height: 1.08; overflow-wrap: anywhere; }
+.hospital-page .eyebrow { color: var(--terracotta-dark); }
+.hospital-page .hospital-access { max-width: 780px; border-left: 5px solid var(--terracotta-dark); }
+.hospital-page .hospital-access strong { font-size: 1.2rem; }
+.hospital-page .hospital-access p { margin: 8px 0 0; }
+.hospital-page .hospital-included { margin-top: 20px; }
+.hospital-page .language-switcher a { text-decoration: none; text-align: center; }
+.hospital-page nav [aria-current="page"] { text-decoration: underline; text-underline-offset: 4px; }
+.hospital-page .button.primary, .hospital-page .lang-button.active { background: var(--terracotta-dark); }
