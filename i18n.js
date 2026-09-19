@@ -417,4 +417,3 @@ window.PBV_TRANSLATIONS = {
     "privacyExternal": "WhatsApp, Google Maps und Booking.com werden nur über die entsprechenden Links geöffnet. Diese Dienste verarbeiten Daten nach ihren eigenen Datenschutzhinweisen. Bei Fragen zu den Daten deiner Anfrage wende dich an Angelo und Viviana."
   }
 };
-
