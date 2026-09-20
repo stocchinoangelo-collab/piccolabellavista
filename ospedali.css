@@ -8,3 +8,11 @@
 .hospital-page .language-switcher a { text-decoration: none; text-align: center; }
 .hospital-page nav [aria-current="page"] { text-decoration: underline; text-underline-offset: 4px; }
 .hospital-page .button.primary, .hospital-page .lang-button.active { background: var(--terracotta-dark); }
+
+.hospital-page .hospital-rates { background: var(--warm-white, #fffaf3); }
+.hospital-page .rate-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 16px; margin: 28px 0 20px; }
+.hospital-page .rate-grid article { display: grid; gap: 8px; padding: 22px; border: 1px solid rgba(0,0,0,.12); border-radius: 16px; background: #fff; }
+.hospital-page .rate-grid strong { color: var(--terracotta-dark); }
+.hospital-page .rate-grid span { font-size: clamp(1.25rem, 2vw, 1.6rem); font-weight: 700; }
+.hospital-page .rate-grid small { font-weight: 700; }
+.hospital-page .rate-note { max-width: 78ch; margin: 0 0 24px; }
