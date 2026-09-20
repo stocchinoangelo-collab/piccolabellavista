@@ -16,3 +16,6 @@
 .hospital-page .rate-grid span { font-size: clamp(1.25rem, 2vw, 1.6rem); font-weight: 700; }
 .hospital-page .rate-grid small { font-weight: 700; }
 .hospital-page .rate-note { max-width: 78ch; margin: 0 0 24px; }
+
+.hospital-page .features article { display: flex; flex-direction: column; align-items: flex-start; }
+.hospital-page .hospital-map-link { margin-top: auto; padding: 10px 14px; font-size: .92rem; }
