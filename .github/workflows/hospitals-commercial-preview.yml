@@ -1,0 +1,41 @@
+name: Hospital commercial preview QA
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [feature/soggiorni-ospedali-commerciale]
+permissions:
+  contents: read
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: npm install --no-save --package-lock=false playwright@1.58.2 axe-core@4.10.3
+      - run: npx playwright install --with-deps chromium
+      - name: Existing source checks
+        run: python -m unittest discover -s tests -p '*_test.py'
+      - name: Existing browser checks and new landing pages
+        run: |
+          mkdir -p qa-baseline
+          git show 3e002276fdf3026e910631401dd588011b7c13ba:index.html > qa-baseline/index.html
+          python -m http.server 8765 &
+          node tests/browser_test.cjs
+          node tests/hospitals-commercial.cjs
+      - name: Package preview without publishing
+        if: always()
+        run: |
+          mkdir -p artifacts/site-preview
+          cp *.html *.css *.js sitemap.xml artifacts/site-preview/
+          cp -r assets artifacts/site-preview/
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: commercial-hospitals-preview
+          path: artifacts/

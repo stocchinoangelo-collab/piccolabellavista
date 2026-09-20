@@ -1,5 +1,6 @@
 window.PBV_TRANSLATIONS = {
   "it": {
+    "navHospitals": "Soggiorni vicino agli ospedali",
     "heroPlace": "Soggiorno a Pirri, Cagliari",
     "heroLead": "Un soggiorno luminoso a Pirri, con vista verso il mare e il Poetto.",
     "heroAlt": "Accoglienza diretta di Angelo e Viviana e un Concierge digitale riservato agli ospiti per vivere meglio Cagliari.",
@@ -138,6 +139,7 @@ window.PBV_TRANSLATIONS = {
     "privacyExternal": "WhatsApp, Google Maps e Booking.com si aprono solo quando scegli i relativi collegamenti. Questi servizi gestiscono i dati secondo le proprie informative. Per informazioni sui dati della tua richiesta, scrivi ad Angelo e Viviana."
   },
   "en": {
+    "navHospitals": "Stays near hospitals",
     "heroPlace": "Stay in Pirri, Cagliari",
     "heroLead": "A bright stay in Pirri, with views towards the sea and Poetto.",
     "heroAlt": "Personal hospitality from Angelo and Viviana and a private digital Concierge to help you enjoy Cagliari.",
@@ -276,6 +278,7 @@ window.PBV_TRANSLATIONS = {
     "privacyExternal": "WhatsApp, Google Maps and Booking.com open only when you choose their links. These services handle data according to their own privacy policies. For information about your enquiry data, contact Angelo and Viviana."
   },
   "de": {
+    "navHospitals": "Aufenthalte in Krankenhausnähe",
     "heroPlace": "Urlaub in Pirri, Cagliari",
     "heroLead": "Ein heller Rückzugsort in Pirri, mit Blick Richtung Meer und Poetto.",
     "heroAlt": "Persönliche Gastfreundschaft von Angelo und Viviana und ein digitaler Concierge exklusiv für Gäste, um Cagliari zu entdecken.",

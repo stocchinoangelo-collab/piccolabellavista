@@ -109,6 +109,8 @@
       button.classList.toggle('active', active);
       button.setAttribute('aria-pressed', String(active));
     });
+    const hospitalLink = document.querySelector('[data-i18n="navHospitals"]');
+    if (hospitalLink) hospitalLink.href = 'soggiorni-ospedali' + (language === 'it' ? '' : '-' + language) + '.html';
     if (message) message.textContent = '';
     try { localStorage.setItem('pbv-lingua', language); } catch { /* Storage is optional. */ }
   }
