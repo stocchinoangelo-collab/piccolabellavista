@@ -19,7 +19,7 @@ const path=require('node:path');
    assert.equal(await page.locator('html').getAttribute('lang'),lang);
    assert.equal(await page.locator('h1').count(),1);
    assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`overflow ${width}/${lang}`);
-   const source=await page.content();assert(!/Via Bellavista|tel:|maps\/|609500|400101|6655|undefined/.test(source));
+   const source=await page.content();assert(!/Via Bellavista|tel:|609500|400101|6655|undefined/.test(source));
    assert.equal(await page.locator('.features article').count(),3);
    const mapLinks=await page.locator('.hospital-map-link').evaluateAll(aa=>aa.map(a=>({text:a.textContent.trim(),href:a.href,target:a.target,rel:a.rel})));
    assert.equal(mapLinks.length,3);assert.equal(new Set(mapLinks.map(a=>a.text)).size,3);assert(mapLinks.every(a=>a.href.startsWith('https://www.google.com/maps/search/')&&a.target==='_blank'&&a.rel.includes('noopener')));for(const name of ['Businco','Microcitemico','Brotzu'])assert(mapLinks.some(a=>a.text.includes(name)),`named map button ${name}`);
