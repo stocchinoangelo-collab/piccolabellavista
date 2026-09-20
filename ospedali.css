@@ -23,16 +23,16 @@
   margin-top: auto;
   padding: 11px 15px;
   font-size: .92rem;
-  color: #fff;
-  background: var(--terracotta-dark);
-  border-color: var(--terracotta-dark);
+  color: #fff !important;
+  background: var(--terracotta-dark) !important;
+  border-color: var(--terracotta-dark) !important;
   box-shadow: 0 8px 20px rgba(82, 50, 30, .16);
 }
 .hospital-page .hospital-map-link:hover,
 .hospital-page .hospital-map-link:focus-visible {
-  color: #fff;
-  background: #7a3d27;
-  border-color: #7a3d27;
+  color: #fff !important;
+  background: #7a3d27 !important;
+  border-color: #7a3d27 !important;
 }
 
 @media (max-width: 1100px) {
