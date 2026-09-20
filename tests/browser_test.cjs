@@ -22,10 +22,10 @@ const assert=require('node:assert/strict');const fs=require('node:fs');const pat
    if(width!==768){await page.locator('#prenota').screenshot({style:'.site-header { visibility: hidden; }',path:path.join(evidence,`${width}-${lang}-form.png`)});await page.evaluate(()=>scrollTo(0,0));}
    results.push(`${width}px ${lang}: layout, translations, cards and form OK`);
   }
-  // Scroll through the page to trigger all lazy images and inspect decoding.
-  for(let y=0;y<await page.evaluate(()=>document.body.scrollHeight);y+=800) await page.evaluate(y=>scrollTo(0,y),y);
-  await page.waitForTimeout(200);
-  const broken=await page.locator('img').evaluateAll(nodes=>nodes.filter(n=>!n.complete||!n.naturalWidth).map(n=>n.src)); assert.deepEqual(broken,[]);
+  // Request every lazy image, then wait for loading to finish before checking decoding.
+  await page.locator('img').evaluateAll(nodes=>nodes.forEach(n=>n.loading='eager'));
+  await page.waitForFunction(()=>[...document.images].every(img=>img.complete),null,{timeout:5000});
+  const broken=await page.locator('img').evaluateAll(nodes=>nodes.filter(n=>!n.naturalWidth).map(n=>n.src)); assert.deepEqual(broken,[]);
   assert.deepEqual(errors,[]);assert.deepEqual(external,[]);
   await context.close();
  }
