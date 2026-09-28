@@ -5,7 +5,7 @@ const assert=require('node:assert/strict');const fs=require('node:fs');const pat
  const browser=await chromium.launch({headless:true,...(process.env.PBV_CHROMIUM?{executablePath:process.env.PBV_CHROMIUM,args:['--no-sandbox','--disable-dev-shm-usage','--no-zygote','--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']}: {})});
  const root=process.env.PBV_TEST_URL||'http://127.0.0.1:8765';
  const results=[];const evidence=process.env.PBV_QA_DIR||'/tmp/pbv-qa';fs.mkdirSync(evidence,{recursive:true});
- for(const width of [390,768,1440]) {
+ for(const width of [320,360,390,768,1440]) {
   const context=await browser.newContext({viewport:{width,height:900},reducedMotion:'reduce'});const page=await context.newPage();const errors=[],external=[];
   page.on('pageerror',error=>errors.push(String(error)));
   page.on('request',request=>{if(!request.url().startsWith(root))external.push(request.url())});
@@ -17,6 +17,8 @@ const assert=require('node:assert/strict');const fs=require('node:fs');const pat
    assert.equal(await page.locator('#cagliari .destination-card').count(),4);
    assert.equal(await page.locator('#bookingForm input').count(),4);
    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true,`overflow ${width}/${lang}`);
+   const clippedHeroText=await page.locator('.hero-content h1, .hero-content .eyebrow, .hero-content .lead, .hero-content .lead-alt').evaluateAll(nodes=>nodes.filter(n=>n.scrollWidth>n.clientWidth+1).map(n=>({tag:n.tagName,text:n.textContent.trim().slice(0,60),scrollWidth:n.scrollWidth,clientWidth:n.clientWidth})));
+   assert.deepEqual(clippedHeroText,[],`hero text clipped ${width}/${lang}`);
    const missing=await page.locator('[data-i18n]').evaluateAll(nodes=>nodes.filter(n=>!n.textContent.trim()||n.textContent==='undefined').length); assert.equal(missing,0);
    await page.screenshot({path:path.join(evidence,`${width}-${lang}-hero.png`)});
    if(width!==768){await page.locator('#prenota').screenshot({style:'.site-header { visibility: hidden; }',path:path.join(evidence,`${width}-${lang}-form.png`)});await page.evaluate(()=>scrollTo(0,0));}
