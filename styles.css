@@ -1305,14 +1305,36 @@ summary:focus-visible {
 }
 
 
-/* CORREZIONE TITOLO MOBILE 2026-07-11 */
+/* CORREZIONE HERO MOBILE / WEBVIEW INSTAGRAM 2026-09-28
+   Evita che il titolo senza spazi allarghi la colonna Grid e faccia
+   tagliare titolo, occhiello e testi nei viewport stretti (320–390px). */
 @media (max-width: 520px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hero-content,
+  .quick-card {
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
+  }
+
   .hero h1 {
     max-width: 100%;
-    font-size: clamp(30px, 10.4vw, 45px);
-    line-height: 1;
-    letter-spacing: -0.025em;
-    white-space: nowrap;
+    font-size: clamp(25px, 8vw, 34px) !important;
+    line-height: 1.04 !important;
+    letter-spacing: -0.035em;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .hero .eyebrow,
+  .hero .lead,
+  .hero .lead-alt {
+    max-width: 100%;
+    min-width: 0;
+    overflow-wrap: anywhere;
   }
 }
 
