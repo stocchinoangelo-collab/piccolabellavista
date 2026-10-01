@@ -1390,3 +1390,47 @@ summary:focus-visible {
       }
 
 #foto {margin-top: 2rem;} .privacy-note {font-size: .9rem;} .features > article {min-width:0;}
+
+
+/* ------------------------------------------------------------
+   SOCIAL — Instagram e Facebook (contatti + piede di pagina)
+   Stesso stile "solo bordo" di Email e Booking: visibili ma
+   non in competizione con WhatsApp.
+   ------------------------------------------------------------ */
+.contact-grid a[href*="instagram.com"],
+.contact-grid a[href*="facebook.com"] {
+  gap: 8px;
+  background: transparent !important;
+  color: var(--pbv-terracotta) !important;
+  border: 1.5px solid var(--pbv-terracotta) !important;
+}
+
+.contact-grid a svg,
+.footer-social svg {
+  flex-shrink: 0;
+}
+
+.footer-social {
+  display: flex;
+  gap: 10px;
+  margin: 0;
+}
+
+.footer-social a {
+  display: inline-flex;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: var(--terracotta);
+  border: 1.5px solid var(--line);
+  transition: background 180ms ease, color 180ms ease;
+}
+
+.footer-social a:hover,
+.footer-social a:focus-visible {
+  color: #fffaf2;
+  background: var(--terracotta);
+  border-color: var(--terracotta);
+}
