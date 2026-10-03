@@ -166,8 +166,14 @@
     sending = true;
     const go = () => window.location.assign(target);
     // Count the request in the visit statistics, then open WhatsApp even if counting fails or is slow.
-    if (window.umami && typeof window.umami.track === 'function') {
-      Promise.race([Promise.resolve(window.umami.track('modulo-inviato')), new Promise(resolve => setTimeout(resolve, 600))]).then(go, go);
+    let counted = null;
+    try {
+      if (window.umami && typeof window.umami.track === 'function') counted = Promise.resolve(window.umami.track('modulo-inviato'));
+    } catch (error) {
+      counted = null; // Statistics must never stop the request.
+    }
+    if (counted) {
+      Promise.race([counted, new Promise(resolve => setTimeout(resolve, 600))]).then(go, go);
     } else {
       go();
     }
