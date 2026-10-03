@@ -136,7 +136,7 @@ window.PBV_TRANSLATIONS = {
     "privacyTitle": "Dati e servizi esterni",
     "privacyForm": "Il modulo prepara sul dispositivo nome, date, numero di ospiti ed eventuali note. Questo sito statico non registra la richiesta in un archivio prenotazioni. Quando prosegui, il testo viene incluso nel collegamento WhatsApp; l’invio ad Angelo e Viviana avviene quando premi invio nell’app. Puoi contattarli anche via email a piccolabellavista1@gmail.com.",
     "privacyPurpose": "Nome, date e messaggio servono per rispondere alla richiesta e organizzare l’eventuale soggiorno. Non inserire documenti, dati di pagamento o informazioni sanitarie nel modulo.",
-    "privacyStorage": "La preferenza di lingua viene salvata nel browser con la chiave pbv-lingua; puoi cancellarla eliminando i dati del sito. Non sono aggiunti strumenti di analisi o pubblicità. Il servizio di hosting può trattare dati tecnici di connessione.",
+    "privacyStorage": "La preferenza di lingua viene salvata nel browser con la chiave pbv-lingua; puoi cancellarla eliminando i dati del sito. Per contare visite e clic sui pulsanti il sito usa Umami, uno strumento di statistiche che non usa cookie e non identifica i singoli visitatori: registra in forma aggregata pagina visitata, provenienza, tipo di dispositivo e paese. Non sono presenti strumenti di pubblicità. Il servizio di hosting può trattare dati tecnici di connessione.",
     "privacyExternal": "WhatsApp, Google Maps e Booking.com si aprono solo quando scegli i relativi collegamenti. Questi servizi gestiscono i dati secondo le proprie informative. Per informazioni sui dati della tua richiesta, scrivi ad Angelo e Viviana."
   },
   "en": {
@@ -276,7 +276,7 @@ window.PBV_TRANSLATIONS = {
     "privacyTitle": "Data and external services",
     "privacyForm": "The form prepares your name, dates, guest count and optional notes on your device. This static website does not record the enquiry in a booking database. When you continue, the text is included in the WhatsApp link; it is sent to Angelo and Viviana when you press send in the app. You can also contact them by email at piccolabellavista1@gmail.com.",
     "privacyPurpose": "Your name, dates and message are used to answer your enquiry and arrange a possible stay. Do not include identity documents, payment details or health information in the form.",
-    "privacyStorage": "Your language preference is stored in your browser under pbv-lingua; you can remove it by clearing site data. No analytics or advertising tools are added. The hosting service may process technical connection data.",
+    "privacyStorage": "Your language preference is stored in your browser under pbv-lingua; you can remove it by clearing site data. To count visits and button clicks the site uses Umami, a statistics tool that uses no cookies and does not identify individual visitors: it records, in aggregate form, the page visited, the referrer, the device type and the country. No advertising tools are present. The hosting service may process technical connection data.",
     "privacyExternal": "WhatsApp, Google Maps and Booking.com open only when you choose their links. These services handle data according to their own privacy policies. For information about your enquiry data, contact Angelo and Viviana."
   },
   "de": {
@@ -416,7 +416,7 @@ window.PBV_TRANSLATIONS = {
     "privacyTitle": "Daten und externe Dienste",
     "privacyForm": "Das Formular bereitet Name, Reisedaten, Gästezahl und optionale Anmerkungen auf deinem Gerät vor. Diese statische Website speichert die Anfrage nicht in einer Buchungsdatenbank. Beim Fortfahren wird der Text in den WhatsApp-Link aufgenommen; an Angelo und Viviana wird er erst beim Absenden in der App gesendet. Du kannst sie auch per E-Mail an piccolabellavista1@gmail.com kontaktieren.",
     "privacyPurpose": "Name, Reisedaten und Nachricht dienen dazu, deine Anfrage zu beantworten und einen möglichen Aufenthalt zu organisieren. Bitte keine Ausweisdokumente, Zahlungs- oder Gesundheitsdaten im Formular angeben.",
-    "privacyStorage": "Deine Sprachwahl wird im Browser unter pbv-lingua gespeichert und kann durch Löschen der Websitedaten entfernt werden. Es werden keine Analyse- oder Werbetools eingebunden. Der Hostingdienst kann technische Verbindungsdaten verarbeiten.",
+    "privacyStorage": "Deine Sprachwahl wird im Browser unter pbv-lingua gespeichert und kann durch Löschen der Websitedaten entfernt werden. Zur Zählung von Besuchen und Klicks auf Schaltflächen nutzt die Website Umami, ein Statistik-Tool ohne Cookies, das einzelne Besucher nicht identifiziert: Erfasst werden in zusammengefasster Form die besuchte Seite, die Herkunft, der Gerätetyp und das Land. Werbetools sind nicht vorhanden. Der Hostingdienst kann technische Verbindungsdaten verarbeiten.",
     "privacyExternal": "WhatsApp, Google Maps und Booking.com werden nur über die entsprechenden Links geöffnet. Diese Dienste verarbeiten Daten nach ihren eigenen Datenschutzhinweisen. Bei Fragen zu den Daten deiner Anfrage wende dich an Angelo und Viviana."
   }
 };
