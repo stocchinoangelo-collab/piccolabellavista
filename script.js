@@ -137,10 +137,13 @@
     form.elements.departure.min = calendarDate(next);
   }
   form.elements.arrival.addEventListener('change', updateLimits);
-  window.addEventListener('pageshow', updateLimits);
+  // One request per submit: ignore repeated clicks while WhatsApp is opening.
+  let sending = false;
+  window.addEventListener('pageshow', () => { sending = false; updateLimits(); });
   updateLimits();
   form.addEventListener('submit', event => {
     event.preventDefault();
+    if (sending) return;
     updateLimits();
     const values = Object.fromEntries(new FormData(form));
     const text = copy[language];
@@ -160,6 +163,7 @@
     message.className = 'form-message success';
     // Same-tab navigation works without relying on a popup being allowed.
     const target = `https://wa.me/393931104422?text=${encodeURIComponent(lines.join('\n'))}`;
+    sending = true;
     const go = () => window.location.assign(target);
     // Count the request in the visit statistics, then open WhatsApp even if counting fails or is slow.
     if (window.umami && typeof window.umami.track === 'function') {
