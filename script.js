@@ -115,10 +115,23 @@
     if (message) message.textContent = '';
     try { localStorage.setItem('pbv-lingua', language); } catch { /* Storage is optional. */ }
   }
-  document.querySelectorAll('[data-lang]').forEach(button => button.addEventListener('click', () => applyLanguage(button.dataset.lang)));
+  // The home page has one address per language, so search engines can read each one.
+  const homePages = { it: './', en: 'index-en.html', de: 'index-de.html' };
+  const isHome = document.body.hasAttribute('data-home');
+  const pageLanguage = document.documentElement.lang;
+  document.querySelectorAll('[data-lang]').forEach(button => button.addEventListener('click', () => {
+    const chosen = button.dataset.lang;
+    if (isHome && Object.hasOwn(homePages, chosen)) {
+      if (chosen === language) return;
+      try { localStorage.setItem('pbv-lingua', chosen); } catch { /* Storage is optional. */ }
+      window.location.assign(homePages[chosen] + window.location.hash);
+      return;
+    }
+    applyLanguage(chosen);
+  }));
   let saved;
   try { saved = localStorage.getItem('pbv-lingua'); } catch { /* Storage is optional. */ }
-  applyLanguage(saved || 'it');
+  applyLanguage(isHome ? pageLanguage : (saved || 'it'));
   if (!form) return;
   // Calendar dates use the guest's local day; UTC conversion can shift it.
   function calendarDate(date) {
