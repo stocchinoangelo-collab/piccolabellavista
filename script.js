@@ -81,6 +81,7 @@
     conciergeAccess.href = 'https://piccolabellavista-guida-ospiti.pages.dev/';
     conciergeAccess.target = '_blank';
     conciergeAccess.rel = 'noreferrer';
+    conciergeAccess.dataset.umamiEvent = 'concierge';
     wrap.append(conciergeAccess);
     conciergeContainer.append(wrap);
   }
@@ -158,7 +159,14 @@
     message.textContent = text.ready;
     message.className = 'form-message success';
     // Same-tab navigation works without relying on a popup being allowed.
-    window.location.assign(`https://wa.me/393931104422?text=${encodeURIComponent(lines.join('\n'))}`);
+    const target = `https://wa.me/393931104422?text=${encodeURIComponent(lines.join('\n'))}`;
+    const go = () => window.location.assign(target);
+    // Count the request in the visit statistics, then open WhatsApp even if counting fails or is slow.
+    if (window.umami && typeof window.umami.track === 'function') {
+      Promise.race([Promise.resolve(window.umami.track('modulo-inviato')), new Promise(resolve => setTimeout(resolve, 600))]).then(go, go);
+    } else {
+      go();
+    }
   });
   form.querySelector('[type="submit"]').disabled = false;
 })();
