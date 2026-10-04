@@ -23,7 +23,7 @@ const path=require('node:path');
    assert.equal(mapLinks.length,4);assert.equal(new Set(mapLinks.map(a=>a.href)).size,4);assert(mapLinks.every(a=>a.href.startsWith('https://www.google.com/maps/dir/')&&a.href.includes('destination=')&&a.href.includes('travelmode=driving')&&a.target==='_blank'&&a.rel.includes('noopener')));for(const name of ['Businco','Microcitemico','Brotzu'])assert(mapLinks.some(a=>a.text.includes(name)),`named map button ${name}`);assert(mapLinks.some(a=>a.href.includes('Duilio%20Casula')),`Policlinico directions button`);const mapStyles=await page.locator('.hospital-map-link').evaluateAll(aa=>aa.map(a=>({background:getComputedStyle(a).backgroundColor,color:getComputedStyle(a).color})));assert(mapStyles.every(s=>s.background!=='rgba(0, 0, 0, 0)'));
    assert.equal(await page.locator('.rate-grid article').count(),4);
    const rateText=await page.locator('.hospital-rates').innerText();
-   for(const rate of (lang==='en'?['€70','€65','€61.75','€58.50']:['70 €','65 €','61,75 €','58,50 €']))assert(rateText.includes(rate),`missing rate ${rate} in ${lang}`);
+   for(const rate of (lang==='en'?['€65','€60','€57','€54']:['65 €','60 €','57 €','54 €']))assert(rateText.includes(rate),`missing rate ${rate} in ${lang}`);
    const text=await page.locator('main').innerText();for(const word of ['Businco','Microcitemico','Brotzu','Duilio','3–4','7','14','Angelo','Viviana'])assert(text.includes(word));
    assert.equal(await page.locator('a[href="https://wa.me/393931104422"]').count(),3);
    assert.equal(await page.locator('link[rel="alternate"]').count(),4);
