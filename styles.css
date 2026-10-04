@@ -1439,3 +1439,49 @@ summary:focus-visible {
   background: var(--terracotta);
   border-color: var(--terracotta);
 }
+
+/* Recensioni degli ospiti */
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin: 24px 0 14px;
+}
+
+.review-card {
+  margin: 0;
+  padding: 20px 22px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--terracotta);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.review-card blockquote {
+  margin: 0;
+  color: var(--ink);
+  font-size: 1.02rem;
+  line-height: 1.55;
+}
+
+.review-card figcaption {
+  color: var(--muted);
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.reviews-note {
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+@media (max-width: 860px) {
+  .reviews-grid {
+    grid-template-columns: 1fr;
+  }
+}
