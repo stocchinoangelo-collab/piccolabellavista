@@ -6,7 +6,7 @@ const assert=require('node:assert/strict');const fs=require('node:fs');const pat
  const root=process.env.PBV_TEST_URL||'http://127.0.0.1:8765';
  const results=[];const evidence=process.env.PBV_QA_DIR||'/tmp/pbv-qa';fs.mkdirSync(evidence,{recursive:true});
  for(const width of [320,360,390,768,1440]) {
-  const context=await browser.newContext({viewport:{width,height:900},reducedMotion:'reduce'});const page=await context.newPage();const errors=[],external=[];
+  const context=await browser.newContext({viewport:{width,height:900},reducedMotion:'reduce'});await context.route(/^https:\/\/[^/]*umami\.(is|dev)\//,route=>route.fulfill({status:200,contentType:'application/javascript',body:''}));const page=await context.newPage();const errors=[],external=[];
   page.on('pageerror',error=>errors.push(String(error)));
   page.on('request',request=>{if(!request.url().startsWith(root))external.push(request.url())});
   await page.goto(root);await page.evaluate(()=>document.fonts.ready);
@@ -30,10 +30,10 @@ const assert=require('node:assert/strict');const fs=require('node:fs');const pat
   await page.locator('img').evaluateAll(nodes=>nodes.forEach(n=>n.loading='eager'));
   await page.waitForFunction(()=>[...document.images].every(img=>img.complete),null,{timeout:5000});
   const broken=await page.locator('img').evaluateAll(nodes=>nodes.filter(n=>!n.naturalWidth).map(n=>n.src)); assert.deepEqual(broken,[]);
-  assert.deepEqual(errors,[]);assert.deepEqual(external.filter(url=>!url.startsWith('https://cloud.umami.is/')),[]);
+  assert.deepEqual(errors,[]);assert.deepEqual(external.filter(url=>!/^https:\/\/[^/]*umami\.(is|dev)\//.test(url)),[]);
   await context.close();
  }
- const context=await browser.newContext();const page=await context.newPage();await page.goto(root);
+ const context=await browser.newContext();await context.route(/^https:\/\/[^/]*umami\.(is|dev)\//,route=>route.fulfill({status:200,contentType:'application/javascript',body:''}));const page=await context.newPage();await page.goto(root);
  let requests=[];await page.route('https://wa.me/**',async route=>{requests.push(route.request().url());await route.fulfill({body:'WhatsApp intercepted by test'});});
  for(const lang of ['it','en','de']){
   await page.goto(root);await page.click(`[data-lang="${lang}"]`);

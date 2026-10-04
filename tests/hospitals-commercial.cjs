@@ -9,6 +9,7 @@ const path=require('node:path');
  const results=[];fs.mkdirSync('artifacts',{recursive:true});
  for(const width of [390,768,1440]){
   const context=await browser.newContext({viewport:{width,height:900}});
+  await context.route(/^https:\/\/[^/]*umami\.(is|dev)\//,route=>route.fulfill({status:200,contentType:'application/javascript',body:''}));
   const page=await context.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
   for(const lang of ['it','en','de']){
    const file='soggiorni-ospedali'+(lang==='it'?'':'-'+lang)+'.html';
