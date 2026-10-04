@@ -1485,3 +1485,15 @@ summary:focus-visible {
     grid-template-columns: 1fr;
   }
 }
+
+/* Vantaggio del prezzo diretto */
+.booking-copy .booking-direct {
+  margin: 0 0 14px;
+  padding: 12px 16px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--olive);
+  border-radius: 8px;
+  color: var(--ink);
+  font-weight: 700;
+}
