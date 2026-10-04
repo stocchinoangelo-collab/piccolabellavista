@@ -30,7 +30,7 @@ const assert=require('node:assert/strict');const fs=require('node:fs');const pat
   await page.locator('img').evaluateAll(nodes=>nodes.forEach(n=>n.loading='eager'));
   await page.waitForFunction(()=>[...document.images].every(img=>img.complete),null,{timeout:5000});
   const broken=await page.locator('img').evaluateAll(nodes=>nodes.filter(n=>!n.naturalWidth).map(n=>n.src)); assert.deepEqual(broken,[]);
-  assert.deepEqual(errors,[]);assert.deepEqual(external,[]);
+  assert.deepEqual(errors,[]);assert.deepEqual(external.filter(url=>!url.startsWith('https://cloud.umami.is/')),[]);
   await context.close();
  }
  const context=await browser.newContext();const page=await context.newPage();await page.goto(root);

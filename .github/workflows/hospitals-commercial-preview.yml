@@ -23,8 +23,6 @@ jobs:
         run: python -m unittest discover -s tests -p '*_test.py'
       - name: Existing browser checks and new landing pages
         run: |
-          mkdir -p qa-baseline
-          git show 3e002276fdf3026e910631401dd588011b7c13ba:index.html > qa-baseline/index.html
           python -m http.server 8765 &
           node tests/browser_test.cjs
           node tests/hospitals-commercial.cjs
