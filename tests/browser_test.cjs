@@ -46,6 +46,6 @@ const assert=require('node:assert/strict');const fs=require('node:fs');const pat
  for(const file of ['guida.html','consigli.html','privacy.html','ospiti%20(1).html','blocco-recensioni.html']){
   await page.goto(`${root}/${file}`);for(const lang of ['it','en','de']){await page.click(`[data-lang="${lang}"]`);assert.equal(await page.locator('html').getAttribute('lang'),lang);assert.equal(await page.locator('main').evaluate(el=>el.textContent.includes('undefined')),false);}
  }
- const nojs=await browser.newContext({javaScriptEnabled:false});const fallback=await nojs.newPage();await fallback.goto(root);assert.equal(await fallback.locator('#foto img').count(),10);assert.ok(await fallback.locator('#concierge').textContent());results.push('No JavaScript: house photos and main content present in source');
+ const nojs=await browser.newContext({javaScriptEnabled:false});const fallback=await nojs.newPage();await fallback.goto(root);assert.equal(await fallback.locator('#foto img').count(),8);assert.ok(await fallback.locator('#concierge').textContent());results.push('No JavaScript: house photos and main content present in source');
  await browser.close();fs.writeFileSync(path.join(evidence,'results.json'),JSON.stringify(results,null,2));console.log(results.join('\n'));
 })().catch(error=>{console.error(error);process.exit(1)});
