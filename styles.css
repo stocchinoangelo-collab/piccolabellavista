@@ -1583,7 +1583,7 @@ summary:focus-visible {
   }
   .language-switcher .lang-button {
     min-height: 52px;
-    min-width: 44px;
+    min-width: 52px;
   }
   .site-header .brand {
     display: inline-flex;
