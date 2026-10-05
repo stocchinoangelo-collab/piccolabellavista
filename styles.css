@@ -1497,3 +1497,29 @@ summary:focus-visible {
   color: var(--ink);
   font-weight: 700;
 }
+
+
+/* ============================================
+   VISTA IN PRIMO PIANO SU TELEFONO (2026-10)
+   Su schermi stretti l'apertura e' molto alta e la foto, usata
+   come sfondo dell'intero blocco, mostrava quasi solo cielo.
+   Qui la vista diventa una fascia pulita in cima, senza velo,
+   e il testo scorre sotto su fondo scuro pieno.
+   ============================================ */
+@media (max-width: 820px) {
+  .hero {
+    --hero-band: clamp(220px, 62vw, 440px);
+    padding-top: calc(var(--hero-band) + 22px) !important;
+    background: linear-gradient(180deg, #432818 0%, #432818 35%, #5b3423 100%);
+  }
+  .hero::before {
+    inset: 0 0 auto 0 !important;
+    height: var(--hero-band);
+    background:
+      linear-gradient(to bottom, rgba(67, 40, 24, 0) 68%, #432818 100%),
+      url("assets/foto/booking/vista-hero-telefono.jpg") center / cover no-repeat !important;
+  }
+  .hero::after {
+    display: none;
+  }
+}
