@@ -1523,3 +1523,31 @@ summary:focus-visible {
     display: none;
   }
 }
+
+
+/* ============================================
+   INTESTAZIONE SU TELEFONO (2026-10)
+   Logo e lingue sulla stessa riga, menu sotto su una riga
+   scorrevole con una sfumatura a destra che fa capire che
+   continua. Recupera una riga di altezza su ogni schermata.
+   ============================================ */
+@media (max-width: 820px) {
+  .site-header {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas: "brand lang" "nav nav";
+    align-items: center !important;
+  }
+  .site-header .brand { grid-area: brand; }
+  .site-header .header-tools { display: contents !important; }
+  .site-header .language-switcher {
+    grid-area: lang;
+    transform-origin: right center;
+  }
+  .site-header nav {
+    grid-area: nav;
+    padding-right: 34px !important;
+    -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 40px), transparent);
+    mask-image: linear-gradient(to right, #000 calc(100% - 40px), transparent);
+  }
+}
