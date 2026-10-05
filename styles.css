@@ -1551,3 +1551,51 @@ summary:focus-visible {
     mask-image: linear-gradient(to right, #000 calc(100% - 40px), transparent);
   }
 }
+
+/* ------------------------------------------------------------
+   FOTO DI APERTURA IN WEBP
+   I browser che conoscono image-set con type() conoscono anche
+   il WebP: per loro si usa il file piu leggero. Gli altri
+   restano sul JPEG dichiarato sopra.
+   ------------------------------------------------------------ */
+@supports (background-image: image-set(url("a.webp") type("image/webp"))) {
+  .hero::before {
+    --hero-image: url("assets/foto/booking/vista-verso-poetto-mare-hero.webp");
+  }
+  @media (max-width: 820px) {
+    .hero::before {
+      background:
+        linear-gradient(to bottom, rgba(67, 40, 24, 0) 68%, #432818 100%),
+        url("assets/foto/booking/vista-hero-telefono.webp") center / cover no-repeat !important;
+    }
+  }
+}
+
+/* ------------------------------------------------------------
+   PULSANTI PIU FACILI DA TOCCARE SU TELEFONO
+   Menu, lingue e link in fondo: almeno 44 punti di altezza.
+   ------------------------------------------------------------ */
+@media (max-width: 820px) {
+  .site-header nav a {
+    display: inline-flex !important;
+    align-items: center;
+    min-height: 44px;
+  }
+  .language-switcher .lang-button {
+    min-height: 52px;
+    min-width: 52px;
+  }
+  .site-header .brand {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+  footer a {
+    display: inline-block;
+    padding-block: 10px;
+  }
+  a[data-i18n="privacyLink"] {
+    display: inline-block;
+    padding-block: 10px;
+  }
+}
