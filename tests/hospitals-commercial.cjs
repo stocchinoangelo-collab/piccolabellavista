@@ -28,6 +28,7 @@ const path=require('node:path');
    assert.equal(await page.locator('a[href="https://wa.me/393931104422"]').count(),3);
    assert.equal(await page.locator('link[rel="alternate"]').count(),4);
    const access=await page.locator('.hospital-access').boundingBox();assert(access.y<900,'Stair warning in first viewport');
+   await page.locator('.hospital-photos').scrollIntoViewIfNeeded();await page.waitForFunction(()=>[...document.images].every(i=>i.complete&&i.naturalWidth));await page.evaluate(()=>scrollTo(0,0));
    assert.deepEqual(await page.locator('img').evaluateAll(ii=>ii.filter(i=>!i.complete||!i.naturalWidth).map(i=>i.src)),[]);
    await page.addScriptTag({path:require.resolve('axe-core/axe.min.js')});
    const a11y=await page.evaluate(async()=>await axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21aa']}}));
