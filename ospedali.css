@@ -43,7 +43,8 @@
 }
 
 /* Foto e recensione nella pagina ospedali */
-.hospital-page .hospital-photos .photo-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.hospital-page .hospital-photos .photo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 780px; }
+.hospital-page .hospital-photos-more { margin: 18px 0 0; }
 .hospital-page .hospital-photos .photo-card img { width: 100%; height: auto; aspect-ratio: 4 / 3 !important; object-fit: cover; border-radius: 0 !important; }
 .hospital-page .hospital-photos .photo-card figcaption { padding: 10px 12px 12px; font-size: .92rem; }
 .hospital-page .hospital-review { max-width: 780px; margin: 28px 0 0; }
