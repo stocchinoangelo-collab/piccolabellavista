@@ -1,5 +1,6 @@
 window.PBV_TRANSLATIONS = {
   "it": {
+    "tipsToggle": "Spiagge, Cagliari e servizi vicino casa: apri i nostri consigli",
     "navHospitals": "Soggiorni vicino agli ospedali",
     "heroPlace": "Soggiorno a Pirri, Cagliari",
     "heroLead": "Un soggiorno luminoso a Pirri, con vista verso il mare e il Poetto.",
@@ -147,6 +148,7 @@ window.PBV_TRANSLATIONS = {
     "privacyExternal": "WhatsApp, Google Maps e Booking.com si aprono solo quando scegli i relativi collegamenti. Questi servizi gestiscono i dati secondo le proprie informative. Per informazioni sui dati della tua richiesta, scrivi ad Angelo e Viviana."
   },
   "en": {
+    "tipsToggle": "Beaches, Cagliari and services near the flat: open our tips",
     "navHospitals": "Stays near hospitals",
     "heroPlace": "Stay in Pirri, Cagliari",
     "heroLead": "A bright stay in Pirri, with views towards the sea and Poetto.",
@@ -294,6 +296,7 @@ window.PBV_TRANSLATIONS = {
     "privacyExternal": "WhatsApp, Google Maps and Booking.com open only when you choose their links. These services handle data according to their own privacy policies. For information about your enquiry data, contact Angelo and Viviana."
   },
   "de": {
+    "tipsToggle": "Strände, Cagliari und Services in der Nähe: unsere Tipps öffnen",
     "navHospitals": "Aufenthalte in Krankenhausnähe",
     "heroPlace": "Urlaub in Pirri, Cagliari",
     "heroLead": "Ein heller Rückzugsort in Pirri, mit Blick Richtung Meer und Poetto.",
