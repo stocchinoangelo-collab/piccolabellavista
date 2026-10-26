@@ -1599,3 +1599,26 @@ summary:focus-visible {
     padding-block: 10px;
   }
 }
+
+/* Consigli della home raccolti in una sezione apribile */
+details.tips-fold {
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  border-bottom: 1px solid var(--line);
+}
+summary.tips-summary {
+  display: block;
+  margin: 28px clamp(18px, 5vw, 72px);
+  padding: 18px 22px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--terracotta-dark);
+  font-weight: 700;
+  list-style: none;
+}
+summary.tips-summary::-webkit-details-marker { display: none; }
+summary.tips-summary::after { content: " +"; }
+details.tips-fold[open] > summary.tips-summary::after { content: " \2212"; }
