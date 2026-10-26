@@ -1622,3 +1622,21 @@ summary.tips-summary {
 summary.tips-summary::-webkit-details-marker { display: none; }
 summary.tips-summary::after { content: " +"; }
 details.tips-fold[open] > summary.tips-summary::after { content: " \2212"; }
+
+/* ------------------------------------------------------------
+   FOTO DI APERTURA PIU NITIDA SU COMPUTER
+   Velo scuro solo dietro al testo (a sinistra e in basso),
+   niente righe verticali: la vista resta pulita a destra.
+   ------------------------------------------------------------ */
+@media (min-width: 821px) {
+  .hero::before {
+    background:
+      linear-gradient(90deg, rgba(40, 24, 14, 0.62) 0%, rgba(40, 24, 14, 0.38) 45%, rgba(40, 24, 14, 0.05) 75%),
+      linear-gradient(180deg, rgba(40, 24, 14, 0) 45%, rgba(40, 24, 14, 0.35) 100%),
+      var(--hero-image, url("assets/foto/booking/vista-verso-poetto-mare-hero.jpg")) center / cover no-repeat,
+      linear-gradient(135deg, var(--terracotta-dark), var(--olive));
+  }
+  .hero::after {
+    background: none;
+  }
+}
