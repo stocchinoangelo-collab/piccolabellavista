@@ -33,7 +33,7 @@ class ContentTests(unittest.TestCase):
  def test_home_order_and_card_counts(self):
   content=(ROOT/'index.html').read_text(); tags=Tags(content).tags
   sections=[attrs.get('id') for tag,attrs in tags if tag=='section']
-  self.assertEqual(sections,[None,'casa','servizi','concierge','spiagge','cagliari','vicino','posizione','recensioni','prenota','faq','contatti'])
+  self.assertEqual(sections,[None,'casa','recensioni','servizi','concierge','spiagge','cagliari','vicino','posizione','prenota','faq','contatti'])
   beach_keys=re.findall(r'data-i18n="(beach(?!es)\w+Title)"',content)
   self.assertEqual(len(beach_keys),5)
   self.assertEqual(len(re.findall(r'data-i18n="city\w+Title"',content)),4)
